@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+    //===========================================
+    // Methods
+    //===========================================
 
     public void ChangeScene(string nextSceneName, bool changeToTrigger)
     {
@@ -49,6 +52,9 @@ public class SceneChanger : MonoBehaviour
         }
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     public void ActiveTrigger() { SceneChangeTrigger = true; }
 
     private bool SceneChangeTrigger = false;

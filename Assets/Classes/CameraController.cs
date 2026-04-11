@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    //===========================================
+    // struct/enum
+    //===========================================
     [System.Serializable]
     public struct LayerDistance
     {
@@ -31,6 +34,9 @@ public class CameraController : MonoBehaviour
         cam.layerCullDistances = distances;
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     public void Attach(GameObject target, bool thirdProspective)
     {
         if(thirdProspective)
@@ -55,6 +61,10 @@ public class CameraController : MonoBehaviour
         camera.fieldOfView = 60.0f;
         attachedPoint = target.transform.GetChild(2);
     }
+
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
 
     private Transform attachedPoint = null;
     [SerializeField] private Camera camera = null;

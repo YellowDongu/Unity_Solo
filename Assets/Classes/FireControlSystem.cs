@@ -5,9 +5,15 @@ using static GaugeUI;
 
 public class FireControlSystem : MonoBehaviour
 {
+    //===========================================
+    // struct/enum
+    //===========================================
     [System.Serializable]
     public struct SpecialMissileSlot { public GameObject parent; public List<Missile> slot; } // wrapper
 
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     void Start()
     {
         standardCos = Mathf.Cos(standard[0].LockAngle() * Mathf.Deg2Rad);
@@ -15,6 +21,43 @@ public class FireControlSystem : MonoBehaviour
         gunRPM /= 3600.0f;
     }
 
+    public void SetSpecial(int value)
+    {
+        if (value < 0 || value >= specialSlot.Length)
+            return;
+
+        special = value;
+        specialSlot[special].parent.SetActive(true);
+        specialCos = Mathf.Cos(specialSlot[special].slot[0].LockAngle() * Mathf.Deg2Rad);
+        maxCount = specialSlot[special].slot.Count;
+        multiShoot = specialSlot[special].slot[0].MultiShoot();
+    }
+
+    public void LinkStandard(ReadOnlyCollection<Gauge> gauge)
+    {
+        float value = standard[0].MaxCoolTime();
+
+        for (int i = 0; i < 2; i++)
+        {
+            gauge[i].LinkCoolTime(standard[i].CoolTime);
+            gauge[i].GetMaxCoolTime(value);
+        }
+    }
+
+    public void LinkSpecial(ReadOnlyCollection<Gauge> gauge)
+    {
+        float value = specialSlot[special].slot[0].MaxCoolTime();
+        for (int i = 0; i < maxCount; i++)
+        {
+            gauge[i].LinkCoolTime(specialSlot[special].slot[i].CoolTime);
+            gauge[i].GetMaxCoolTime(value);
+        }
+    }
+
+
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     void Update()
     {
         bulletTime += Time.deltaTime;
@@ -95,6 +138,9 @@ public class FireControlSystem : MonoBehaviour
     }
 
 
+    //===========================================
+    // Methods
+    //===========================================
     public void Gun(Vehicle vehicle)
     {
         if (bulletTime < gunRPM)
@@ -267,45 +313,9 @@ public class FireControlSystem : MonoBehaviour
         ChangeState?.Invoke(selectSpecial);
     }
 
-    public void SetSpecial(int value)
-    {
-        for (int i = 0; i < specialSlot.Length; i++)
-        {
-            if (value == i)
-                continue;
-            specialSlot[i].parent.SetActive(false);
-        }
-
-        if (value < 0 || value >= specialSlot.Length)
-            return;
-
-        special = value;
-        specialCos = Mathf.Cos(specialSlot[special].slot[0].LockAngle() * Mathf.Deg2Rad);
-        maxCount = specialSlot[special].slot.Count;
-        multiShoot = specialSlot[special].slot[0].MultiShoot();
-    }
-
-    public void LinkStandard(ReadOnlyCollection<Gauge> gauge)
-    {
-        float value = standard[0].MaxCoolTime();
-        for (int i = 0; i < 2; i++)
-        {
-            gauge[i].GetCoolTime += standard[i].CoolTime;
-            gauge[i].GetMaxCoolTime(value);
-        }
-    }
-
-    public void LinkSpecial(ReadOnlyCollection<Gauge> gauge)
-    {
-        float value = specialSlot[special].slot[0].MaxCoolTime();
-        for (int i = 0; i < maxCount; i++)
-        {
-            gauge[i].GetCoolTime += specialSlot[special].slot[i].CoolTime;
-            gauge[i].GetMaxCoolTime(value);
-        }
-    }
-
-
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     public void SetTeam(int value) { team = value; }
     public bool GetSelectState() { return selectSpecial; }
     public ReadOnlyCollection<Vehicle> Targets => currentTargets.AsReadOnly();

@@ -6,8 +6,14 @@ using UnityEngine.UI;
 
 public class LockHUD : MonoBehaviour
 {
+    //===========================================
+    // struct/enum
+    //===========================================
     private struct LockInfomation
     {
+        //===========================================
+        // Methods
+        //===========================================
         public void GetInfomation(IFFHud hud)
         {
             if (hud == null) return;
@@ -48,6 +54,9 @@ public class LockHUD : MonoBehaviour
             return new Vector2(Random.Range(position.x - areaSize, position.x + areaSize), Random.Range(position.y - areaSize, position.y + areaSize));
         }
 
+        //===========================================
+        // Variable & GetSet Methods
+        //===========================================
         public Image lockHUD;
         public RectTransform transform;
         public IFFHud iffHUD;
@@ -55,6 +64,9 @@ public class LockHUD : MonoBehaviour
         public Vector2 initialPosition;
     }
 
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
         GameObject newInstance = Instantiate(standardLockPrefab, baseCanvas.transform);
@@ -65,6 +77,9 @@ public class LockHUD : MonoBehaviour
         specialLockPool = new ObjectPool<Image>(createFunc: () => Instantiate(specialLockPrefab, baseCanvas.transform).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
     }
 
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     void Update()
     {
         if(fcsState)
@@ -97,6 +112,9 @@ public class LockHUD : MonoBehaviour
             standardLock.Update(IFFUI.GetIFF(targets[0]), lockStatus[0]);
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     public void BoundPlayer(FireControlSystem fcs)
     {
         fcsState = fcs.GetSelectState();
@@ -117,6 +135,10 @@ public class LockHUD : MonoBehaviour
             currentAlive.Clear();
         }
     }
+
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
 
     private bool fcsState = false;
     public ReadOnlyCollection<Vehicle> targets;

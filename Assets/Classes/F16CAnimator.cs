@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class F16CAnimator : AircraftAnimator
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
         elevator = AddAnimationData("elevator", "Take 001", "Elevator");
@@ -20,6 +23,9 @@ public class F16CAnimator : AircraftAnimator
         baseAnimation.SetSpeed(0.5f);
     }
 
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     private void Update()
     {
         PrimarySurfaceControl();
@@ -28,6 +34,9 @@ public class F16CAnimator : AircraftAnimator
         BaseAnimationControl();
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     public void PrimarySurfaceControl()
     {
         aileronL.Update((int)control.yoke.x);
@@ -51,6 +60,9 @@ public class F16CAnimator : AircraftAnimator
         baseAnimation.Update(control.velocity > 300.0f ? 1 : 0);
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     private RotationAnimationData elevator;
     private RotationAnimationData aileronL;
     private RotationAnimationData aileronR;

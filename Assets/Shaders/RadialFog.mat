@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rader Material
-  m_Shader: {fileID: 4800000, guid: c27d057a004494e44b68f556a3940e6e, type: 3}
+  m_Name: RadialFog
+  m_Shader: {fileID: 4800000, guid: 8258c2ccf6f25a24686adf077afee2c0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -22,19 +22,15 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _BaseMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Cutoff: 0.1
+    - _FogEnd: 1000
+    - _FogStart: 900
+    - _Maximum: 0
+    - _Minimum: 0
     m_Colors:
-    - _BaseColor: {r: 0, g: 1, b: 0, a: 0.39215687}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _FogColor: {r: 1, g: 0.91764706, b: 0.8509804, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -1,9 +1,11 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Missile : MonoBehaviour
 {
+    //===========================================
+    // Methods
+    //===========================================
     public bool Shoot(Vehicle locked)
     {
         if (isCoolTime)
@@ -43,6 +45,9 @@ public abstract class Missile : MonoBehaviour
         mesh.SetActive(true);
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     public float LockAngle()  { return lockAngle; }
     public float MaxRange()  { return maxRange; }
     public int TargetCount() { return targetCount; }

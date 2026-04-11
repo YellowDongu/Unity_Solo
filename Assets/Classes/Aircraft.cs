@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Control
@@ -11,26 +10,15 @@ public class Control
     public float velocity = 33.0f;
 }
 
-
-
 public class Aircraft : Vehicle
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
+
     void Start()
     {
         SystemIntegration();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
-    public void Aboard(Pilot pilot)
-    {
-
     }
 
     public void SystemIntegration()
@@ -39,6 +27,9 @@ public class Aircraft : Vehicle
         animator.control = control;
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     public void SetSpecial(int value) { fcs.SetSpecial(value); }
     public AircraftMovement Movement() { return movement; }
     public AircraftAnimator Animator() { return animator; }

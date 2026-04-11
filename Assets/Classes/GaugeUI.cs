@@ -5,26 +5,37 @@ using UnityEngine.UI;
 
 public class GaugeUI : MonoBehaviour
 {
+    //===========================================
+    // struct/enum
+    //===========================================
     public enum GaugeUIType
     {
         stm,
         faam,
+        sarm,
         END
     }
 
     [System.Serializable]
-    public struct Gauge
+    public class Gauge
     {
+        //===========================================
+        // Methods
+        //===========================================
         public void UpdateProgress()
         {
-            progress = GetCoolTime.Invoke();
+            progress = GetCoolTime();
             gauge.fillAmount = 1 - progress / progressMax;
         }
-        public void GetMaxCoolTime(float value) { progressMax = value; }
 
+        //===========================================
+        // Variable & GetSet Methods
+        //===========================================
+        public void GetMaxCoolTime(float value) { progressMax = value; }
+        public void LinkCoolTime(GetCoolTimeMethod method) { GetCoolTime = method; }
 
         public delegate float GetCoolTimeMethod();
-        public event GetCoolTimeMethod GetCoolTime;
+        private GetCoolTimeMethod GetCoolTime;
 
         private float progressMax;
         private float progress;
@@ -32,7 +43,9 @@ public class GaugeUI : MonoBehaviour
         [SerializeField] private Image gauge;
     }
 
-
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     void FixedUpdate()
     {
         foreach (Gauge gauge in gaugeList)
@@ -41,6 +54,9 @@ public class GaugeUI : MonoBehaviour
         }
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     public ReadOnlyCollection<Gauge> GaugeList => gaugeList.AsReadOnly();
     public GaugeUIType GetUIType() { return type; }
 

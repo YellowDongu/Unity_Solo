@@ -2,7 +2,9 @@ using UnityEngine;
 
 public abstract class AircraftPilot : Pilot
 {
-
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     public void LinkControl(Control aircraftControl) { control = aircraftControl; }
 
     public override void Attach(Vehicle target)
@@ -20,6 +22,9 @@ public abstract class AircraftPilot : Pilot
         rader.SetTeam(infomation.team);
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
 
     protected Aircraft aircraft = null;
     protected Control control = null;

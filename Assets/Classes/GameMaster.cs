@@ -1,7 +1,11 @@
 using UnityEngine;
 
+
 public class GameMaster : MonoBehaviour
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
         if (instance != null)
@@ -11,12 +15,13 @@ public class GameMaster : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
-    {
-    }
+
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
 
 
-
+    public bool IsTGTEmpty() { return factory.IsTGTEmpty(); }
     public static GameMaster GetInstance() { return instance; }
     public Factory GetFactory() { return factory; }
     public SceneChanger GetSceneChanger() { return sceneChanger; }

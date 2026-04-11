@@ -2,8 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
+
 public class Bullet : MonoBehaviour
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     void Start()
     {
         //layerMask = LayerMask.GetMask("MovingVehicle");
@@ -12,6 +16,9 @@ public class Bullet : MonoBehaviour
 
     }
 
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     private void Update()
     {
         if(timer < 0.0f || gameObject.transform.position.y < 0.0f)
@@ -23,6 +30,9 @@ public class Bullet : MonoBehaviour
         timer -= Time.deltaTime;
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     public void Shoot(Vector3 position, Quaternion rotation, float velocity, Vehicle _shooted, ObjectPool<Bullet> objectPool)
     {
         gameObject.transform.position = position;
@@ -50,6 +60,9 @@ public class Bullet : MonoBehaviour
         }
 
     }
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
 
     private float timer;
     private int layerMask;

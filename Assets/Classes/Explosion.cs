@@ -3,12 +3,18 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
         emitParameter = new ParticleSystem.EmitParams();
         emitParameter.applyShapeToPosition = false;
     }
 
+    //===========================================
+    // Methods
+    //===========================================
 
     public IEnumerator UpdateParticle()
     {
@@ -53,6 +59,9 @@ public class Explosion : MonoBehaviour
         particleSystem.Emit(emitParameter, 1);
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     private GameObject target;
 
     ParticleSystem.EmitParams emitParameter;

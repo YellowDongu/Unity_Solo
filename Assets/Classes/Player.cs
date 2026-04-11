@@ -1,16 +1,20 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+
 public class Player : AircraftPilot
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
         infomation.team = 1;
     }
 
-    void Start()
-    {
-    }
-
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     void Update()
     {
         control.yoke.x = (Keyboard.current.leftArrowKey.isPressed ? 1.0f : 0.0f) - (Keyboard.current.rightArrowKey.isPressed ? 1.0f : 0.0f);
@@ -57,11 +61,10 @@ public class Player : AircraftPilot
 
     }
 
-    private void FixedUpdate()
-    {
 
-    }
-
+    //===========================================
+    // Methods
+    //===========================================
     public override void Release()
     {
         aircraft = null;
@@ -164,6 +167,9 @@ public class Player : AircraftPilot
     }
 
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
 
     private IFFUIController iffHud;
 

@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-
 public class IFFUIController : MonoBehaviour
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
         //foreach (var prefab in prefabs)
@@ -41,12 +43,9 @@ public class IFFUIController : MonoBehaviour
         changeColor?.Invoke(controller.GetColor());
     }
 
-
-    void Update()
-    {
-
-    }
-
+    //===========================================
+    // Methods
+    //===========================================
 
     public void Select(Vehicle target, bool select)
     {
@@ -72,6 +71,9 @@ public class IFFUIController : MonoBehaviour
         return hud;
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     private void ColorChange(Color _color) { color = _color; }
     private void ReleaseMethod(IFFHud target) { /*changeColor -= target.ChangeColor;*/ targets.Remove(target.target); }
     public void SetMaxDistance(float value) { maxDistance = value; }

@@ -1,16 +1,22 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class IFFHud : MonoBehaviour
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Start()
     {
         isTarget = false;
         nameText.gameObject.SetActive(false);
         distanceText.gameObject.SetActive(false);
     }
+
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     private void LateUpdate()
     {
         if (!target.gameObject.activeInHierarchy)
@@ -45,6 +51,9 @@ public class IFFHud : MonoBehaviour
             distanceText.text = ((int)(Mathf.Sqrt(distance) * 10.0f)).ToString();
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     public void Attach(Vehicle _target, Player _player)
     {
         player = _player;
@@ -68,6 +77,9 @@ public class IFFHud : MonoBehaviour
             TGTText.gameObject.SetActive(value);
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     public void ChangeImageColor(Color color) { image.color = color; }
     private void ChangeColor(Color color) { image.color = nameText.color = distanceText.color = color; }
     public void SetMaxDistance(float value) { maxDistance = value * value; }

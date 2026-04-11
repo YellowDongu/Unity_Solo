@@ -2,8 +2,14 @@ using UnityEngine;
 
 public class AircraftAnimator : MonoBehaviour
 {
+    //===========================================
+    // InsideClass
+    //===========================================
     protected class RotationAnimationData
     {
+        //===========================================
+        // Initializer/Destructor
+        //===========================================
         public void Initialize(Animator _animator, string variableName, string clipName, string layerName)
         {
             animator = _animator;
@@ -14,6 +20,9 @@ public class AircraftAnimator : MonoBehaviour
             middleTime = 0.5f;
         }
 
+        //===========================================
+        // Methods
+        //===========================================
         public void Update(int state) { status = state; Update(); }
         public void Update()
         {
@@ -41,6 +50,9 @@ public class AircraftAnimator : MonoBehaviour
 
             animator.SetFloat(variableID, time);
         }
+        //===========================================
+        // Variable & GetSet Methods
+        //===========================================
         public void SetSpeed(float value) { speed = value; }
         public void SetMiddleTime(float value) { middleTime = value; }
         public void SetMotionTime(float value) { animator.SetFloat(variableID, Mathf.Clamp01(time)); }
@@ -61,6 +73,9 @@ public class AircraftAnimator : MonoBehaviour
 
     protected class PartsAnimationData
     {
+        //===========================================
+        // Initializer/Destructor
+        //===========================================
         public void Initialize(Animator _animator, string variableName, string clipName, string layerName, int _baseStatus)
         {
             state = baseState = _baseStatus;
@@ -69,6 +84,9 @@ public class AircraftAnimator : MonoBehaviour
             animator.Play(clipName, animator.GetLayerIndex(layerName), time = (baseState == -1 ? 0 : 1));
             speed = 1.0f;
         }
+        //===========================================
+        // Methods
+        //===========================================
 
         public void Update(int state)
         {
@@ -105,6 +123,10 @@ public class AircraftAnimator : MonoBehaviour
 
             animator.SetFloat(variableID, time);
         }
+        //===========================================
+        // Variable & GetSet Methods
+        //===========================================
+
         public void SetSpeed(float value) { speed = value; }
         public void SetMotionTime(float value) { animator.SetFloat(variableID, Mathf.Clamp01(time)); }
 
@@ -115,7 +137,6 @@ public class AircraftAnimator : MonoBehaviour
         private float speed;
         private Animator animator;
     }
-
 
     protected PartsAnimationData AddAnimationData(string variableName, string clipName, string layerName, int baseState, bool isBody = true)
     {
@@ -130,6 +151,9 @@ public class AircraftAnimator : MonoBehaviour
         return newInstance;
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     [SerializeField] public Control control = null;
     [SerializeField] protected Animator bodyAnimator = null;
     [SerializeField] protected Animator gearAnimator = null;

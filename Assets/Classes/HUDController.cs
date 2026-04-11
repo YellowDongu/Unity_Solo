@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
         GameMaster.GetInstance().EnlistBaseCanvas(this);
@@ -106,8 +108,10 @@ public class HUDController : MonoBehaviour
     }
 
 
+    //===========================================
+    // Methods
+    //===========================================
     public float AngleCalibration(float value) { while (value < -180.0f) { value += 360.0f; } while (value > 180.0f) { value -= 360.0f; } return value; }
-    public void BoundPlayer(AircraftMovement playerComponent) { player = playerComponent; }
 
     public void ChangeColor(Vector4 color)
     {
@@ -127,6 +131,10 @@ public class HUDController : MonoBehaviour
     public event ChangeUIColor changeColor;
 
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
+    public void BoundPlayer(AircraftMovement playerComponent) { player = playerComponent; }
     public LockHUD LinkLockHUD() { return lockHUD; }
     public RaderUI LinkRaderUI() { return raderUI; }
     public IFFUIController LinkIFFUIController() { return iFFUIController; }

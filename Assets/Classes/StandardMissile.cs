@@ -5,11 +5,17 @@ using UnityEngine.Pool;
 
 public class StandardMissile : Missile
 {
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     private void Update()
     {
         Fly();
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     private void Fly()
     {
         if (!isProjectile)
@@ -25,14 +31,17 @@ public class StandardMissile : Missile
         flyDistance -= distance;
         rigidbody.MovePosition(gameObject.transform.position + gameObject.transform.forward * distance);
 
-        if (target.IsDestroyed())
-            target = null;
-
         if (target == null)
         {
             rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(gameObject.transform.eulerAngles.x, 0.0f, 0.0f), rotationSpeed * Time.deltaTime));
             return;
         }
+        if (target.IsDestroyed() || target.gameObject.activeInHierarchy)
+        {
+            target = null;
+            return;
+        }
+
 
         Vector3 vector = target.transform.position - gameObject.transform.position;
         if (vector.sqrMagnitude < 9.0f)
@@ -78,6 +87,9 @@ public class StandardMissile : Missile
         objectPool.Release(this);
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     public static void InjectObjectPool(ObjectPool<StandardMissile> target) { objectPool = target; }
     public static void RemoveObjectPool() { objectPool = null; }
 

@@ -10,6 +10,18 @@ public struct PlayerSpawnData
 
 public class SelectAircraft : MonoBehaviour
 {
+    //Sound
+	//if(FAILED(::Sound()->LoadSound("../Bin/Resources/Sounds/Effects/", "TurnToMainMenu.wav", TurnToMainMenu))) return E_FAIL;
+	//if(FAILED(::Sound()->LoadSound("../Bin/Resources/Sounds/Effects/", "MenuSelected.wav", MenuSelected))) return E_FAIL;
+	//if(FAILED(::Sound()->LoadSound("../Bin/Resources/Sounds/Effects/", "MenuChange.wav", MenuChange))) return E_FAIL;
+	//if(FAILED(::Sound()->LoadSound("../Bin/Resources/Sounds/Effects/", "MenuCancel.wav", MenuCancel))) return E_FAIL;
+	//if(FAILED(::Sound()->LoadSound("../Bin/Resources/Sounds/Effects/", "AircraftSelected.wav", aircraftSelected))) return E_FAIL;
+	//if(FAILED(::Sound()->LoadSound("../Bin/Resources/Sounds/BGMs/", "main.wav", MainMenuBGM))) return E_FAIL;
+	//if(FAILED(::Sound()->LoadSound("../Bin/Resources/Sounds/BGMs/", "Select.wav", SelectMenuBGM))) return E_FAIL; 
+
+    //===========================================
+    // struct/enum
+    //===========================================
     [System.Serializable]
     public struct AircraftData
     {
@@ -17,6 +29,9 @@ public class SelectAircraft : MonoBehaviour
         public Vector3 hangerPosition;
     }
 
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
         selectedList = new List<VehicleID>(data.Length);
@@ -42,13 +57,21 @@ public class SelectAircraft : MonoBehaviour
             preLoaded.Add(item.id, newInstnace.gameObject);
             selectedList.Add(item.id);
         }
+
+        vehicleSelectedHighlight.gameObject.SetActive(false);
     }
 
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     private void Update()
     {
         Selected();
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     private void Selected()
     {
         switch (phase)
@@ -105,6 +128,13 @@ public class SelectAircraft : MonoBehaviour
             current.SetActive(true);
 
         selected = index;
+
+        if (selected != 0)
+        {
+            vehicleSelectedHighlight.gameObject.SetActive(true);
+            vehicleSelectedHighlight.SetParent(vehicleSelectPod.transform.GetChild(selected - 1).transform);
+            vehicleSelectedHighlight.anchoredPosition = new Vector2(vehicleSelectedHighlight.anchoredPosition.x, 0.0f);
+        }
     }
 
     public void ReserveSpawn()
@@ -115,12 +145,19 @@ public class SelectAircraft : MonoBehaviour
         GameMaster.GetInstance().GetFactory().ReservePlayerVehicle(newData);
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     private int phase = 0;
-    private int weaponSelected = 0;
-    private int selected = 0;
+    private int selected = 0, weaponSelected = 1;
     private GameObject current;
     private List<VehicleID> selectedList;
     private Dictionary<VehicleID, GameObject> preLoaded = new Dictionary<VehicleID, GameObject>((int)VehicleID.END);
     [SerializeField] private string nextScene;
     [SerializeField] private AircraftData[] data;
+
+    [SerializeField] private GameObject vehicleSelectPod;
+    [SerializeField] private RectTransform vehicleSelectedHighlight;
+    [SerializeField] private GameObject weaponSelectPod;
+    [SerializeField] private RectTransform weaponSelectedHighlight;
 }

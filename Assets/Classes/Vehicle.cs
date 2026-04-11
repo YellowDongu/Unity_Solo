@@ -3,10 +3,9 @@ using static Pilot;
 
 public abstract class Vehicle : MonoBehaviour
 {
-    public void Awake()
-    {
-        hp = maxHp;
-    }
+    //===========================================
+    // Methods
+    //===========================================
     public void SetVehicleInfo(ref PilotInfo infomation)
     {
         team = infomation.team;
@@ -28,8 +27,11 @@ public abstract class Vehicle : MonoBehaviour
     }
 
     public void Release() { releaseEvent?.Invoke(); releaseEvent = null; release.Invoke(this); }
-    public void SetRelease(ReleaseMethod listener) { release = listener; }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
+    public void SetRelease(ReleaseMethod listener) { release = listener; }
     public float HPPresentage() { return (float)hp / (float)maxHp; }
     public VehicleID ID { get { return id; } private set { id = value; } }
     public string VehicleName { get { return vehicleName; } private set { vehicleName = value; } }

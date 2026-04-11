@@ -422,6 +422,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8617744705260627555, guid: a6a25505c964ac8468f68810969c790c, type: 3}
+      propertyPath: SARMPrefab
+      value: 
+      objectReference: {fileID: 1117042481656606422, guid: 4234078f2f86f4d469f0bef257e53f40, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -757,7 +761,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 1
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -784,8 +788,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516103942}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.19995116, y: -0.0029295324, z: 0.000661901, w: -0.9798013}
-  m_LocalPosition: {x: 537.80725, y: 632.3347, z: -1121.5144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

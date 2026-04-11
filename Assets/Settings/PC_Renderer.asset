@@ -12,6 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c58cf92248edde4084df5e6f64627a4, type: 3}
   m_Name: VolumetricFogFeature
   m_EditorClassIdentifier: Assembly-CSharp::VolumetricFogFeature
+  raderUI: {fileID: 0}
+  expendedRaderUI: {fileID: 0}
+  localRaderSize: 0
+  localRaderOffset: {x: 0, y: 0}
+  rightTopBoarder: {fileID: 0}
+  leftBottomBoarder: {fileID: 0}
+  airPrefab: {fileID: 0}
+  groundPrefab: {fileID: 0}
+  airTGTPrefab: {fileID: 0}
+  groundTGTPrefab: {fileID: 0}
+--- !u!114 &-4168542585328976024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00045f12942b46c698459096c89274e, type: 3}
+  m_Name: FullScreenPassRendererFeature
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.FullScreenPassRendererFeature
+  m_Active: 1
+  injectionPoint: 550
+  fetchColorBuffer: 1
+  requirements: 5
+  passMaterial: {fileID: 2100000, guid: 04501bff20c966545a8176e57f9e1ac0, type: 2}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
 --- !u!114 &-7349691018454396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,7 +89,8 @@ MonoBehaviour:
     probeVolumeBlendStatesCS: {fileID: 7200000, guid: b9a23f869c4fd45f19c5ada54dd82176, type: 3}
   m_RendererFeatures:
   - {fileID: 7833122117494664109}
-  m_RendererFeatureMap: ad6b866f10d7b46c
+  - {fileID: -4168542585328976024}
+  m_RendererFeatureMap: ad6b866f10d7b46c68bf60c29a5c26c6
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}

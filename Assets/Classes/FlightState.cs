@@ -1,10 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using UnityEngine;
 
 public abstract class FlightState
 {
+    //===========================================
+    // Methods
+    //===========================================
     public abstract bool Update();
 
     public float AngleCalibration(float value) { while (value < -180.0f) { value += 360.0f; } while (value > 180.0f) { value -= 360.0f; } return value; }
@@ -61,20 +62,28 @@ public abstract class FlightState
 
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     protected Transform transform;
     protected Control control;
     protected Vector3 targetAngle;
 }
 
-
 public class LevelingState : FlightState
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     public LevelingState(Transform _transform, Control _control)
     {
         transform = _transform;
         control = _control;
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     public override bool Update()
     {
         bool reutrnValue = Roll(0.0f);
@@ -85,12 +94,18 @@ public class LevelingState : FlightState
 
 public class AltitudeState : FlightState
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     public AltitudeState(Transform _transform, Control _control)
     {
         transform = _transform;
         control = _control;
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     public override bool Update()
     {
         Roll(0.0f);
@@ -100,6 +115,9 @@ public class AltitudeState : FlightState
         return difference < 2.5f;
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     public void SetAltitude(float value) { targetAltitude = value; }
 
     private float targetAltitude;
@@ -107,6 +125,9 @@ public class AltitudeState : FlightState
 
 public class HorizontalTurnState : FlightState
 {
+    //===========================================
+    // struct/enum
+    //===========================================
     public enum TurnType
     {
         Shallow,
@@ -115,6 +136,9 @@ public class HorizontalTurnState : FlightState
         END
     }
 
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     public HorizontalTurnState(Transform _transform, Control _control)
     {
         transform = _transform;
@@ -211,6 +235,9 @@ public class HorizontalTurnState : FlightState
 
     }
 
+    //===========================================
+    // Methods
+    //===========================================
 
     public override bool Update()
     {
@@ -292,6 +319,9 @@ public class HorizontalTurnState : FlightState
         return vector.sqrMagnitude < 25.0f;
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
 
     private int mode = 0;
     private Vector3 targetPosition;
@@ -305,6 +335,9 @@ public class HorizontalTurnState : FlightState
 
 public class DeepTurnState : FlightState
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     public DeepTurnState(Transform _transform, Control _control)
     {
         transform = _transform;
@@ -325,6 +358,9 @@ public class DeepTurnState : FlightState
         moveTowardPosition = false;
     }
 
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     public override bool Update()
     {
         Vector3 vector = targetPosition - transform.position;
@@ -371,6 +407,9 @@ public class DeepTurnState : FlightState
         return false;
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     private Vector3 targetPosition;
     private bool moveTowardPosition = false;
 }
@@ -384,19 +423,24 @@ public class DeepTurnState : FlightState
 
 
 
-
-
-
 public abstract class LeaderSystem
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     public LeaderSystem() { }
 
 }
 public class AviationLeaderSystem : LeaderSystem
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     public AviationLeaderSystem() { }
 
-
+    //===========================================
+    // Methods
+    //===========================================
     public void Update()
     {
         for (int i = 0; i < wings.Count; i++)
@@ -426,11 +470,13 @@ public class AviationLeaderSystem : LeaderSystem
 
         return new Vector3(7.5f * back * left, 0.0f, 7.5f * back);
     }
+    public void Add(AircraftPilot pilot, Aircraft aircraft) { wings.Add((pilot, aircraft)); }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     public bool IsLeader(AircraftPilot pilot) { return pilot == wings[0].pilot; }
     public bool IsLeader(Aircraft aircraft) { return aircraft == wings[0].aircraft; }
-
-    public void Add(AircraftPilot pilot, Aircraft aircraft) { wings.Add((pilot, aircraft)); }
 
     public Aircraft GetLeader() { return wings[0].aircraft; }
 

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Rader : MonoBehaviour
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
         layerMask = LayerMask.GetMask("MovingVehicle");
@@ -11,6 +14,9 @@ public class Rader : MonoBehaviour
         collider.radius = raderDistance;
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer != targetLayer)
@@ -55,9 +61,11 @@ public class Rader : MonoBehaviour
 
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     public delegate void EnterEvent(Vehicle target);
     public delegate void ExitEvent(Vehicle target);
-
     public void Trace(Missile target) { tracing.Add(target); }
     public void TraceEnd(Missile target) { tracing.Remove(target); }
     public float RaderDistance() { return raderDistance; }

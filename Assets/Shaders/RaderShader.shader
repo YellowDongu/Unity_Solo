@@ -38,14 +38,14 @@ Shader "Custom/RaderShader"
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-            struct Attributes // input
+            struct Attributes // VS_Input, DX11에서 쓰던 용어보단 개념적인 용어, 다른 그래픽 API에서 사용한다고 함
             {
                 float4 positionOS : POSITION;
                 float2 uv : TEXCOORD0;
                 float4 color : COLOR0;
             };
             
-            struct Varyings // pix
+            struct Varyings  // PS_Input, DX11에서 쓰던 용어보단 개념적인 용어, 다른 그래픽 API에서 사용한다고 함
             {
                 float4 positionHCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
@@ -62,7 +62,9 @@ Shader "Custom/RaderShader"
                 half _Cutoff;
                 float4 _ClipRect;
             CBUFFER_END
-
+            
+            //==========================================================
+            // Vertex Shader
             Varyings vert(Attributes IN) // vertex shader
             {
                 Varyings OUT = (Varyings)0;
@@ -79,45 +81,37 @@ Shader "Custom/RaderShader"
                 
                 //return output;
             }
+            //==========================================================
 
             float Clipping (float2 position, float4 clipRect)
             {
                 float2 inside = step(clipRect.xy, position.xy) * step(position.xy, clipRect.zw);
                 return inside.x * inside.y;
             }
-
+            
+            //==========================================================
+            // Vertex Shader
             half4 frag(Varyings IN) : SV_Target // pixel shader
             {
                 half4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv);
 
                 color.a *= Clipping(IN.worldPosition.xy, _ClipRect);
                 //clip(UnityGet2DClipping(IN.worldPosition.xy, _ClipRect) - 0.001);
-
-                if(color.a < _Cutoff)
-                {
-                    discard;
-                }
-
-                return color * IN.color;
-
-
-                // 1. 텍스처 샘플링
-                //half4 texColor = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uv);
                 
-                // 2. 색상 곱하기
-                //half4 finalColor = texColor * _BaseColor;
-                
-                // 3. 알파 클리핑
-                // finalColor.a가 _Cutoff보다 작으면 픽셀을 버림
                 //#if defined(_ALPHATEST_ON) // 성능을 위해 키워드로 제어하는 것이 정석이라고 하나, HUD용이므로 직접 작성
                 //    if (finalColor.a < _Cutoff)
                 //    {
                 //        discard;
                 //    }
                 //#endif
-                
-                //return finalColor;
+                if(color.a < _Cutoff)
+                {
+                    discard;
+                }
+
+                return color * IN.color;
             }
+            //==========================================================
             ENDHLSL
         }
     }

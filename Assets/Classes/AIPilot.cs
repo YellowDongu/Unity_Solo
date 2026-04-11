@@ -7,6 +7,9 @@ using static HorizontalTurnState;
 
 public class AIPilot : AircraftPilot
 {
+    //===========================================
+    // struct/enum
+    //===========================================
     public enum Status
     {
         None,
@@ -17,13 +20,18 @@ public class AIPilot : AircraftPilot
         END
     }
 
-
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     public void Start()
     {
         currentState = null;
         currentStatus = Status.Attack;
     }
 
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
 
     void FixedUpdate()
     {
@@ -94,8 +102,9 @@ public class AIPilot : AircraftPilot
 
     }
 
-
-
+    //===========================================
+    // Methods
+    //===========================================
     public void Check()
     {
         if (gameObject.transform.position.y < 200.0f)
@@ -123,13 +132,6 @@ public class AIPilot : AircraftPilot
         }
 
     }
-
-
-
-
-
-
-
 
     public override void Attach(Vehicle target)
     {
@@ -349,6 +351,10 @@ public class AIPilot : AircraftPilot
         return false;
     }
 
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
+
     private Status currentStatus = Status.Chase;
     private int state = 0;
     private int team = 0;
@@ -357,8 +363,6 @@ public class AIPilot : AircraftPilot
 
     private ReadOnlyCollection<float> lockState;
     private ReadOnlyCollection<Vehicle> targets;
-
-
 
 
     private FlightState currentState;

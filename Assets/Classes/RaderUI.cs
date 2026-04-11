@@ -7,6 +7,50 @@ using UnityEngine.UI;
 
 public class RaderUI : MonoBehaviour
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
+    private void Initialize()
+    {
+        uiPool[0] = airPool = new ObjectPool<Image>(createFunc: () => Instantiate(airPrefab).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
+        uiPool[1] = airTGTPool = new ObjectPool<Image>(createFunc: () => Instantiate(airTGTPrefab).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
+        uiPool[2] = groundPool = new ObjectPool<Image>(createFunc: () => Instantiate(groundPrefab).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
+        uiPool[3] = groundTGTPool = new ObjectPool<Image>(createFunc: () => Instantiate(groundTGTPrefab).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
+
+        raderTransform = raderUI.gameObject.GetComponent<RectTransform>();
+        expendedRaderTransform = expendedRaderUI.gameObject.GetComponent<RectTransform>();
+
+        Vector3 leftBottom = leftBottomBoarder.transform.position;
+        Vector3 rightTop = rightTopBoarder.transform.position;
+        worldMinX = Mathf.Min(rightTop.x, leftBottom.x);
+        worldMinZ = Mathf.Min(rightTop.z, leftBottom.z);
+        worldSizeX = Mathf.Abs(rightTop.x - leftBottom.x);
+        worldSizeZ = Mathf.Abs(rightTop.z - leftBottom.z);
+
+        whole = new ReadOnlyCollection<Vehicle>[teamMax];
+        for (int i = 0; i < teamMax; i++)
+            whole[i] = GameMaster.GetInstance().GetFactory().GetAll(i);
+
+        for (int i = 0; i < 4; i++)
+            aliveUI[i] = new List<(Image item, int flag)>(50);
+
+        raderState = true;
+        ChangeState();
+    }
+
+    public void BoundPlayer(Aircraft _player)
+    {
+        player = _player;
+        rader = _player.Rader();
+        inRader = rader.InRangeTarget;
+        running = true;
+
+        Initialize();
+        StartCoroutine(DistributedHUDUpdate());
+    }
+    //===========================================
+    // Methods
+    //===========================================
     private void OnDisable()
     {
         running = false;
@@ -184,40 +228,10 @@ public class RaderUI : MonoBehaviour
         //return size;
     }
 
-    public void BoundPlayer(Aircraft _player)
-    {
-        player = _player;
-        rader = _player.Rader();
-        inRader = rader.InRangeTarget;
-        running = true;
 
-        uiPool[0] = airPool = new ObjectPool<Image>(createFunc: () => Instantiate(airPrefab).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
-        uiPool[1] = airTGTPool = new ObjectPool<Image>(createFunc: () => Instantiate(airTGTPrefab).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
-        uiPool[2] = groundPool = new ObjectPool<Image>(createFunc: () => Instantiate(groundPrefab).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
-        uiPool[3] = groundTGTPool = new ObjectPool<Image>(createFunc: () => Instantiate(groundTGTPrefab).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
-
-        raderTransform = raderUI.gameObject.GetComponent<RectTransform>();
-        expendedRaderTransform = expendedRaderUI.gameObject.GetComponent<RectTransform>();
-
-        Vector3 leftBottom = leftBottomBoarder.transform.position;
-        Vector3 rightTop = rightTopBoarder.transform.position;
-        worldMinX = Mathf.Min(rightTop.x, leftBottom.x);
-        worldMinZ = Mathf.Min(rightTop.z, leftBottom.z);
-        worldSizeX = Mathf.Abs(rightTop.x - leftBottom.x);
-        worldSizeZ = Mathf.Abs(rightTop.z - leftBottom.z);
-
-        whole = new ReadOnlyCollection<Vehicle>[teamMax];
-        for (int i = 0; i < teamMax; i++)
-            whole[i] = GameMaster.GetInstance().GetFactory().GetAll(i);
-
-        for (int i = 0; i < 4; i++)
-            aliveUI[i] = new List<(Image item, int flag)>(50);
-
-        raderState = true;
-        ChangeState();
-
-        StartCoroutine(DistributedHUDUpdate());
-    }
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
 
     const int teamMax = 3;
 

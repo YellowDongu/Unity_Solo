@@ -1,7 +1,11 @@
 using UnityEngine;
 
+
 public class AircraftMovement : MonoBehaviour
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     void Start()
     {
         //MaxSpeed = 130.0f;
@@ -20,6 +24,9 @@ public class AircraftMovement : MonoBehaviour
 
     }
 
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     void Update()
     {
         if (Time.deltaTime < 0 || Time.deltaTime > 0.1f)
@@ -35,18 +42,26 @@ public class AircraftMovement : MonoBehaviour
 
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     public void RotationCalculation()
     {
-        rotationDelta.x += control.yoke.z * rotationSpeed.z * rotationSpeed.z * Time.deltaTime - rotationDelta.x * rotationSpeed.z * 0.5f * Time.deltaTime;
-        rotationDelta.y += control.yoke.y * rotationSpeed.y * rotationSpeed.y * Time.deltaTime - rotationDelta.y * rotationSpeed.y * 0.5f * Time.deltaTime;
-        rotationDelta.z += control.yoke.x * rotationSpeed.x * rotationSpeed.x * Time.deltaTime - rotationDelta.z * rotationSpeed.x * 0.5f * Time.deltaTime;
+        //rotationDelta.x += control.yoke.z * rotationSpeed.z /* * rotationSpeed.z*/ * 5.0f * Time.deltaTime - rotationDelta.x /* * rotationSpeed.z * 0.5f*/ * 2.5f * Time.deltaTime;
+        //rotationDelta.y += control.yoke.y * rotationSpeed.y /* * rotationSpeed.y*/ * 5.0f * Time.deltaTime - rotationDelta.y /* * rotationSpeed.y * 0.5f*/ * 2.5f * Time.deltaTime;
+        //rotationDelta.z += control.yoke.x * rotationSpeed.x /* * rotationSpeed.x*/ * 5.0f * Time.deltaTime - rotationDelta.z /* * rotationSpeed.x * 0.5f*/ * 2.5f * Time.deltaTime;
+        
+        //rotationDelta.x = Mathf.Clamp(rotationDelta.x, -rotationSpeed.x, rotationSpeed.x);
+        //rotationDelta.y = Mathf.Clamp(rotationDelta.y, -rotationSpeed.y, rotationSpeed.y);
+        //rotationDelta.z = Mathf.Clamp(rotationDelta.z, -rotationSpeed.z, rotationSpeed.z);
 
-        if (Mathf.Abs(rotationDelta.x) < 1.0f)
-            rotationDelta.x = 0.0f;
-        if (Mathf.Abs(rotationDelta.y) < 1.0f)
-            rotationDelta.y = 0.0f;
-        if (Mathf.Abs(rotationDelta.z) < 1.0f)
-            rotationDelta.z = 0.0f;
+        rotationDelta.x = Mathf.Clamp(rotationDelta.x + (control.yoke.z * rotationSpeed.z /* * rotationSpeed.z*/ * 3.0f * Time.deltaTime - rotationDelta.x /* * rotationSpeed.z * 0.5f*/ * 1.5f * Time.deltaTime), -rotationSpeed.x, rotationSpeed.x);
+        rotationDelta.y = Mathf.Clamp(rotationDelta.y + (control.yoke.y * rotationSpeed.y /* * rotationSpeed.y*/ * 3.0f * Time.deltaTime - rotationDelta.y /* * rotationSpeed.y * 0.5f*/ * 1.5f * Time.deltaTime), -rotationSpeed.y, rotationSpeed.y);
+        rotationDelta.z = Mathf.Clamp(rotationDelta.z + (control.yoke.x * rotationSpeed.x /* * rotationSpeed.x*/ * 3.0f * Time.deltaTime - rotationDelta.z /* * rotationSpeed.x * 0.5f*/ * 1.5f * Time.deltaTime), -rotationSpeed.z, rotationSpeed.z);
+
+        if (Mathf.Abs(rotationDelta.x) < 1.0f) rotationDelta.x = 0.0f;
+        if (Mathf.Abs(rotationDelta.y) < 1.0f) rotationDelta.y = 0.0f;
+        if (Mathf.Abs(rotationDelta.z) < 1.0f) rotationDelta.z = 0.0f;
 
         rigidbody.MoveRotation(transform.rotation * Quaternion.Euler(rotationDelta * Time.deltaTime * control.HighGTurn));
         //transform.rotation *= Quaternion.Euler(rotationDelta);
@@ -54,15 +69,6 @@ public class AircraftMovement : MonoBehaviour
         //transform.rotation *= Quaternion.Euler(yoke.z * rotationSpeed.z, yoke.y * rotationSpeed.y, yoke.x * rotationSpeed.x);
     }
 
-    public void Calculate()
-    {
-
-    }
-
-    //public Vector3 LiftCalculation()
-    //{
-    //    float lift = 
-    //}
     public float GetLogValueWithK(float value, float min, float max, float power) // 로그 이용, 다만 여기에 맞지 않음
     {
         float normalizedT = (value - 0.2f) / (1.0f - 0.2f);
@@ -105,7 +111,9 @@ public class AircraftMovement : MonoBehaviour
 
     }
 
-
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
     public Vector3 GetRotationSpeed() { return rotationSpeed; }
 
 

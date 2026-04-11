@@ -39,16 +39,17 @@ Shader "Custom/VolumetricFog"
             Cull Off
 
             HLSLPROGRAM
-            #pragma vertex vertexShader
-            #pragma fragment pixelShader
+            #pragma vertex VS_Main
+            #pragma fragment PS_Main
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
+            #include "Functions.hlsl"
 
-            struct Attributes
+            struct VS_INPUT
             {
                 float4 positionOS : POSITION;
             };
-            struct Varyings
+            struct VS_OUTPUT
             {
                 float4 positionCS : SV_POSITION;
                 float3 positionWS : TEXCOORD0;
@@ -62,51 +63,25 @@ Shader "Custom/VolumetricFog"
             float _NoiseScale;
 
             
-            float hash(float n) // 실시간 3D 노이즈 함수 (Perlin/Pseudo-random 기반)
-            {
-                return frac(sin(n) * 43758.5453123);
-            }
             
-            float noise(float3 x)
-            {
-                float3 p = floor(x);
-                float3 f = frac(x);
-                float n = p.x + p.y * 57.0 + 113.0 * p.z;
-                f = f * f * (3.0 - 2.0 * f);
-
-                return lerp(lerp(lerp(hash(n + 0.0), hash(n + 1.0), f.x), lerp(hash(n + 57.0), hash(n + 58.0), f.x), f.y), lerp(lerp(hash(n + 113.0), hash(n + 114.0), f.x), lerp(hash(n + 170.0), hash(n + 171.0), f.x), f.y), f.z);
-            }
-
             float fbm(float3 p) // FBM (여러 층의 노이즈를 겹쳐 구름 질감을 만듦)
             {
-                float f = 0.5000 * noise(p);
+                //float f = 0.5000 * Noise(p);
+                float f = 0.5000 * perlinNoise(p);
                 p = p * 2.02;
-                f += 0.2500 * noise(p);
+                f += 0.2500 * perlinNoise(p);
+                //f += 0.2500 * Noise(p);
                 p = p * 2.03;
-                f += 0.1250 * noise(p);
+                f += 0.1250 * perlinNoise(p);
+                //f += 0.1250 * Noise(p);
                 return f;
             }
 
             // --------------------------------------------------
 
-            float2 rayBoxIntersection(float3 rayOrigin, float3 rayDirection)
+            VS_OUTPUT VS_Main(VS_INPUT input)
             {
-                float3 invRaydirection = 1.0 / rayDirection;
-                float3 t0 = (-0.5 - rayOrigin) * invRaydirection;
-                float3 t1 = (0.5 - rayOrigin) * invRaydirection;
-
-                float3 tmin = min(t0, t1);
-                float3 tmax = max(t0, t1);
-
-                float dstA = max(max(tmin.x, tmin.y), tmin.z);
-                float dstB = min(min(tmax.x, tmax.y), tmax.z);
-
-                return float2(max(0, dstA), max(0, dstB - max(0, dstA)));
-            }
-
-            Varyings vertexShader(Attributes input)
-            {
-                Varyings output;
+                VS_OUTPUT output;
                 VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
                 output.positionWS = vertexInput.positionWS;
                 output.positionCS = vertexInput.positionCS;
@@ -114,7 +89,7 @@ Shader "Custom/VolumetricFog"
                 return output;
             }
 
-            float4 pixelShader(Varyings input) : SV_Target
+            float4 PS_Main(VS_OUTPUT input) : SV_Target
             {
                 float3 worldRayOrigin = GetCameraPositionWS();
                 float3 worldRayDir = normalize(input.positionWS - worldRayOrigin);
@@ -122,7 +97,7 @@ Shader "Custom/VolumetricFog"
                 float3 localRayOrigin = mul(unity_WorldToObject, float4(worldRayOrigin, 1.0)).xyz;
                 float3 localRayDir = normalize(mul((float3x3)unity_WorldToObject, worldRayDir));
 
-                float2 rayInfo = rayBoxIntersection(localRayOrigin, localRayDir);
+                float2 rayInfo = RayBoxIntersection(localRayOrigin, localRayDir);
 
                 if (rayInfo.y <= 0)
                     discard;
