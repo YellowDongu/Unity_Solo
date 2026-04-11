@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Residential/Materials/HDB_White01_MI.HDB_White01_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Residential/Materials/HDB_White01_MI.HDB_White01_MI'
+        MaterialSlotName = HDB_White01_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1312.91, 433.065, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-2.26131, Y=1.97736, Z=46.5479 }
+    BoxExtent = { X=77.3902, Y=102.339, Z=47.2558 }
+    SphereRadius = 129.696
+}

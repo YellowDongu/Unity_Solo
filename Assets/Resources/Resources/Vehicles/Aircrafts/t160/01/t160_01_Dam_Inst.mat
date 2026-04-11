@@ -1,0 +1,12 @@
+Diffuse=t160_01_D
+Normal=t160_01_N
+Other[0]=t160_01_MREC
+Other[1]=Aircraft_Dam_D
+Other[2]=Aircraft_Dam_MREC
+Other[3]=Aircraft_Dam_N
+Other[4]=Aircraft_Dam_Detail_N
+Other[5]=checkerMask
+Other[6]=DefaultDamageNormal
+Other[7]=DefaultMREC_Linear
+Other[8]=DefaultNormal
+Other[9]=Default_000_D

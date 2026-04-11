@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_TheSail_MI.M01_LAN_TheSail_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_TheSailLOD_MI.M01_LAN_TheSailLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_TheSail_MI.M01_LAN_TheSail_MI'
+        MaterialSlotName = M01_LAN_TheSail_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 862.466, 3638.01, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_TheSailLOD_MI.M01_LAN_TheSailLOD_MI'
+        MaterialSlotName = M01_LAN_TheSailLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 3179.91, 3209.66, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=7.29034, Y=3.25226, Z=1119.47 }
+    BoxExtent = { X=551.669, Y=579.199, Z=1119.47 }
+    SphereRadius = 1265.11
+}

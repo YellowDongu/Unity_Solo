@@ -1,0 +1,151 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[2] =
+{
+    ReferencedTextures[0] = Texture2D'/Game/UI/Menu/CommonWidget/VRBG/Textures/VR_Lines_Run.VR_Lines_Run'
+    ReferencedTextures[1] = Texture2D'/Game/Materials/Textures/DefaultNoise.DefaultNoise'
+}
+Expressions[146] =
+{
+    Expressions[0] = MaterialExpressionStaticSwitchParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionStaticSwitchParameter_1'
+    Expressions[1] = MaterialExpressionStaticSwitchParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionStaticSwitchParameter_15'
+    Expressions[2] = MaterialExpressionTextureSampleParameter2D'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionTextureSampleParameter2D_0'
+    Expressions[3] = MaterialExpressionStaticSwitchParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionStaticSwitchParameter_3'
+    Expressions[6] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionVectorParameter_6'
+    Expressions[10] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionVectorParameter_7'
+    Expressions[13] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionVectorParameter_15'
+    Expressions[20] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_4'
+    Expressions[21] = MaterialExpressionTextureSample'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionTextureSample_0'
+    Expressions[22] = MaterialExpressionStaticSwitchParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionStaticSwitchParameter_9'
+    Expressions[25] = MaterialExpressionStaticSwitchParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionStaticSwitchParameter_7'
+    Expressions[27] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionVectorParameter_9'
+    Expressions[31] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionVectorParameter_1'
+    Expressions[41] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_3'
+    Expressions[43] = MaterialExpressionStaticSwitchParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionStaticSwitchParameter_18'
+    Expressions[44] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_55'
+    Expressions[53] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_14'
+    Expressions[54] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_12'
+    Expressions[55] = MaterialExpressionTextureSample'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionTextureSample_1'
+    Expressions[58] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_15'
+    Expressions[60] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_18'
+    Expressions[65] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_53'
+    Expressions[69] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_52'
+    Expressions[70] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_51'
+    Expressions[98] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_50'
+    Expressions[100] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_49'
+    Expressions[112] = MaterialExpressionStaticSwitchParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionStaticSwitchParameter_16'
+    Expressions[113] = MaterialExpressionStaticSwitchParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionStaticSwitchParameter_21'
+    Expressions[117] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_58'
+    Expressions[123] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_59'
+    Expressions[126] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionVectorParameter_12'
+    Expressions[137] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionVectorParameter_13'
+    Expressions[141] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionVectorParameter_2'
+    Expressions[142] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/VRBG/Materials/VR_BG_M.MaterialExpressionScalarParameter_5'
+}
+CachedExpressionData =
+{
+    Parameters =
+    {
+        Entries[5] =
+        {
+            Entries[0] = { ParameterInfos[0]={} }
+            Entries[1] = { ParameterInfos[0]={} }
+            Entries[2] = { ParameterInfos[0]={} }
+            Entries[3] = { ParameterInfos[0]={} }
+            Entries[4] = { ParameterInfos[0]={} }
+        }
+        ScalarValues[0] = {}
+        VectorValues[0] = {}
+        TextureValues[0] = {}
+    }
+    ReferencedTextures[0] = {}
+}
+BlendMode = BLEND_Translucent (2)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[1] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'/Game/Materials/Textures/checkerMask.checkerMask'
+        Name = Texture
+        Group = None
+    }
+}
+CollectedScalarParameters[15] =
+{
+    CollectedScalarParameters[0] = { Value=5, Name=fade_power, Group=Fade }
+    CollectedScalarParameters[1] = { Value=0.5, Name=run_time, Group=Run Line }
+    CollectedScalarParameters[2] = { Value=0.5, Name=blink_time, Group=Blink }
+    CollectedScalarParameters[3] = { Value=2, Name=blink_brightness, Group=Blink }
+    CollectedScalarParameters[4] = { Value=0.5, Name=blink_offset, Group=Blink }
+    CollectedScalarParameters[5] = { Value=2, Name=blink_noise_pow, Group=Blink }
+    CollectedScalarParameters[6] = { Value=0.5, Name=blink_noise_time, Group=Blink }
+    CollectedScalarParameters[7] = { Value=1, Name=EffectScale, Group=None }
+    CollectedScalarParameters[8] = { Value=0.3, Name=WaveScale, Group=None }
+    CollectedScalarParameters[9] = { Value=1, Name=TimeScale, Group=None }
+    CollectedScalarParameters[10] = { Value=0.01, Name=WobblyScale, Group=None }
+    CollectedScalarParameters[11] = { Value=5, Name=Wobbly2Scale, Group=None }
+    CollectedScalarParameters[12] = { Value=0.5, Name=scan_time, Group=Scan }
+    CollectedScalarParameters[13] = { Value=3, Name=scan_pow, Group=Scan }
+    CollectedScalarParameters[14] = { Value=1, Name=EmissiveBrightness, Group=Emissive }
+}
+CollectedVectorParameters[8] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=1, G=1, B=0, A=1 }
+        Name = tiling
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=0, G=0, B=0, A=1 }
+        Name = offset
+        Group = None
+    }
+    CollectedVectorParameters[2] =
+    {
+        Value = { R=0, G=1, B=0, A=1 }
+        Name = fade_1
+        Group = Fade
+    }
+    CollectedVectorParameters[3] =
+    {
+        Value = { R=0, G=0, B=0, A=1 }
+        Name = run_offset
+        Group = Run Line
+    }
+    CollectedVectorParameters[4] =
+    {
+        Value = { R=1, G=1, B=0, A=1 }
+        Name = run_tiling
+        Group = Run Line
+    }
+    CollectedVectorParameters[5] =
+    {
+        Value = { R=1, G=1, B=0, A=1 }
+        Name = scan_tiling
+        Group = Scan
+    }
+    CollectedVectorParameters[6] =
+    {
+        Value = { R=1, G=100, B=0, A=1 }
+        Name = scanline_tiling
+        Group = scanline
+    }
+    CollectedVectorParameters[7] =
+    {
+        Value = { R=0, G=0.609214, B=0.985, A=1 }
+        Name = EmissiveColour
+        Group = Emissive
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

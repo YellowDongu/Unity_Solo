@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Vehicles/Weapons/w_msl_a0/Materials/w_msl_a0_Inst.w_msl_a0_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Vehicles/Weapons/Common/Materials/Weapon_Gray_Inst.Weapon_Gray_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Weapons/w_msl_a0/Materials/w_msl_a0_Inst.w_msl_a0_Inst'
+        MaterialSlotName = w_msl_a0_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 13.3159, 21.8139, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Weapons/Common/Materials/Weapon_Gray_Inst.Weapon_Gray_Inst'
+        MaterialSlotName = None
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 10.6234, 30.9159, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-0.00564384, Y=4.76837e-07, Z=-4.76837e-07 }
+    BoxExtent = { X=14.3445, Y=2.23162, Z=2.23162 }
+    SphereRadius = 14.3583
+}

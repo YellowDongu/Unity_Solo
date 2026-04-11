@@ -1,0 +1,171 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[4] =
+{
+    ReferencedTextures[0] = Texture2D'/Game/Environment/TestMap/Textures/T_HeightmapNoise_N.T_HeightmapNoise_N'
+    ReferencedTextures[1] = Texture2D'/Game/Environment/Common/Sea/Textures/Sea_SeaWavesCalm_N.Sea_SeaWavesCalm_N'
+    ReferencedTextures[2] = Texture2D'/Game/Environment/Common/Sea/Textures/Sea_SeaWaves_N.Sea_SeaWaves_N'
+    ReferencedTextures[3] = Texture2D'/Game/Environment/Common/Sea/Textures/Sea_SeaFoam_D.Sea_SeaFoam_D'
+}
+Expressions[144] =
+{
+    Expressions[0] = MaterialExpressionStaticSwitchParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionStaticSwitchParameter_2'
+    Expressions[1] = MaterialExpressionStaticSwitchParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionStaticSwitchParameter_1'
+    Expressions[2] = MaterialExpressionStaticSwitchParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionStaticSwitchParameter_5'
+    Expressions[3] = MaterialExpressionStaticSwitchParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionStaticSwitchParameter_8'
+    Expressions[4] = MaterialExpressionStaticSwitchParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionStaticSwitchParameter_9'
+    Expressions[15] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_16'
+    Expressions[19] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_13'
+    Expressions[22] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_1'
+    Expressions[29] = MaterialExpressionTextureSample'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSample_1'
+    Expressions[30] = MaterialExpressionTextureSample'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSample_8'
+    Expressions[31] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_14'
+    Expressions[33] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_4'
+    Expressions[36] = MaterialExpressionVectorParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionVectorParameter_1'
+    Expressions[37] = MaterialExpressionTextureSampleParameter2D'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSampleParameter2D_1'
+    Expressions[44] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_8'
+    Expressions[49] = MaterialExpressionTextureSample'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSample_3'
+    Expressions[50] = MaterialExpressionTextureSample'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSample_12'
+    Expressions[54] = MaterialExpressionTextureSample'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSample_6'
+    Expressions[63] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_5'
+    Expressions[66] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_11'
+    Expressions[70] = MaterialExpressionTextureSample'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSample_13'
+    Expressions[78] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_2'
+    Expressions[85] = MaterialExpressionTextureSample'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSample_2'
+    Expressions[88] = MaterialExpressionTextureSample'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSample_4'
+    Expressions[93] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_9'
+    Expressions[97] = MaterialExpressionTextureSampleParameter2D'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSampleParameter2D_3'
+    Expressions[98] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_0'
+    Expressions[104] = MaterialExpressionTextureSampleParameter2D'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSampleParameter2D_4'
+    Expressions[105] = MaterialExpressionTextureSampleParameter2D'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSampleParameter2D_17'
+    Expressions[106] = MaterialExpressionTextureSampleParameter2D'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSampleParameter2D_18'
+    Expressions[107] = MaterialExpressionTextureSampleParameter2D'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSampleParameter2D_19'
+    Expressions[109] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_20'
+    Expressions[112] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_21'
+    Expressions[115] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_22'
+    Expressions[117] = MaterialExpressionStaticSwitchParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionStaticSwitchParameter_13'
+    Expressions[118] = MaterialExpressionStaticSwitchParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionStaticSwitchParameter_14'
+    Expressions[119] = MaterialExpressionStaticSwitchParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionStaticSwitchParameter_15'
+    Expressions[124] = MaterialExpressionTextureSampleParameter2D'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSampleParameter2D_24'
+    Expressions[125] = MaterialExpressionTextureSampleParameter2D'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSampleParameter2D_25'
+    Expressions[126] = MaterialExpressionTextureSampleParameter2D'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionTextureSampleParameter2D_27'
+    Expressions[134] = MaterialExpressionStaticSwitchParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionStaticSwitchParameter_0'
+    Expressions[136] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_6'
+    Expressions[139] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_7'
+    Expressions[142] = MaterialExpressionScalarParameter'/Game/Environment/Common/Sea/Materials/Environment_SeaBasic_M.MaterialExpressionScalarParameter_10'
+}
+CachedExpressionData =
+{
+    Parameters =
+    {
+        Entries[5] =
+        {
+            Entries[0] = { ParameterInfos[0]={} }
+            Entries[1] = { ParameterInfos[0]={} }
+            Entries[2] = { ParameterInfos[0]={} }
+            Entries[3] = { ParameterInfos[0]={} }
+            Entries[4] = { ParameterInfos[0]={} }
+        }
+        ScalarValues[0] = {}
+        VectorValues[0] = {}
+        TextureValues[0] = {}
+    }
+    ReferencedTextures[0] = {}
+}
+BlendMode = BLEND_Opaque (0)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[9] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'/Game/Environment/WastelandCoast/Terrain/Textures/WAS_TER_04_D.WAS_TER_04_D'
+        Name = MapDiffuse
+        Group = None
+    }
+    CollectedTextureParameters[1] =
+    {
+        Texture = Texture2D'/Game/Environment/Common/Sea/Textures/Sea_OpenSea_D.Sea_OpenSea_D'
+        Name = OpenSeaDiffuse
+        Group = None
+    }
+    CollectedTextureParameters[2] =
+    {
+        Texture = Texture2D'/Game/Materials/Textures/DefaultNormal.DefaultNormal'
+        Name = Normal_Map
+        Group = None
+    }
+    CollectedTextureParameters[3] =
+    {
+        Texture = Texture2D'/Game/Environment/Common/Sea/Textures/Albedo_B.Albedo_B'
+        Name = Albedo_Map_RGB_B
+        Group = Albedo_Textures
+    }
+    CollectedTextureParameters[4] =
+    {
+        Texture = Texture2D'/Game/Environment/Common/Sea/Textures/Albedo_G.Albedo_G'
+        Name = Albedo_Map_RGB_G
+        Group = Albedo_Textures
+    }
+    CollectedTextureParameters[5] =
+    {
+        Texture = Texture2D'/Game/Environment/Common/Sea/Textures/Albedo_R.Albedo_R'
+        Name = Albedo_Map_RGB_R
+        Group = Albedo_Textures
+    }
+    CollectedTextureParameters[6] =
+    {
+        Texture = Texture2D'/Game/Environment/Common/Desert/Textures/Desert_SandBands_N.Desert_SandBands_N'
+        Name = Normal_Map_RGB_G
+        Group = Normal_Textures
+    }
+    CollectedTextureParameters[7] =
+    {
+        Texture = Texture2D'/Game/Environment/Common/Desert/Textures/Desert_FineSand_N.Desert_FineSand_N'
+        Name = Normal_Map_RGB_B
+        Group = Normal_Textures
+    }
+    CollectedTextureParameters[8] =
+    {
+        Texture = Texture2D'/Game/Environment/Common/Grass/Textures/Grass_Rough_N.Grass_Rough_N'
+        Name = Normal_Map_RGB_R
+        Group = Normal_Textures
+    }
+}
+CollectedScalarParameters[17] =
+{
+    CollectedScalarParameters[0] = { Value=0.1, Name=Roughness, Group=None }
+    CollectedScalarParameters[1] = { Value=0.3, Name=Metallic, Group=None }
+    CollectedScalarParameters[2] = { Value=10000, Name=SizeA, Group=None }
+    CollectedScalarParameters[3] = { Value=0.25, Name=Specular, Group=None }
+    CollectedScalarParameters[4] = { Value=10000, Name=SizeB, Group=None }
+    CollectedScalarParameters[5] = { Value=10000, Name=SizeACalm, Group=None }
+    CollectedScalarParameters[6] = { Value=15, Name=PixelDepthMultiply, Group=None }
+    CollectedScalarParameters[7] = { Value=10000, Name=CalmWaves, Group=None }
+    CollectedScalarParameters[8] = { Value=10000, Name=BigWavesFar, Group=None }
+    CollectedScalarParameters[9] = { Value=10000, Name=BigWavesNear, Group=None }
+    CollectedScalarParameters[10] = { Value=500000, Name=SizeOpenSea, Group=None }
+    CollectedScalarParameters[11] = { Value=10, Name=TER_R_Albedo_Tiling, Group=Tiling }
+    CollectedScalarParameters[12] = { Value=10, Name=TER_G_Albedo_Tiling, Group=Tiling }
+    CollectedScalarParameters[13] = { Value=10, Name=TER_B_Albedo_Tiling, Group=Tiling }
+    CollectedScalarParameters[14] = { Value=4, Name=TER_R_Blend_Tiling, Group=Tiling }
+    CollectedScalarParameters[15] = { Value=50, Name=TER_B_Blend_Tiling, Group=Tiling }
+    CollectedScalarParameters[16] = { Value=5, Name=TER_G_Blend_Tiling, Group=Tiling }
+}
+CollectedVectorParameters[1] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=0.096425, G=0.138418, B=0.145, A=1 }
+        Name = DarkerWater
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

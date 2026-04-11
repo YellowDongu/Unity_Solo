@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/HangarAlert/Materials/HAN_Alert_PropB_Inst.HAN_Alert_PropB_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/HangarAlert/Materials/HAN_Alert_PropB_Inst.HAN_Alert_PropB_Inst'
+        MaterialSlotName = HAN_Alert_PropB_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 40.7232, 46.4385, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-0.00042963, Y=0.000115871, Z=5.86369 }
+    BoxExtent = { X=5.26953, Y=5.26961, Z=5.86455 }
+    SphereRadius = 9.46154
+}

@@ -1,0 +1,66 @@
+Parent = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_Landmark_Inst.SOU_Landmark_Inst'
+ScalarParameterValues[1] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = RefractionDepthBias
+    }
+}
+TextureParameterValues[3] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_Airbase_FlatHouse_D.SOU_Airbase_FlatHouse_D'
+        ParameterName = Albedo_map
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_Airbase_FlatHouse_MREC.SOU_Airbase_FlatHouse_MREC'
+        ParameterName = MREC_map
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_Airbase_FlatHouse_N.SOU_Airbase_FlatHouse_N'
+        ParameterName = Normal_map
+    }
+}
+VectorParameterValues[1] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = { R=0.811765, G=0.760784, B=0.639216, A=1 }
+        ParameterName = DiffuseColor
+    }
+}
+BasePropertyOverrides =
+{
+    bOverride_BlendMode = false
+    BlendMode = BLEND_Opaque (0)
+    bOverride_TwoSided = false
+    TwoSided = false
+    bOverride_OpacityMaskClipValue = false
+    OpacityMaskClipValue = 0
+}
+StaticParameters =
+{
+    StaticSwitchParameters[0] = {}
+    StaticComponentMaskParameters[0] = {}
+    TerrainLayerWeightParameters[0] = {}
+    MaterialLayersParameters[0] = {}
+}
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

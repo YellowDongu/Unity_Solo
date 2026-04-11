@@ -1,0 +1,12 @@
+Diffuse=HAN_Alert_CorrugatedPlate_D
+Normal=HAN_Alert_CorrugatedPlate_N
+Other[0]=NIM_Hangar_Wall_D
+Other[1]=NIM_Hangar_Wall_MREC
+Other[2]=NIM_Hangar_Wall_N
+Other[3]=black_M
+Other[4]=checkerMask
+Other[5]=checkerMaskLinear
+Other[6]=DefaultMREC_Linear
+Other[7]=DefaultNormal
+Other[8]=greyscale_radialGrad
+Other[9]=Default_000_D

@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/MassiveLOD/Materials/M_M_M01_MassiveLOD_07.M_M_M01_MassiveLOD_07'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/MassiveLOD/Materials/M_M_M01_MassiveLOD_07.M_M_M01_MassiveLOD_07'
+        MaterialSlotName = M_M_M01_MassiveLOD_07
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 29860.9, 38131, 39403.1, 19540.4, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-238158, Y=-172131, Z=852.047 }
+    BoxExtent = { X=9996.41, Y=7056.87, Z=1540.34 }
+    SphereRadius = 11009.7
+}

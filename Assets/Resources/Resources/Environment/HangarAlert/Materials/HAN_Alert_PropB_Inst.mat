@@ -1,0 +1,13 @@
+Diffuse=HAN_Alert_PropB_D
+Normal=HAN_Alert_PropB_N
+Other[0]=HAN_Alert_PropB_MREC
+Other[1]=NIM_Hangar_Wall_D
+Other[2]=NIM_Hangar_Wall_MREC
+Other[3]=NIM_Hangar_Wall_N
+Other[4]=black_M
+Other[5]=checkerMask
+Other[6]=checkerMaskLinear
+Other[7]=DefaultMREC_Linear
+Other[8]=DefaultNormal
+Other[9]=greyscale_radialGrad
+Other[10]=Default_000_D

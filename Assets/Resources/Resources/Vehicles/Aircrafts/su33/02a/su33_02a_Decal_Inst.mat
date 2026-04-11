@@ -1,0 +1,10 @@
+Diffuse=su33_02a_D
+Normal=su33_00_N
+Other[0]=Default_000_D
+Other[1]=su33_02_MREC
+Other[2]=black_M
+Other[3]=checkerMask
+Other[4]=checkerMaskLinear
+Other[5]=DefaultMREC_Linear
+Other[6]=DefaultNormal
+Other[7]=greyscale_radialGrad

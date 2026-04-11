@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Streets/Materials/FUT_GEN_Fence_Inst.FUT_GEN_Fence_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Streets/Materials/FUT_GEN_BeamBridge.FUT_GEN_BeamBridge'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Streets/Materials/FUT_GEN_Fence_Inst.FUT_GEN_Fence_Inst'
+        MaterialSlotName = FUT_GEN_Fence_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 22.1742, 3678.76, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Streets/Materials/FUT_GEN_BeamBridge.FUT_GEN_BeamBridge'
+        MaterialSlotName = FUT_GEN_BeamBridge_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 983.464, 4011.06, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0.0236816, Y=2547, Z=899.629 }
+    BoxExtent = { X=290.055, Y=2547.01, Z=899.629 }
+    SphereRadius = 2576.76
+}

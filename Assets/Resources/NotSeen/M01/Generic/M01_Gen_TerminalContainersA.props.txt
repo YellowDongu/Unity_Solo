@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Generic/Materials/M01_GEN_TerminalContainer.M01_GEN_TerminalContainer'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Generic/Materials/M01_GEN_LOD_Atlas_Inst.M01_GEN_LOD_Atlas_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Generic/Materials/M01_GEN_TerminalContainer.M01_GEN_TerminalContainer'
+        MaterialSlotName = G_TerminalContainersA_MAT
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 153.806, 283.07, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Generic/Materials/M01_GEN_LOD_Atlas_Inst.M01_GEN_LOD_Atlas_Inst'
+        MaterialSlotName = M01_GEN_LOD_Atlas_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1348.21, 253.686, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-25.3684, Y=0, Z=51.8 }
+    BoxExtent = { X=37.5683, Y=45.8278, Z=51.8 }
+    SphereRadius = 78.4299
+}

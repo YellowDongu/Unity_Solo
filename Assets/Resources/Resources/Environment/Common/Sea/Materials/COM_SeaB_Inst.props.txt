@@ -1,0 +1,434 @@
+Parent = MaterialInstanceConstant'/Game/Environment/Common/Terrain/Materials/Environment_Terrain_Inst.Environment_Terrain_Inst'
+ScalarParameterValues[50] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.1
+        ParameterName = Roughness_Add
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = Base_Metallic
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = Base_Roughness
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = Base_Specular
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 5.24929
+        ParameterName = G_Detail_Brightness
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 2
+        ParameterName = G_Normal_Mid_Strength
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 6
+        ParameterName = G_Normal_Strength
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.599082
+        ParameterName = G_Roughness
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 20
+        ParameterName = G_UV_Tiling
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 3
+        ParameterName = G_UVN_Tiling
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 2
+        ParameterName = R_Detail_Brightness
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = R_Detail_Saturation
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.2
+        ParameterName = R_Metallic
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.5
+        ParameterName = R_Normal_Mid_Strength
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 2
+        ParameterName = R_Normal_Strength
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.8
+        ParameterName = R_Roughness
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 200
+        ParameterName = R_UV_Tiling
+    }
+    ScalarParameterValues[17] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = R_UVN_Tiling
+    }
+    ScalarParameterValues[18] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 10000
+        ParameterName = BlendWaterDistanceNear
+    }
+    ScalarParameterValues[19] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.45
+        ParameterName = Sea_Metallic
+    }
+    ScalarParameterValues[20] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.28
+        ParameterName = Sea_Roughness
+    }
+    ScalarParameterValues[21] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 80000
+        ParameterName = FoamBrightness
+    }
+    ScalarParameterValues[22] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.1
+        ParameterName = FoamTexDirection
+    }
+    ScalarParameterValues[23] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1000
+        ParameterName = Sea_highlights_BlendDistanceFar
+    }
+    ScalarParameterValues[24] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.5
+        ParameterName = Sea_highlights_brightness_scale
+    }
+    ScalarParameterValues[25] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 2
+        ParameterName = Sea_highlights_colorexp
+    }
+    ScalarParameterValues[26] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1.2
+        ParameterName = Sea_highlights_far_exp
+    }
+    ScalarParameterValues[27] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.5
+        ParameterName = Sea_highlights_high_brightness
+    }
+    ScalarParameterValues[28] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.045
+        ParameterName = Sea_highlights_max
+    }
+    ScalarParameterValues[29] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.007
+        ParameterName = Sea_highlights_min
+    }
+    ScalarParameterValues[30] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 10
+        ParameterName = Noise_Exp
+    }
+    ScalarParameterValues[31] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 4
+        ParameterName = Noise_Metallic_Mult
+    }
+    ScalarParameterValues[32] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 6.77622
+        ParameterName = Noise_Mult
+    }
+    ScalarParameterValues[33] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.75
+        ParameterName = Noise_Spec_Mult
+    }
+    ScalarParameterValues[34] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.84
+        ParameterName = WavesLargeDirection
+    }
+    ScalarParameterValues[35] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = WavesLargeNormalMult
+    }
+    ScalarParameterValues[36] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1.5
+        ParameterName = WavesLargeSpeed
+    }
+    ScalarParameterValues[37] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 40000
+        ParameterName = WavesLargeTiling
+    }
+    ScalarParameterValues[38] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.9
+        ParameterName = WavesMediumDirection
+    }
+    ScalarParameterValues[39] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1.5
+        ParameterName = WavesMediumNormalMult
+    }
+    ScalarParameterValues[40] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 3.5
+        ParameterName = WavesMediumSpeed
+    }
+    ScalarParameterValues[41] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 12000
+        ParameterName = WavesMediumTiling
+    }
+    ScalarParameterValues[42] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.08
+        ParameterName = WavesSmallCrossSpeed
+    }
+    ScalarParameterValues[43] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.91
+        ParameterName = WavesSmallDirection
+    }
+    ScalarParameterValues[44] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 16
+        ParameterName = WavesSmallNormalMult
+    }
+    ScalarParameterValues[45] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 8
+        ParameterName = WavesSmallSpeed
+    }
+    ScalarParameterValues[46] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 750
+        ParameterName = WavesSmallTiling
+    }
+    ScalarParameterValues[47] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 18000
+        ParameterName = BlendDistanceFar
+    }
+    ScalarParameterValues[48] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 20000
+        ParameterName = BlendDistanceNear
+    }
+    ScalarParameterValues[49] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = RefractionDepthBias
+    }
+}
+TextureParameterValues[10] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/TestMap/Textures/T_Black.T_Black'
+        ParameterName = Terrain_Mask
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/Grass/Textures/Grass_D_D.Grass_D_D'
+        ParameterName = B_Detail_Map
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/Grass/Textures/Grass_Rough_N.Grass_Rough_N'
+        ParameterName = B_Normal_Map
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/DetailTexture/Grass/Grass_A_Detail_D.Grass_A_Detail_D'
+        ParameterName = G_Detail_Map
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/DetailTexture/Grass/Grass_A_Detail_N.Grass_A_Detail_N'
+        ParameterName = G_Normal_Map
+    }
+    TextureParameterValues[5] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/DetailTexture/Concrete/Concrete_Grime_D.Concrete_Grime_D'
+        ParameterName = R_Detail_Map
+    }
+    TextureParameterValues[6] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/Ground/Textures/Ground_SandPebbles_N.Ground_SandPebbles_N'
+        ParameterName = R_Normal_Map
+    }
+    TextureParameterValues[7] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/Sea/Textures/Sea_OpenSeaDark_D.Sea_OpenSeaDark_D'
+        ParameterName = OpenSeaDiffuse
+    }
+    TextureParameterValues[8] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Materials/Textures/little_noise_D.little_noise_D'
+        ParameterName = Noise_Texture
+    }
+    TextureParameterValues[9] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Materials/Textures/DefaultTerrain_D.DefaultTerrain_D'
+        ParameterName = Albedo
+    }
+}
+VectorParameterValues[5] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = { R=0.133, G=0.190921, B=0.2, A=1 }
+        ParameterName = DarkerWater
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = { R=0.0665, G=0.095461, B=0.1, A=1 }
+        ParameterName = NearWater
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = { R=0.7, G=0.7, B=0.7, A=1 }
+        ParameterName = FoamColor
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = { R=0, G=0, B=0, A=0 }
+        ParameterName = Noise_Offset
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = { R=3e+06, G=1e+06, B=0, A=0 }
+        ParameterName = Noise_Tiling
+    }
+}
+BasePropertyOverrides =
+{
+    bOverride_BlendMode = false
+    BlendMode = BLEND_Opaque (0)
+    bOverride_TwoSided = false
+    TwoSided = false
+    bOverride_OpacityMaskClipValue = false
+    OpacityMaskClipValue = 0
+}
+StaticParameters =
+{
+    StaticSwitchParameters[0] = {}
+    StaticComponentMaskParameters[0] = {}
+    TerrainLayerWeightParameters[0] = {}
+    MaterialLayersParameters[0] = {}
+}
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[1] =
+{
+    TextureStreamingData[0] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = DefaultTerrain_D
+    }
+}

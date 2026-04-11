@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_AIR_BaseRoadRunwayB_Inst.SOU_AIR_BaseRoadRunwayB_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_AIR_BaseRoadRunwayA_Inst.SOU_AIR_BaseRoadRunwayA_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_AIR_BaseRoadRunwayB_Inst.SOU_AIR_BaseRoadRunwayB_Inst'
+        MaterialSlotName = SOU_AIR_BaseRoadRunwayB_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 5678.78, 60.0384, 5644.23, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_AIR_BaseRoadRunwayA_Inst.SOU_AIR_BaseRoadRunwayA_Inst'
+        MaterialSlotName = SOU_AIR_BaseRoadRunwayA_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 5400.92, 202.447, 5443.35, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=134.117, Y=-10125.1, Z=-0.000148917 }
+    BoxExtent = { X=1424.83, Y=10114.1, Z=0.0178511 }
+    SphereRadius = 10117.6
+}

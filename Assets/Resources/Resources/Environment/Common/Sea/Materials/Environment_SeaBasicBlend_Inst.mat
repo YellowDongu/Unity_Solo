@@ -1,0 +1,4 @@
+Diffuse=Sea_SeaFoam_D
+Normal=Sea_SeaWavesCalm_N
+Other[0]=T_HeightmapNoise_N
+Other[1]=Sea_SeaWaves_N

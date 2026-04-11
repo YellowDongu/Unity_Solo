@@ -1,0 +1,50 @@
+Materials[3] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BoatQuay_02_MI.M01_LAN_BoatQuay_02_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BoatQuay_01_MI.M01_LAN_BoatQuay_01_MI'
+    Materials[2] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BoatQuayLOD_MI.M01_LAN_BoatQuayLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[3] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BoatQuay_02_MI.M01_LAN_BoatQuay_02_MI'
+        MaterialSlotName = M01_LAN_BoatQuay_02_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 865.377, 6756.32, 2762.89, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BoatQuay_01_MI.M01_LAN_BoatQuay_01_MI'
+        MaterialSlotName = M01_LAN_BoatQuay_01_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 688.706, 6119.57, 2760.04, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[2] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BoatQuayLOD_MI.M01_LAN_BoatQuayLOD_MI'
+        MaterialSlotName = None
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 4348.81, 1189.82, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0, Y=-18.951, Z=79.6753 }
+    BoxExtent = { X=269.335, Y=515.137, Z=79.6754 }
+    SphereRadius = 581.13
+}

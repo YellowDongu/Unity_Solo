@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SingaporeFlyer_MI.M01_LAN_SingaporeFlyer_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SingaporeFlyerLOD_MI.M01_LAN_SingaporeFlyerLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SingaporeFlyer_MI.M01_LAN_SingaporeFlyer_MI'
+        MaterialSlotName = WorldGridMaterial
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1309.47, 3371.6, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SingaporeFlyerLOD_MI.M01_LAN_SingaporeFlyerLOD_MI'
+        MaterialSlotName = None
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1514.28, 3019.74, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-145.733, Y=-443.714, Z=775.206 }
+    BoxExtent = { X=1093.83, Y=1048.76, Z=793.185 }
+    SphereRadius = 1517.42
+}

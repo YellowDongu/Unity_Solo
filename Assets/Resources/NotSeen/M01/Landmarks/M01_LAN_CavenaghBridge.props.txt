@@ -1,0 +1,49 @@
+Materials[3] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_CavenaghBridge_MI.M01_LAN_CavenaghBridge_MI'
+    Materials[2] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_CavenaghBridgeLOD_MI.M01_LAN_CavenaghBridgeLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[3] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_CavenaghBridge_MI.M01_LAN_CavenaghBridge_MI'
+        MaterialSlotName = M01_LAN_CavenaghBridge_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 243.847, 918.305, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = None
+        MaterialSlotName = WorldGridMaterial
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[2] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_CavenaghBridgeLOD_MI.M01_LAN_CavenaghBridgeLOD_MI'
+        MaterialSlotName = M01_LAN_CavenaghBridgeLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 295.666, 632.26, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-29.1233, Y=15.1947, Z=53.5589 }
+    BoxExtent = { X=258.742, Y=422.606, Z=66.3917 }
+    SphereRadius = 463.917
+}

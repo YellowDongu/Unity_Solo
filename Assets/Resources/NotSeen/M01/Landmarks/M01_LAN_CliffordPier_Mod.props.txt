@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_CliffordPier_MI.M01_LAN_CliffordPier_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_CliffordPierLOD_MI.M01_LAN_CliffordPierLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_CliffordPier_MI.M01_LAN_CliffordPier_MI'
+        MaterialSlotName = M01_LAN_CliffordPier_Mat
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 590.561, 1663.33, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_CliffordPierLOD_MI.M01_LAN_CliffordPierLOD_MI'
+        MaterialSlotName = None
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1121.92, 1610.8, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-75.0071, Y=-48.021, Z=86.9148 }
+    BoxExtent = { X=466.555, Y=635.118, Z=87.7732 }
+    SphereRadius = 741.986
+}

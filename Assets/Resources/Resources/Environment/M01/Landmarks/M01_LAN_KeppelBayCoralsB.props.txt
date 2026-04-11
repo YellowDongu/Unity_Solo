@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_KeppelBayCorals_MI.M01_LAN_KeppelBayCorals_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_KeppelBayCoralsLOD_MI.M01_LAN_KeppelBayCoralsLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_KeppelBayCorals_MI.M01_LAN_KeppelBayCorals_MI'
+        MaterialSlotName = M01_LAN_KeppelBayCorals_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1267.13, 1408.94, 1514.84, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_KeppelBayCoralsLOD_MI.M01_LAN_KeppelBayCoralsLOD_MI'
+        MaterialSlotName = M01_LAN_KeppelBayCoralsLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1693.54, 1596.84, 1208.38, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0, Y=0, Z=180.685 }
+    BoxExtent = { X=461.684, Y=443.633, Z=182.554 }
+    SphereRadius = 605.903
+}

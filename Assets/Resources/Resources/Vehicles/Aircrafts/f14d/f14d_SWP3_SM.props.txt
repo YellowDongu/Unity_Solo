@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/f14d/00/f14d_00_Inst.f14d_00_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/f14d/00/f14d_00_Inst.f14d_00_Inst'
+        MaterialSlotName = f14d_00_Decal_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 252.498, 26.3203, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[2] = {  }
+ExtendedBounds =
+{
+    Origin = { X=15.6499, Y=0, Z=-3.45117 }
+    BoxExtent = { X=15.544, Y=33.1267, Z=2.22358 }
+    SphereRadius = 36.0818
+}

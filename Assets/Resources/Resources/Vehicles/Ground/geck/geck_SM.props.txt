@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Vehicles/Ground/geck/Material/geck_Inst.geck_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Ground/geck/Material/geck_Inst.geck_Inst'
+        MaterialSlotName = geck_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 126.875, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-0.13905, Y=0, Z=25.148 }
+    BoxExtent = { X=46.4626, Y=16.7063, Z=25.1791 }
+    SphereRadius = 49.8718
+}

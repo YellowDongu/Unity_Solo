@@ -1,0 +1,50 @@
+Materials[3] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SuntecCityMall_02_MI.M01_LAN_SuntecCityMall_02_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SuntecCityMall_01_MI.M01_LAN_SuntecCityMall_01_MI'
+    Materials[2] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SuntecCityMallLOD_MI.M01_LAN_SuntecCityMallLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[3] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SuntecCityMall_02_MI.M01_LAN_SuntecCityMall_02_MI'
+        MaterialSlotName = M01_LAN_SuntecCityMall_02_MAT
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1707.19, 6515.89, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SuntecCityMall_01_MI.M01_LAN_SuntecCityMall_01_MI'
+        MaterialSlotName = M01_LAN_SuntecCityMall_01_MAT
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1460.9, 6083.39, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[2] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SuntecCityMallLOD_MI.M01_LAN_SuntecCityMallLOD_MI'
+        MaterialSlotName = None
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 3731.02, 5538.92, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-3.34509, Y=26.2587, Z=887.103 }
+    BoxExtent = { X=1865.44, Y=1357.81, Z=931.531 }
+    SphereRadius = 2311.27
+}

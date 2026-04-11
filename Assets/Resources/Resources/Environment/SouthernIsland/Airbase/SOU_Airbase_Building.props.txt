@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/Airbase_Building_Inst.Airbase_Building_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_Airbase_LOD_Atlas_Inst.SOU_Airbase_LOD_Atlas_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/Airbase_Building_Inst.Airbase_Building_Inst'
+        MaterialSlotName = Airbase_Building_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 980.06, 971.896, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_Airbase_LOD_Atlas_Inst.SOU_Airbase_LOD_Atlas_Inst'
+        MaterialSlotName = None
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 3854.3, 3819.32, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-3.05176e-05, Y=0, Z=67.493 }
+    BoxExtent = { X=400.003, Y=275.003, Z=67.493 }
+    SphereRadius = 490.086
+}

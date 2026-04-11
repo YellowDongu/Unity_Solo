@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_LippoCenter_MI.M01_LAN_LippoCenter_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_LippoCenter_MI.M01_LAN_LippoCenter_MI'
+        MaterialSlotName = M01_LAN_LippoCenter_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1804.67, 2268.18, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=173.443, Y=-148.208, Z=761.131 }
+    BoxExtent = { X=501.648, Y=401.733, Z=761.131 }
+    SphereRadius = 996.173
+}

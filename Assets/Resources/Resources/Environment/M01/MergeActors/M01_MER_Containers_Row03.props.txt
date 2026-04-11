@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V1_Inst.Environment_S_Ctsl_V1_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V3_Inst.Environment_S_Ctsl_V3_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V1_Inst.Environment_S_Ctsl_V1_Inst'
+        MaterialSlotName = None
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1219.96, 1336.53, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V3_Inst.Environment_S_Ctsl_V3_Inst'
+        MaterialSlotName = None
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1242.36, 1318.95, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=1.09375, Y=-991.633, Z=39.4296 }
+    BoxExtent = { X=163.656, Y=1091.88, Z=39.3146 }
+    SphereRadius = 1099.97
+}

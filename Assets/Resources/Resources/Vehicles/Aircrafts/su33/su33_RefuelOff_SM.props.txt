@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/00/su33_00_Inst.su33_00_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/00/su33_00_Inst.su33_00_Inst'
+        MaterialSlotName = su33_00_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 118.732, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=99.4364, Y=-5.06883, Z=9.55309 }
+    BoxExtent = { X=3.92648, Y=0.913205, Z=1.24839 }
+    SphereRadius = 4.04253
+}

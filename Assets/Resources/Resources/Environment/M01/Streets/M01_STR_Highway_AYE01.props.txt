@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Streets/Materials/M01_STR_HighwaySupport_MI.M01_STR_HighwaySupport_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Streets/Materials/M01_STR_HighwaySupport_MI.M01_STR_HighwaySupport_MI'
+        MaterialSlotName = M01_STR_HighwaySupport_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 323.351, 530.377, 2469.42, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-28135, Y=25971.9, Z=-44.8161 }
+    BoxExtent = { X=1637, Y=793.19, Z=106.113 }
+    SphereRadius = 1755.49
+}

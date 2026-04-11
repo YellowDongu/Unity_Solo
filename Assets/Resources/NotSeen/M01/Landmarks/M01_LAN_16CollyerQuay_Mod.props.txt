@@ -1,0 +1,50 @@
+Materials[3] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_16CollyerQuay_MI.M01_LAN_16CollyerQuay_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_16CollyerQuay_MI.M01_LAN_16CollyerQuay_MI'
+    Materials[2] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_16CollyerQuayLOD_MI.M01_LAN_16CollyerQuayLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[3] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_16CollyerQuay_MI.M01_LAN_16CollyerQuay_MI'
+        MaterialSlotName = M01_LAN_16CollyerQuay_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1226.32, 2626.53, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_16CollyerQuay_MI.M01_LAN_16CollyerQuay_MI'
+        MaterialSlotName = M01_LAN_16CollyerQuay_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1259.53, 2414.19, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[2] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_16CollyerQuayLOD_MI.M01_LAN_16CollyerQuayLOD_MI'
+        MaterialSlotName = M01_LAN_16CollyerQuayLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 2065.77, 2212.67, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=19.7501, Y=-7.06772, Z=877.591 }
+    BoxExtent = { X=633.64, Y=366.873, Z=877.591 }
+    SphereRadius = 1104.36
+}

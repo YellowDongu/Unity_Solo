@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: F15ERudderMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Body
+    m_Weight: 0
+  - m_Path: Body/AirBrake_01
+    m_Weight: 0
+  - m_Path: Body/AirBrake_02
+    m_Weight: 0
+  - m_Path: Body/AirBrake_02/AirBrake_03
+    m_Weight: 0
+  - m_Path: Body/AirIntake_01
+    m_Weight: 0
+  - m_Path: Body/AirIntake_01/AirIntake_03
+    m_Weight: 0
+  - m_Path: Body/AirIntake_01/AirIntake_04
+    m_Weight: 0
+  - m_Path: Body/AirIntake_02
+    m_Weight: 0
+  - m_Path: Body/AirIntake_02/AirIntake_06
+    m_Weight: 0
+  - m_Path: Body/AirIntake_02/AirIntake_07
+    m_Weight: 0
+  - m_Path: Body/AirIntake_05
+    m_Weight: 0
+  - m_Path: Body/AirIntake_08
+    m_Weight: 0
+  - m_Path: Body/AirIntake_09
+    m_Weight: 0
+  - m_Path: Body/Flap_01
+    m_Weight: 0
+  - m_Path: Body/Flap_02
+    m_Weight: 0
+  - m_Path: Body/L_Aileron
+    m_Weight: 0
+  - m_Path: Body/L_Elevator
+    m_Weight: 0
+  - m_Path: Body/R_Aileron
+    m_Weight: 0
+  - m_Path: Body/R_Elevator
+    m_Weight: 0
+  - m_Path: Body/Rudder_01
+    m_Weight: 1
+  - m_Path: Body/Rudder_02
+    m_Weight: 1
+  - m_Path: f15e
+    m_Weight: 0

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &832799941192815489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1440913474250716306}
+  - component: {fileID: 6205983419700403156}
+  - component: {fileID: 8617744705260627555}
+  - component: {fileID: 7338900222278923612}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1440913474250716306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832799941192815489}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4959, y: -0, z: 6.4916}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6205983419700403156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832799941192815489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a54d00de4ee1ed478fa8ff741c4db97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameMaster
+  sceneChanger: {fileID: 7338900222278923612}
+  factory: {fileID: 8617744705260627555}
+--- !u!114 &8617744705260627555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832799941192815489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c84b932fd99d164ebb00f6c1adcd884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Factory
+  playerPrefab: {fileID: 4968262654165053100, guid: ea84cf24d8546b049a84d0b96b612fac, type: 3}
+  aircraftAIPrefab: {fileID: 3804311363293844871, guid: 09259410beda4ee47b8384be1ff931c8, type: 3}
+  explosionPrefab: {fileID: 1406776528638701922, guid: c7a6722675951214bad374e23f8ddd02, type: 3}
+  bulletPrefab: {fileID: 8164120606872344457, guid: fbe8c629dbff35c48ae4e8c4e7f7251a, type: 3}
+  FAAMPrefab: {fileID: 1117042481656606422, guid: 70868deddefc2894aa4aceb7e8220717, type: 3}
+  SMPrefab: {fileID: 1117042481656606422, guid: be2337a56945df6418717e6de6fe0e30, type: 3}
+--- !u!114 &7338900222278923612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832799941192815489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785350bd37d0382469da79f24be1e84d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChanger

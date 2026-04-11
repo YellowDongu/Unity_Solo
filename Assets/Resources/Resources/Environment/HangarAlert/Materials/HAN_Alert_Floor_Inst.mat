@@ -1,0 +1,5 @@
+Diffuse=HAN_Alert_Floor_D
+Normal=HAN_Alert_Floor_N
+Other[0]=HAN_Alert_Floor_MREC
+Other[1]=DefaultNoise
+Other[2]=NIG_LAN_HAR_NYBuilding_MREC

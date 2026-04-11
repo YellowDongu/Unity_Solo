@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Residential/Materials/HDB_White01_MI.HDB_White01_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Generic/Materials/M01_GEN_LOD_Atlas_Inst.M01_GEN_LOD_Atlas_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Residential/Materials/HDB_White01_MI.HDB_White01_MI'
+        MaterialSlotName = HDB_White01_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1815.45, 542.419, 247.44, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Generic/Materials/M01_GEN_LOD_Atlas_Inst.M01_GEN_LOD_Atlas_Inst'
+        MaterialSlotName = M01_GEN_LOD_Atlas_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 893.307, 893.307, 120.864, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0, Y=0, Z=22.3691 }
+    BoxExtent = { X=47.2299, Y=73.476, Z=34.3691 }
+    SphereRadius = 92.6177
+}

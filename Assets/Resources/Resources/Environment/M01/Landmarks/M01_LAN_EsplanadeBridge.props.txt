@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_EsplanadeBridge_MI.M01_LAN_EsplanadeBridge_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_EsplanadeBridgeLOD_MI.M01_LAN_EsplanadeBridgeLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_EsplanadeBridge_MI.M01_LAN_EsplanadeBridge_MI'
+        MaterialSlotName = M01_LAN_EsplanadeBridge_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 698.674, 2763.58, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_EsplanadeBridgeLOD_MI.M01_LAN_EsplanadeBridgeLOD_MI'
+        MaterialSlotName = M01_LAN_EsplanadeBridgeLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1701.76, 2054.5, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-51.8, Y=-20.7111, Z=81.1199 }
+    BoxExtent = { X=372.292, Y=1171.57, Z=132.015 }
+    SphereRadius = 1180.47
+}

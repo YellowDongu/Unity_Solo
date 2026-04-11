@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/f16c/00/f16c_00_Inst.f16c_00_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/Common/Materials/aircraft_GEN_Glass_Inst.aircraft_GEN_Glass_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/f16c/00/f16c_00_Inst.f16c_00_Inst'
+        MaterialSlotName = f16c_00_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 74.3272, 67.394, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/Common/Materials/aircraft_GEN_Glass_Inst.aircraft_GEN_Glass_Inst'
+        MaterialSlotName = Gear_Glass_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 85.6351, 69.7861, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=26.8913, Y=1.90735e-06, Z=-11.0334 }
+    BoxExtent = { X=22.7448, Y=13.0999, Z=6.97761 }
+    SphereRadius = 26.1408
+}

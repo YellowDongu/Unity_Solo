@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Vehicles/Ground/gepa/Materials/gepa_Dam_Inst.gepa_Dam_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Ground/gepa/Materials/gepa_Dam_Inst.gepa_Dam_Inst'
+        MaterialSlotName = gepa_00_M
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 96.8436, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=2.47825, Y=-0.183422, Z=9.52596 }
+    BoxExtent = { X=35.9126, Y=17.7834, Z=9.52596 }
+    SphereRadius = 40.0755
+}

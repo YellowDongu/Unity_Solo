@@ -1,0 +1,8 @@
+Diffuse=checkerMask
+Normal=DefaultNormal
+Other[0]=DefaultMREC
+Other[1]=black_M
+Other[2]=checkerMaskLinear
+Other[3]=DefaultMREC_Linear
+Other[4]=greyscale_radialGrad
+Other[5]=Default_000_D

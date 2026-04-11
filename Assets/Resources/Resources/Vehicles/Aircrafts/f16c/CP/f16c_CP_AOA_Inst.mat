@@ -1,0 +1,10 @@
+Diffuse=f16c_CP_AOA_VVI_D
+Normal=CP_UI_MComp_N
+Other[0]=CP_CMP_MREC
+Other[1]=CP_AOA_VVI_D
+Other[2]=CP_ADIM_MREC
+Other[3]=DefaultDiffuse
+Other[4]=CP_UI_HorSitInd
+Other[5]=DefaultMREC
+Other[6]=CP_ADIM_D
+Other[7]=CP_CMP_D

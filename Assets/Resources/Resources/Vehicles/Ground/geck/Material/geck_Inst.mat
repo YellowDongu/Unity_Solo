@@ -1,0 +1,9 @@
+Diffuse=geck_D
+Normal=DefaultNormal
+Other[0]=geck_MREC
+Other[1]=black_M
+Other[2]=checkerMask
+Other[3]=checkerMaskLinear
+Other[4]=DefaultMREC_Linear
+Other[5]=greyscale_radialGrad
+Other[6]=Default_000_D

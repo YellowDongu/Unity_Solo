@@ -1,0 +1,50 @@
+Materials[3] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_PickeringOperationsComplex_MI.M01_LAN_PickeringOperationsComplex_MI'
+    Materials[1] = Material3'/Engine/EngineMaterials/WorldGridMaterial.WorldGridMaterial'
+    Materials[2] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_PickeringOperationsComplexLOD_MI.M01_LAN_PickeringOperationsComplexLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[3] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_PickeringOperationsComplex_MI.M01_LAN_PickeringOperationsComplex_MI'
+        MaterialSlotName = M01_LAN_PickeringOperationsComplex_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 821.353, 2239.61, 3107.31, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = Material3'/Engine/EngineMaterials/WorldGridMaterial.WorldGridMaterial'
+        MaterialSlotName = WorldGridMaterial
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[2] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_PickeringOperationsComplexLOD_MI.M01_LAN_PickeringOperationsComplexLOD_MI'
+        MaterialSlotName = M01_LAN_PickeringOperationsComplexLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 2136.06, 2136.06, 2198.15, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-14.2309, Y=15.7183, Z=917.033 }
+    BoxExtent = { X=442.054, Y=559.825, Z=917.033 }
+    SphereRadius = 1080.58
+}

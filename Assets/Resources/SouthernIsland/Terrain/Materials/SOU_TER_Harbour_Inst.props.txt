@@ -1,0 +1,276 @@
+Parent = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_00_Inst.SOU_TER_00_Inst'
+ScalarParameterValues[27] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.02
+        ParameterName = Base_Metallic
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 5
+        ParameterName = Base_Normal_Strength
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.7
+        ParameterName = Base_Roughness
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.2
+        ParameterName = Base_Specular
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.8
+        ParameterName = B_Detail_Brightness
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = B_Detail_Saturation
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.16
+        ParameterName = B_Metallic
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 12
+        ParameterName = B_Normal_Mid_Strength
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 15
+        ParameterName = B_Normal_Strength
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.85
+        ParameterName = B_Roughness
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 250
+        ParameterName = B_UV_Tiling
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1.5
+        ParameterName = B_UVN_Tiling
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 2
+        ParameterName = G_Detail_Brightness
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = G_Detail_Saturation
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.017
+        ParameterName = G_Metallic
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 3
+        ParameterName = G_Normal_Mid_Strength
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 5
+        ParameterName = G_Normal_Strength
+    }
+    ScalarParameterValues[17] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.82
+        ParameterName = G_Roughness
+    }
+    ScalarParameterValues[18] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 88
+        ParameterName = G_UV_Tiling
+    }
+    ScalarParameterValues[19] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 2
+        ParameterName = G_UVN_Tiling
+    }
+    ScalarParameterValues[20] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1.2
+        ParameterName = R_Detail_Brightness
+    }
+    ScalarParameterValues[21] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = -0.001524
+        ParameterName = R_Metallic
+    }
+    ScalarParameterValues[22] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 2
+        ParameterName = R_Normal_Mid_Strength
+    }
+    ScalarParameterValues[23] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = R_Normal_Strength
+    }
+    ScalarParameterValues[24] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1.05
+        ParameterName = R_Roughness
+    }
+    ScalarParameterValues[25] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 22.5
+        ParameterName = R_UV_Tiling
+    }
+    ScalarParameterValues[26] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = RefractionDepthBias
+    }
+}
+TextureParameterValues[9] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Terrain/Textures/SOU_TER_Harbour_N.SOU_TER_Harbour_N'
+        ParameterName = Base_Normal
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Terrain/Textures/SOU_TER_Harbour_M.SOU_TER_Harbour_M'
+        ParameterName = Terrain_Mask
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/DetailTexture/Concrete/Concrete_Granular_D.Concrete_Granular_D'
+        ParameterName = B_Detail_Map
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/DetailTexture/Concrete/Concrete_Granular_N.Concrete_Granular_N'
+        ParameterName = B_Normal_Map
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/DetailTexture/Grass/Grass_E_Detail_D.Grass_E_Detail_D'
+        ParameterName = G_Detail_Map
+    }
+    TextureParameterValues[5] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/DetailTexture/Grass/Grass_E_Detail_N.Grass_E_Detail_N'
+        ParameterName = G_Normal_Map
+    }
+    TextureParameterValues[6] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/DetailTexture/Sand/Ground_Detail_SoilSandy_D.Ground_Detail_SoilSandy_D'
+        ParameterName = R_Detail_Map
+    }
+    TextureParameterValues[7] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/DetailTexture/Ground/Ground_Detail_RockGrassB_N.Ground_Detail_RockGrassB_N'
+        ParameterName = R_Normal_Map
+    }
+    TextureParameterValues[8] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Terrain/Textures/SOU_TER_Harbour_D.SOU_TER_Harbour_D'
+        ParameterName = Albedo
+    }
+}
+VectorParameterValues[0] = {}
+BasePropertyOverrides =
+{
+    bOverride_BlendMode = false
+    BlendMode = BLEND_Opaque (0)
+    bOverride_TwoSided = false
+    TwoSided = false
+    bOverride_OpacityMaskClipValue = false
+    OpacityMaskClipValue = 0
+}
+StaticParameters =
+{
+    StaticSwitchParameters[0] = {}
+    StaticComponentMaskParameters[0] = {}
+    TerrainLayerWeightParameters[0] = {}
+    MaterialLayersParameters[0] = {}
+}
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[4] =
+{
+    TextureStreamingData[0] =
+    {
+        SamplingScale = 22.5
+        UVChannelIndex = 0
+        TextureName = Concrete_Granular_D
+    }
+    TextureStreamingData[1] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = Concrete_Granular_N
+    }
+    TextureStreamingData[2] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = SOU_TER_Harbour_D
+    }
+    TextureStreamingData[3] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = SOU_TER_Harbour_M
+    }
+}

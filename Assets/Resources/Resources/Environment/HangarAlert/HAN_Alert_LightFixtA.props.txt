@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/HangarAlert/Materials/HAN_Alert_LightFixtures_Inst.HAN_Alert_LightFixtures_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/HangarAlert/Materials/HAN_Alert_LightFixtures_Inst.HAN_Alert_LightFixtures_Inst'
+        MaterialSlotName = HAN_Alert_LightFixtures_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 68.361, 17.4017, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=6.67572e-06, Y=-3.33786e-06, Z=-2.02112 }
+    BoxExtent = { X=1.88462, Y=6.17618, Z=2.09226 }
+    SphereRadius = 6.75244
+}

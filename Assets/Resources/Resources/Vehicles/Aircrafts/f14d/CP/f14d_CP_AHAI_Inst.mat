@@ -1,0 +1,8 @@
+Diffuse=CP_CMP_D
+Normal=CP_UI_MComp_N
+Other[0]=f14d_CP_AHAI
+Other[1]=CP_CMP_MREC
+Other[2]=DefaultDiffuse
+Other[3]=CP_UI_HorSitInd
+Other[4]=DefaultMREC
+Other[5]=CP_ADIM_D

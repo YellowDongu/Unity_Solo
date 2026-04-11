@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_PickeringOperationsComplexLOD_MI.M01_LAN_PickeringOperationsComplexLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_PickeringOperationsComplexLOD_MI.M01_LAN_PickeringOperationsComplexLOD_MI'
+        MaterialSlotName = M01_LAN_PickeringOperationsComplexLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 2698.07, 2395.56, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0, Y=-6.10352e-05, Z=990 }
+    BoxExtent = { X=323.052, Y=162.999, Z=990 }
+    SphereRadius = 1041.38
+}

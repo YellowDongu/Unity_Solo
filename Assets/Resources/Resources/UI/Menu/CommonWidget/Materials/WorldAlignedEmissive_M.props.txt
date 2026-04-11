@@ -1,0 +1,101 @@
+TwoSided = true
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[1] =
+{
+    ReferencedTextures[0] = Texture2D'/Game/UI/Menu/CommonWidget/Assets/ImagePng_GridDots80x80_Dome.ImagePng_GridDots80x80_Dome'
+}
+Expressions[34] =
+{
+    Expressions[4] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionVectorParameter_2'
+    Expressions[7] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionScalarParameter_3'
+    Expressions[8] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionScalarParameter_4'
+    Expressions[9] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionScalarParameter_5'
+    Expressions[10] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionVectorParameter_0'
+    Expressions[18] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionScalarParameter_0'
+    Expressions[19] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionVectorParameter_1'
+    Expressions[20] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionVectorParameter_3'
+    Expressions[21] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionScalarParameter_1'
+    Expressions[22] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionVectorParameter_6'
+    Expressions[27] = MaterialExpressionVectorParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionVectorParameter_7'
+    Expressions[31] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionScalarParameter_6'
+    Expressions[33] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/Materials/WorldAlignedEmissive_M.MaterialExpressionScalarParameter_7'
+}
+CachedExpressionData =
+{
+    Parameters =
+    {
+        Entries[5] =
+        {
+            Entries[0] = { ParameterInfos[0]={} }
+            Entries[1] = { ParameterInfos[0]={} }
+            Entries[2] = { ParameterInfos[0]={} }
+            Entries[3] = { ParameterInfos[0]={} }
+            Entries[4] = { ParameterInfos[0]={} }
+        }
+        ScalarValues[0] = {}
+        VectorValues[0] = {}
+        TextureValues[0] = {}
+    }
+    ReferencedTextures[0] = {}
+}
+BlendMode = BLEND_Opaque (0)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[0] = {}
+CollectedScalarParameters[7] =
+{
+    CollectedScalarParameters[0] = { Value=1, Name=Brightness, Group=None }
+    CollectedScalarParameters[1] = { Value=1, Name=Exponent, Group=None }
+    CollectedScalarParameters[2] = { Value=1, Name=TransitionContrast, Group=None }
+    CollectedScalarParameters[3] = { Value=5, Name=Overall_Brightness, Group=None }
+    CollectedScalarParameters[4] = { Value=5, Name=split_contrast, Group=None }
+    CollectedScalarParameters[5] = { Value=1, Name=lightmask_mult, Group=light }
+    CollectedScalarParameters[6] = { Value=1, Name=lightmask_exp, Group=light }
+}
+CollectedVectorParameters[6] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=16, G=16, B=16, A=1 }
+        Name = TextureSize
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=0, G=0, B=0, A=1 }
+        Name = WP_Offset
+        Group = None
+    }
+    CollectedVectorParameters[2] =
+    {
+        Value = { R=0.035294, G=0.058824, B=0.113725, A=1 }
+        Name = top_color
+        Group = None
+    }
+    CollectedVectorParameters[3] =
+    {
+        Value = { R=0.043137, G=0.105882, B=0.207843, A=1 }
+        Name = bottom_color
+        Group = None
+    }
+    CollectedVectorParameters[4] =
+    {
+        Value = { R=0, G=1, B=0, A=1 }
+        Name = light_direction
+        Group = light
+    }
+    CollectedVectorParameters[5] =
+    {
+        Value = { R=0, G=1, B=0, A=1 }
+        Name = light_color
+        Group = light
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

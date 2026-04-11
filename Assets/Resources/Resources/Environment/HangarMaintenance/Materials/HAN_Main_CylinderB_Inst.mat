@@ -1,0 +1,11 @@
+Diffuse=HAN_Main_GasCylinder_D
+Normal=NIM_Hangar_Wall_N
+Other[0]=NIM_Hangar_Wall_D
+Other[1]=NIM_Hangar_Wall_MREC
+Other[2]=black_M
+Other[3]=checkerMask
+Other[4]=checkerMaskLinear
+Other[5]=DefaultMREC_Linear
+Other[6]=DefaultNormal
+Other[7]=greyscale_radialGrad
+Other[8]=Default_000_D

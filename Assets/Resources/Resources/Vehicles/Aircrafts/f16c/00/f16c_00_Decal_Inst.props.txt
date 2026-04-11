@@ -1,0 +1,164 @@
+Parent = MaterialInstanceConstant'/Game/Vehicles/Aircraft/f16c/00/f16c_00_Inst.f16c_00_Inst'
+ScalarParameterValues[22] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.25
+        ParameterName = Wet_Max
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = U_offset_01
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_scale_01
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_L_Wing_decal
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = UV_rotate_01
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = V_offset_01
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_Lb_Wing_decal
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_R_Wing_decal
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_Rb_Wing_decal
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = U_offset_03
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_scale_03
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_L_Tail_decal
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = UV_rotate_03
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = V_offset_03
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_R_Tail_decal
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = U_offset_05
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_scale_05
+    }
+    ScalarParameterValues[17] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_L_Nose_decal
+    }
+    ScalarParameterValues[18] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = UV_rotate_05
+    }
+    ScalarParameterValues[19] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = V_offset_05
+    }
+    ScalarParameterValues[20] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_R_Nose_decal
+    }
+    ScalarParameterValues[21] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = RefractionDepthBias
+    }
+}
+TextureParameterValues[0] = {}
+VectorParameterValues[0] = {}
+BasePropertyOverrides =
+{
+    bOverride_BlendMode = false
+    BlendMode = BLEND_Opaque (0)
+    bOverride_TwoSided = false
+    TwoSided = false
+    bOverride_OpacityMaskClipValue = false
+    OpacityMaskClipValue = 0
+}
+StaticParameters =
+{
+    StaticSwitchParameters[0] = {}
+    StaticComponentMaskParameters[0] = {}
+    TerrainLayerWeightParameters[0] = {}
+    MaterialLayersParameters[0] = {}
+}
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

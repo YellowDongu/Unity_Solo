@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_ParliamentHouse_MI.M01_LAN_ParliamentHouse_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Generic/Materials/M01_GEN_LOD_Atlas_Inst.M01_GEN_LOD_Atlas_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_ParliamentHouse_MI.M01_LAN_ParliamentHouse_MI'
+        MaterialSlotName = M01_LAN_ParliamentHouse_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 725.001, 411.412, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Generic/Materials/M01_GEN_LOD_Atlas_Inst.M01_GEN_LOD_Atlas_Inst'
+        MaterialSlotName = M01_GEN_LOD_Atlas_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 10162.2, 2331.06, 454.204, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-5.17035, Y=2.65868, Z=51.0411 }
+    BoxExtent = { X=82.1872, Y=76.0682, Z=51.9679 }
+    SphereRadius = 107.848
+}

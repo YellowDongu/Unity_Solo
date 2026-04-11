@@ -1,0 +1,52 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[2] =
+{
+    ReferencedTextures[0] = Texture2D'/Game/UI/Menu/Hangar/AircraftTree/AircraftTreeAssets/Hologram_Lines.Hologram_Lines'
+    ReferencedTextures[1] = Texture2D'/Game/UI/Menu/Hangar/AircraftTree/AircraftTreeAssets/DummyAircraftLines.DummyAircraftLines'
+}
+Expressions[59] =
+{
+    Expressions[4] = MaterialExpressionTextureSample'/Game/UI/Menu/CommonWidget/Assets/Hologram_Icon.MaterialExpressionTextureSample_2'
+    Expressions[10] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/Assets/Hologram_Icon.MaterialExpressionScalarParameter_4'
+    Expressions[19] = MaterialExpressionTextureSample'/Game/UI/Menu/CommonWidget/Assets/Hologram_Icon.MaterialExpressionTextureSample_3'
+    Expressions[22] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/Assets/Hologram_Icon.MaterialExpressionScalarParameter_11'
+    Expressions[57] = MaterialExpressionScalarParameter'/Game/UI/Menu/CommonWidget/Assets/Hologram_Icon.MaterialExpressionScalarParameter_2'
+}
+CachedExpressionData =
+{
+    Parameters =
+    {
+        Entries[5] =
+        {
+            Entries[0] = { ParameterInfos[0]={} }
+            Entries[1] = { ParameterInfos[0]={} }
+            Entries[2] = { ParameterInfos[0]={} }
+            Entries[3] = { ParameterInfos[0]={} }
+            Entries[4] = { ParameterInfos[0]={} }
+        }
+        ScalarValues[0] = {}
+        VectorValues[0] = {}
+        TextureValues[0] = {}
+    }
+    ReferencedTextures[0] = {}
+}
+BlendMode = BLEND_Additive (3)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[0] = {}
+CollectedScalarParameters[3] =
+{
+    CollectedScalarParameters[0] = { Value=3, Name=brightness, Group=None }
+    CollectedScalarParameters[1] = { Value=10, Name=Line Strength, Group=None }
+    CollectedScalarParameters[2] = { Value=10, Name=opacity, Group=None }
+}
+CollectedVectorParameters[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

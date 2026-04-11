@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = Material3'/Game/VFX/Vehicles/Weapon/PLSL/Material/M_Projectile_PLSL_diffusion.M_Projectile_PLSL_diffusion'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = Material3'/Game/VFX/Vehicles/Weapon/PLSL/Material/M_Projectile_PLSL_diffusion.M_Projectile_PLSL_diffusion'
+        MaterialSlotName = lambert1
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 89.855, 93.0803, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0, Y=0, Z=0 }
+    BoxExtent = { X=20, Y=7.37255, Z=7.37255 }
+    SphereRadius = 20
+}

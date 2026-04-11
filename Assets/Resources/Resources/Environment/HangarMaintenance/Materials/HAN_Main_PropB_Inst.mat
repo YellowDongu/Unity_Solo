@@ -1,0 +1,5 @@
+Diffuse=HAN_Main_PropB_D
+Normal=NIM_Hangar_Wall_N
+Other[0]=NIM_Hangar_Wall_MREC
+Other[1]=DefaultNoise
+Other[2]=NIG_LAN_HAR_NYBuilding_MREC

@@ -1,0 +1,106 @@
+Parent = MaterialInstanceConstant'/Game/Materials/VertexColorBlend_Inst.VertexColorBlend_Inst'
+ScalarParameterValues[7] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.5
+        ParameterName = Blend00_Albedo_Tile_U
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.5
+        ParameterName = Blend00_Albedo_Tile_V
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 4
+        ParameterName = DNormal_Strength
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 2
+        ParameterName = DNormal_Tile_U
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 2
+        ParameterName = DNormal_Tile_V
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 4
+        ParameterName = VtxColorBlend_DetailAlbedo_Exp
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = RefractionDepthBias
+    }
+}
+TextureParameterValues[5] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Vehicles/Aircraft/Common/Textures/Aircraft_Dam_D.Aircraft_Dam_D'
+        ParameterName = Blend_00_Albedo
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Vehicles/Aircraft/Common/Textures/Aircraft_Dam_MREC.Aircraft_Dam_MREC'
+        ParameterName = Blend_00_MREC
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Vehicles/Aircraft/Common/Textures/Aircraft_Dam_N.Aircraft_Dam_N'
+        ParameterName = Blend_00_Normal
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Vehicles/Aircraft/Common/Textures/Aircraft_Dam_MREC.Aircraft_Dam_MREC'
+        ParameterName = Detail_Map
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Vehicles/Aircraft/Common/Textures/Aircraft_Dam_Detail_N.Aircraft_Dam_Detail_N'
+        ParameterName = Detail_Normal
+    }
+}
+VectorParameterValues[0] = {}
+BasePropertyOverrides =
+{
+    bOverride_BlendMode = false
+    BlendMode = BLEND_Opaque (0)
+    bOverride_TwoSided = false
+    TwoSided = false
+    bOverride_OpacityMaskClipValue = false
+    OpacityMaskClipValue = 0
+}
+StaticParameters =
+{
+    StaticSwitchParameters[0] = {}
+    StaticComponentMaskParameters[0] = {}
+    TerrainLayerWeightParameters[0] = {}
+    MaterialLayersParameters[0] = {}
+}
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

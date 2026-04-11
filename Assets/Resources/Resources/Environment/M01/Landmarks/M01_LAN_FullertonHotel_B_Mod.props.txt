@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_FullertonHotel_01_MI.M01_LAN_FullertonHotel_01_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_FullertonHotelLOD_MI.M01_LAN_FullertonHotelLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_FullertonHotel_01_MI.M01_LAN_FullertonHotel_01_MI'
+        MaterialSlotName = M01_LAN_FullertonHotel_02_Mat
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 644.878, 3525.48, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_FullertonHotelLOD_MI.M01_LAN_FullertonHotelLOD_MI'
+        MaterialSlotName = None
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 2146.09, 2146.09, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=483.765, Y=179.46, Z=100.839 }
+    BoxExtent = { X=446.447, Y=869.951, Z=97.9392 }
+    SphereRadius = 935.911
+}

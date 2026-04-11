@@ -1,0 +1,8 @@
+Diffuse=HAN_Main_Windows_D
+Normal=DefaultNormal
+Other[0]=DefaultMREC_Linear
+Other[1]=black_M
+Other[2]=checkerMask
+Other[3]=checkerMaskLinear
+Other[4]=greyscale_radialGrad
+Other[5]=Default_000_D

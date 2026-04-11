@@ -1,0 +1,284 @@
+Parent = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_00_Inst.SOU_TER_00_Inst'
+ScalarParameterValues[24] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1.5
+        ParameterName = Base_Normal_Strength
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.152381
+        ParameterName = Base_Roughness
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.5
+        ParameterName = Base_Specular
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = B_Detail_Brightness
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 5
+        ParameterName = B_Normal_Mid_Strength
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 3
+        ParameterName = B_Normal_Strength
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 30
+        ParameterName = B_UV_Tiling
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.4
+        ParameterName = G_Detail_Brightness
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.5
+        ParameterName = G_Normal_Mid_Strength
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.5
+        ParameterName = G_Normal_Strength
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.57
+        ParameterName = G_Roughness
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = G_UV_Tiling
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = G_UVN_Tiling
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.8
+        ParameterName = R_Detail_Brightness
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = R_Detail_Saturation
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1.5
+        ParameterName = R_Metallic
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = R_Normal_Mid_Strength
+    }
+    ScalarParameterValues[17] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = -2.5
+        ParameterName = R_Normal_Strength
+    }
+    ScalarParameterValues[18] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.6
+        ParameterName = R_Roughness
+    }
+    ScalarParameterValues[19] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = R_UV_Tiling
+    }
+    ScalarParameterValues[20] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = R_UVN_Tiling
+    }
+    ScalarParameterValues[21] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0.05
+        ParameterName = Texture_2_Contrast
+    }
+    ScalarParameterValues[22] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 5000
+        ParameterName = BlendDistanceNear
+    }
+    ScalarParameterValues[23] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = RefractionDepthBias
+    }
+}
+TextureParameterValues[11] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/HangarAlert/Textures/HAN_Alert_Floor_N.HAN_Alert_Floor_N'
+        ParameterName = Base_Normal
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/HangarAlert/Textures/HAN_Alert_FloorDetail_MREC.HAN_Alert_FloorDetail_MREC'
+        ParameterName = Terrain_Mask
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_Airbase_BaseRoadTireMark_D.SOU_Airbase_BaseRoadTireMark_D'
+        ParameterName = B_Detail_Map
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_Airbase_BaseRoadClean_N.SOU_Airbase_BaseRoadClean_N'
+        ParameterName = B_Normal_Map
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/HangarAlert/Textures/HAN_Alert_BaseRoadTireMark_D.HAN_Alert_BaseRoadTireMark_D'
+        ParameterName = G_Detail_Map
+    }
+    TextureParameterValues[5] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/HangarAlert/Textures/HAN_Alert_Floor_N.HAN_Alert_Floor_N'
+        ParameterName = G_Normal_Map
+    }
+    TextureParameterValues[6] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/Common/Road/Textures/Road_DirtLayer_D.Road_DirtLayer_D'
+        ParameterName = R_Detail_Map
+    }
+    TextureParameterValues[7] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/HangarAlert/Textures/HAN_Alert_Floor_N.HAN_Alert_Floor_N'
+        ParameterName = R_Normal_Map
+    }
+    TextureParameterValues[8] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/HangarAlert/Textures/HAN_Alert_FloorDecals_D.HAN_Alert_FloorDecals_D'
+        ParameterName = Overlay_1_Texture
+    }
+    TextureParameterValues[9] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_Airbase_BaseRoadTireMark_D.SOU_Airbase_BaseRoadTireMark_D'
+        ParameterName = Overlay_2_Texture
+    }
+    TextureParameterValues[10] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/HangarAlert/Textures/HAN_Alert_Floor_D.HAN_Alert_Floor_D'
+        ParameterName = Albedo
+    }
+}
+VectorParameterValues[1] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = { R=1, G=1, B=0, A=0 }
+        ParameterName = Overlay_2_UV_Tiling
+    }
+}
+BasePropertyOverrides =
+{
+    bOverride_BlendMode = true
+    BlendMode = BLEND_Opaque (0)
+    bOverride_TwoSided = false
+    TwoSided = false
+    bOverride_OpacityMaskClipValue = false
+    OpacityMaskClipValue = 0
+}
+StaticParameters =
+{
+    StaticSwitchParameters[0] = {}
+    StaticComponentMaskParameters[0] = {}
+    TerrainLayerWeightParameters[0] = {}
+    MaterialLayersParameters[0] = {}
+}
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[5] =
+{
+    TextureStreamingData[0] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = HAN_Alert_BaseRoadTireMark_D
+    }
+    TextureStreamingData[1] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = HAN_Alert_Floor_D
+    }
+    TextureStreamingData[2] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = HAN_Alert_Floor_N
+    }
+    TextureStreamingData[3] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 1
+        TextureName = HAN_Alert_FloorDecals_D
+    }
+    TextureStreamingData[4] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = HAN_Alert_FloorDetail_MREC
+    }
+}

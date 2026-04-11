@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_KeppelBayCaribbean_MI.M01_LAN_KeppelBayCaribbean_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_KeppelBayCaribbeanLOD_MI.M01_LAN_KeppelBayCaribbeanLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_KeppelBayCaribbean_MI.M01_LAN_KeppelBayCaribbean_MI'
+        MaterialSlotName = M01_LAN_KeppelBayCaribbean_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 704.327, 1369.43, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_KeppelBayCaribbeanLOD_MI.M01_LAN_KeppelBayCaribbeanLOD_MI'
+        MaterialSlotName = M01_LAN_KeppelBayCaribbeanLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1381.32, 1373.99, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0, Y=0, Z=119.14 }
+    BoxExtent = { X=323.604, Y=322.019, Z=119.588 }
+    SphereRadius = 402.45
+}

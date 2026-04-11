@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_PrimaBuilding_MI.M01_LAN_PrimaBuilding_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_PrimaBuildingLOD_MI.M01_LAN_PrimaBuildingLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_PrimaBuilding_MI.M01_LAN_PrimaBuilding_MI'
+        MaterialSlotName = M01_LAN_PrimaBuilding_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1143.91, 2967.74, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_PrimaBuildingLOD_MI.M01_LAN_PrimaBuildingLOD_MI'
+        MaterialSlotName = M01_LAN_PrimaBuildingLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1944.07, 2538.32, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=46.1966, Y=-20.6496, Z=419.247 }
+    BoxExtent = { X=896.209, Y=660.2, Z=422.799 }
+    SphereRadius = 999.815
+}

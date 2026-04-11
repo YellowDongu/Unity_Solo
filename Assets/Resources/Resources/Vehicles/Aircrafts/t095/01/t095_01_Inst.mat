@@ -1,0 +1,10 @@
+Diffuse=t095_01_D
+Normal=t095_01_N
+Other[0]=t095_01_MREC
+Other[1]=black_M
+Other[2]=checkerMask
+Other[3]=checkerMaskLinear
+Other[4]=DefaultMREC_Linear
+Other[5]=DefaultNormal
+Other[6]=greyscale_radialGrad
+Other[7]=Default_000_D

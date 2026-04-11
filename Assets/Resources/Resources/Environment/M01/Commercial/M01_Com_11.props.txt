@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BoatQuay_02_MI.M01_LAN_BoatQuay_02_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BoatQuay_02_MI.M01_LAN_BoatQuay_02_MI'
+        MaterialSlotName = M01_LAN_BoatQuay_02_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 987.41, 4744.4, 589.32, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-0.0419006, Y=-0.0164032, Z=111.397 }
+    BoxExtent = { X=133.981, Y=56.3233, Z=111.472 }
+    SphereRadius = 183.05
+}

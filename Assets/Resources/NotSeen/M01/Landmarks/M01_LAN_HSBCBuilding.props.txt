@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_HSBCBuilding_MI.M01_LAN_HSBCBuilding_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_HSBCBuildingLOD_MI.M01_LAN_HSBCBuildingLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_HSBCBuilding_MI.M01_LAN_HSBCBuilding_MI'
+        MaterialSlotName = M01_LAN_HSBCBuilding_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 741.13, 1513.01, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_HSBCBuildingLOD_MI.M01_LAN_HSBCBuildingLOD_MI'
+        MaterialSlotName = M01_LAN_HSBCBuildingLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=5.83122, Y=3.76804, Z=367.5 }
+    BoxExtent = { X=230.353, Y=187.919, Z=367.5 }
+    SphereRadius = 466.591
+}

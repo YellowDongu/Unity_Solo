@@ -1,0 +1,110 @@
+Materials[8] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/00/su33_00_Decal_Inst.su33_00_Decal_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/00/su33_00_CP_Inst.su33_00_CP_Inst'
+    Materials[2] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/Materials/su33_HUD_Glass_Inst.su33_HUD_Glass_Inst'
+    Materials[3] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/Common/Materials/aircraft_GEN_Glass_Inst.aircraft_GEN_Glass_Inst'
+    Materials[4] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/Materials/su33_Canopy1_Inst.su33_Canopy1_Inst'
+    Materials[5] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/Materials/su33_Canopy2_Inst.su33_Canopy2_Inst'
+    Materials[6] = MaterialInstanceConstant'/Game/Vehicles/Weapons/w_msl_r0/Materials/w_msl_r0_Inst.w_msl_r0_Inst'
+    Materials[7] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/00/su33_00_Inst.su33_00_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[8] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/00/su33_00_Decal_Inst.su33_00_Decal_Inst'
+        MaterialSlotName = su33_00_Decal_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 235.938, 6.96345, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/00/su33_00_CP_Inst.su33_00_CP_Inst'
+        MaterialSlotName = su33_00_CP_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 84.937, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[2] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/Materials/su33_HUD_Glass_Inst.su33_HUD_Glass_Inst'
+        MaterialSlotName = su33_HUD_Glass_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 2.53834, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[3] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/Common/Materials/aircraft_GEN_Glass_Inst.aircraft_GEN_Glass_Inst'
+        MaterialSlotName = su33_Glass_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 32.3326, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[4] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/Materials/su33_Canopy1_Inst.su33_Canopy1_Inst'
+        MaterialSlotName = w_msl_r0_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 26.9424, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[5] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/Materials/su33_Canopy2_Inst.su33_Canopy2_Inst'
+        MaterialSlotName = su33_00_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 29.838, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[6] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Weapons/w_msl_r0/Materials/w_msl_r0_Inst.w_msl_r0_Inst'
+        MaterialSlotName = w_msl_r0_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 40.2747, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[7] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/su33/00/su33_00_Inst.su33_00_Inst'
+        MaterialSlotName = su33_00_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 275.211, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[42] = {  }
+ExtendedBounds =
+{
+    Origin = { X=36.5983, Y=0, Z=10.9611 }
+    BoxExtent = { X=106.585, Y=72.4663, Z=22.9925 }
+    SphereRadius = 108.377
+}

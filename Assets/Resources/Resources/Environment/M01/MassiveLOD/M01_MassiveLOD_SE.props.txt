@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/MassiveLOD/Materials/M01_MassiveLOD_SE_Inst.M01_MassiveLOD_SE_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/MassiveLOD/Materials/M01_MassiveLOD_SE_Inst.M01_MassiveLOD_SE_Inst'
+        MaterialSlotName = M_M_FUT_MergeActor_SpaceElevator
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 23882.4, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0, Y=0, Z=75341.6 }
+    BoxExtent = { X=7056.94, Y=7994.97, Z=75276.1 }
+    SphereRadius = 75695.2
+}

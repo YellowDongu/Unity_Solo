@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_HelixBridge_MI.M01_LAN_HelixBridge_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_HelixBridgeLOD_Mod_MI.M01_LAN_HelixBridgeLOD_Mod_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_HelixBridge_MI.M01_LAN_HelixBridge_MI'
+        MaterialSlotName = M01_LAN_HelixBridge02:M01_LAN_HelixBridge_D_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1004.25, 2846.12, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_HelixBridgeLOD_Mod_MI.M01_LAN_HelixBridgeLOD_Mod_MI'
+        MaterialSlotName = None
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1639.54, 3300.45, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-175.93, Y=-387.142, Z=107.359 }
+    BoxExtent = { X=405.529, Y=1684.04, Z=107.359 }
+    SphereRadius = 1734.28
+}

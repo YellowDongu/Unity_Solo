@@ -1,0 +1,5 @@
+Diffuse=M01_LAN_TheSailLOD_D
+Normal=DefaultNormal
+Other[0]=M01_LAN_TheSailLOD_MREC
+Other[1]=DefaultNoise
+Other[2]=NIG_LAN_HAR_NYBuilding_MREC

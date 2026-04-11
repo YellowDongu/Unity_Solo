@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Streets/Materials/M01_STR_HighwaySupport_MI.M01_STR_HighwaySupport_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Streets/Materials/M01_STR_HighwaySupportLOD_MI.M01_STR_HighwaySupportLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Streets/Materials/M01_STR_HighwaySupport_MI.M01_STR_HighwaySupport_MI'
+        MaterialSlotName = M01_STR_HighwaySupport_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 280.757, 534.143, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Streets/Materials/M01_STR_HighwaySupportLOD_MI.M01_STR_HighwaySupportLOD_MI'
+        MaterialSlotName = M01_STR_HighwaySupportLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 776.393, 455.618, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=5.34058e-05, Y=6.10352e-05, Z=-3.8147e-06 }
+    BoxExtent = { X=98.8775, Y=281.847, Z=58.38 }
+    SphereRadius = 303.787
+}

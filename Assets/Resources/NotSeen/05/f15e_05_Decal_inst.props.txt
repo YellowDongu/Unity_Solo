@@ -1,0 +1,282 @@
+Parent = MaterialInstanceConstant'/Game/Vehicles/Aircraft/f15e/05/f15e_05_inst.f15e_05_inst'
+ScalarParameterValues[35] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = U_offset_01
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_scale_01
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_L_Wing_decal
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = V_offset_01
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = V_scale_01
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = U_offset_01b
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_scale_01b
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_Lb_Wing_decal
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = UV_rotate_01b
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = V_offset_01b
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = -1
+        ParameterName = U_offset_02
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_scale_02
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_R_Wing_decal
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = -0.5
+        ParameterName = V_offset_02
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_Rb_Wing_decal
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = U_offset_03
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_scale_03
+    }
+    ScalarParameterValues[17] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_L_Tail_decal
+    }
+    ScalarParameterValues[18] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = V_offset_03
+    }
+    ScalarParameterValues[19] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 2
+        ParameterName = V_scale_03
+    }
+    ScalarParameterValues[20] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_offset_04
+    }
+    ScalarParameterValues[21] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_scale_04
+    }
+    ScalarParameterValues[22] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_R_Tail_decal
+    }
+    ScalarParameterValues[23] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = U_offset_05
+    }
+    ScalarParameterValues[24] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_scale_05
+    }
+    ScalarParameterValues[25] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_L_Nose_decal
+    }
+    ScalarParameterValues[26] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = V_offset_05
+    }
+    ScalarParameterValues[27] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = -0.5
+        ParameterName = U_offset_06
+    }
+    ScalarParameterValues[28] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_scale_06
+    }
+    ScalarParameterValues[29] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = use_R_Nose_decal
+    }
+    ScalarParameterValues[30] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = U_offset
+    }
+    ScalarParameterValues[31] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = U_scale
+    }
+    ScalarParameterValues[32] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = V_offset
+    }
+    ScalarParameterValues[33] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 1
+        ParameterName = V_scale
+    }
+    ScalarParameterValues[34] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = RefractionDepthBias
+    }
+}
+TextureParameterValues[3] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Vehicles/Aircraft/Common/Textures/Decals/Default_000_D.Default_000_D'
+        ParameterName = NoseDecalTexObj
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Vehicles/Aircraft/Common/Textures/Decals/Default_000_D.Default_000_D'
+        ParameterName = TailDecalTexObj
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Vehicles/Aircraft/Common/Textures/Decals/Default_000_D.Default_000_D'
+        ParameterName = WingDecalTexObj
+    }
+}
+VectorParameterValues[0] = {}
+BasePropertyOverrides =
+{
+    bOverride_BlendMode = false
+    BlendMode = BLEND_Opaque (0)
+    bOverride_TwoSided = false
+    TwoSided = false
+    bOverride_OpacityMaskClipValue = false
+    OpacityMaskClipValue = 0
+}
+StaticParameters =
+{
+    StaticSwitchParameters[0] = {}
+    StaticComponentMaskParameters[0] = {}
+    TerrainLayerWeightParameters[0] = {}
+    MaterialLayersParameters[0] = {}
+}
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[3] =
+{
+    TextureStreamingData[0] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = f15e_00_MREC
+    }
+    TextureStreamingData[1] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = f15e_00_N
+    }
+    TextureStreamingData[2] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = f15e_05_D
+    }
+}

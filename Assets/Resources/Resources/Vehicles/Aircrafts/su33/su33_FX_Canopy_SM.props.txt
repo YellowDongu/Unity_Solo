@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/VFX/Common/Materials/Rain/M_Canopy_Layered_Inst01.M_Canopy_Layered_Inst01'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/VFX/Common/Materials/Rain/M_Canopy_Layered_Inst01.M_Canopy_Layered_Inst01'
+        MaterialSlotName = WorldGridMaterial
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 29.6099, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=85.4237, Y=-3.19481e-05, Z=15.1033 }
+    BoxExtent = { X=14.1487, Y=4.19631, Z=3.36755 }
+    SphereRadius = 14.6396
+}

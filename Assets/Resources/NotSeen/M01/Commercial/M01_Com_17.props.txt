@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_MarinaBaySuites_MI.M01_LAN_MarinaBaySuites_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_MarinaBaySuitesLOD_MI.M01_LAN_MarinaBaySuitesLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_MarinaBaySuites_MI.M01_LAN_MarinaBaySuites_MI'
+        MaterialSlotName = M01_LAN_MarinaBaySuites_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 200.725, 1364.93, 1076.33, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_MarinaBaySuitesLOD_MI.M01_LAN_MarinaBaySuitesLOD_MI'
+        MaterialSlotName = None
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1045.84, 1045.27, 930.403, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=9.14415, Y=-7.62939e-06, Z=415.204 }
+    BoxExtent = { X=55.7231, Y=91.2873, Z=415.204 }
+    SphereRadius = 427.822
+}

@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BayfrontBridge_MI.M01_LAN_BayfrontBridge_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BayfrontBridgeLOD_MI.M01_LAN_BayfrontBridgeLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BayfrontBridge_MI.M01_LAN_BayfrontBridge_MI'
+        MaterialSlotName = M01_LAN_BayfrontBridge_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 587.929, 2746.44, 2643.8, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BayfrontBridgeLOD_MI.M01_LAN_BayfrontBridgeLOD_MI'
+        MaterialSlotName = M01_LAN_BayfrontBridgeLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 983.835, 2693.34, 3006.12, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=407.385, Y=-183.158, Z=74.9606 }
+    BoxExtent = { X=210.667, Y=2334.75, Z=80.8993 }
+    SphereRadius = 2344.9
+}

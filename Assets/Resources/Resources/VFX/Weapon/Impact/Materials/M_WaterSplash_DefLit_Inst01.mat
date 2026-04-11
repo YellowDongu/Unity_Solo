@@ -1,0 +1,5 @@
+Diffuse=T_WaterSplash02_2x2
+Normal=T_WaterSplash02_2x2_NRM
+Other[0]=T_NoiseTile02
+Other[1]=T_HeatTile01_NRM
+Other[2]=T_SmokeTile02_N

@@ -1,0 +1,50 @@
+Materials[3] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/f15e/00/f15e_00_inst.f15e_00_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Vehicles/Weapons/w_tls_x0/Materials/w_tls_x0_inst.w_tls_x0_inst'
+    Materials[2] = MaterialInstanceConstant'/Game/Vehicles/Weapons/w_tls_x0/Materials/w_tls_x0_Glass_Inst.w_tls_x0_Glass_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[3] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/f15e/00/f15e_00_inst.f15e_00_Inst'
+        MaterialSlotName = f15e_00_Decal_inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 99.9408, 56.6041, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Weapons/w_tls_x0/Materials/w_tls_x0_inst.w_tls_x0_inst'
+        MaterialSlotName = w_tls_x0_M
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 44.3764, 56.5277, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[2] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Weapons/w_tls_x0/Materials/w_tls_x0_Glass_Inst.w_tls_x0_Glass_Inst'
+        MaterialSlotName = w_tls_x0_Glass
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 85.9068, 56.7952, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[1] = {  }
+ExtendedBounds =
+{
+    Origin = { X=33.25, Y=0, Z=-12.0373 }
+    BoxExtent = { X=30.25, Y=5.00814, Z=6.16274 }
+    SphereRadius = 30.3931
+}

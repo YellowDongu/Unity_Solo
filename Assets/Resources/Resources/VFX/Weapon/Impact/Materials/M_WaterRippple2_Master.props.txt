@@ -1,0 +1,95 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[1] =
+{
+    ReferencedTextures[0] = Texture2D'/Game/VFX/Common/Textures/Misc/T_NoiseTile01.T_NoiseTile01'
+}
+Expressions[50] =
+{
+    Expressions[1] = MaterialExpressionTextureSampleParameter2D'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionTextureSampleParameter2D_1'
+    Expressions[12] = MaterialExpressionTextureSample'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionTextureSample_10'
+    Expressions[37] = MaterialExpressionTextureSampleParameter2D'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionTextureSampleParameter2D_0'
+    Expressions[38] = MaterialExpressionScalarParameter'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionScalarParameter_1'
+    Expressions[39] = MaterialExpressionScalarParameter'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionScalarParameter_2'
+    Expressions[40] = MaterialExpressionScalarParameter'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionScalarParameter_3'
+    Expressions[41] = MaterialExpressionScalarParameter'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionScalarParameter_4'
+    Expressions[42] = MaterialExpressionScalarParameter'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionScalarParameter_5'
+    Expressions[43] = MaterialExpressionScalarParameter'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionScalarParameter_6'
+    Expressions[44] = MaterialExpressionTextureSampleParameter2D'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionTextureSampleParameter2D_2'
+    Expressions[45] = MaterialExpressionTextureSampleParameter2D'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionTextureSampleParameter2D_3'
+    Expressions[46] = MaterialExpressionScalarParameter'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionScalarParameter_8'
+    Expressions[47] = MaterialExpressionScalarParameter'/Game/VFX/Vehicles/Weapon/Impact/Materials/M_WaterRippple2_Master.MaterialExpressionScalarParameter_9'
+}
+CachedExpressionData =
+{
+    Parameters =
+    {
+        Entries[5] =
+        {
+            Entries[0] = { ParameterInfos[0]={} }
+            Entries[1] = { ParameterInfos[0]={} }
+            Entries[2] = { ParameterInfos[0]={} }
+            Entries[3] = { ParameterInfos[0]={} }
+            Entries[4] = { ParameterInfos[0]={} }
+        }
+        ScalarValues[0] = {}
+        VectorValues[0] = {}
+        TextureValues[0] = {}
+    }
+    ReferencedTextures[0] = {}
+}
+BlendMode = BLEND_Additive (3)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[4] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'/Game/VFX/Vehicles/Weapon/Impact/Textures/T_Ripple02_NRM.T_Ripple02_NRM'
+        Name = Normal_Texture
+        Group = None
+    }
+    CollectedTextureParameters[1] =
+    {
+        Texture = Texture2D'/Game/VFX/Vehicles/Weapon/Impact/Textures/T_Ripple02.T_Ripple02'
+        Name = Diffuse_Texture
+        Group = None
+    }
+    CollectedTextureParameters[2] =
+    {
+        Texture = Texture2D'/Game/VFX/Common/Textures/Smoke/T_SmokeTile02_N.T_SmokeTile02_N'
+        Name = DistortionTexture01
+        Group = None
+    }
+    CollectedTextureParameters[3] =
+    {
+        Texture = Texture2D'/Game/VFX/Common/Textures/Misc/T_HeatTile01_NRM.T_HeatTile01_NRM'
+        Name = DistortionTexture02
+        Group = None
+    }
+}
+CollectedScalarParameters[8] =
+{
+    CollectedScalarParameters[0] =
+    {
+        Value = 128
+        Name = Worldposition_RandomRatio
+        Group = None
+    }
+    CollectedScalarParameters[1] = { Value=2, Name=DetailedSize, Group=None }
+    CollectedScalarParameters[2] = { Value=0.01, Name=BumpOffset_Low, Group=None }
+    CollectedScalarParameters[3] = { Value=0.06, Name=BumpOffset_High, Group=None }
+    CollectedScalarParameters[4] = { Value=2.6, Name=Spec_Contrast, Group=None }
+    CollectedScalarParameters[5] = { Value=1.5, Name=Spec_Intensity, Group=None }
+    CollectedScalarParameters[6] = { Value=15, Name=DepthFade_Low, Group=None }
+    CollectedScalarParameters[7] = { Value=30, Name=DepthFade_High, Group=None }
+}
+CollectedVectorParameters[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_D02_Inst.SOU_TER_D02_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_D02Sea_Inst.SOU_TER_D02Sea_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_D02_Inst.SOU_TER_D02_Inst'
+        MaterialSlotName = SOU_TER_D02_Inst2
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 50870.4, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_D02Sea_Inst.SOU_TER_D02Sea_Inst'
+        MaterialSlotName = SOU_TER_D02Sea_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 50005.5, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=175000, Y=-175000, Z=619.491 }
+    BoxExtent = { X=25000, Y=25000, Z=619.611 }
+    SphereRadius = 35360.8
+}

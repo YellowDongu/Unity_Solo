@@ -1,0 +1,98 @@
+Materials[7] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_E02_Inst.SOU_TER_E02_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_E02Sea_Inst.SOU_TER_E02Sea_Inst'
+    Materials[2] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_AIR_BaseRoadRunwayB_O_Inst.SOU_AIR_BaseRoadRunwayB_O_Inst'
+    Materials[3] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_AIR_BaseRoadRunwayC_O_Inst.SOU_AIR_BaseRoadRunwayC_O_Inst'
+    Materials[4] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/BorderTest.BorderTest'
+    Materials[5] = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_Harbour_Inst.SOU_TER_Harbour_Inst'
+    Materials[6] = MaterialInstanceConstant'/Game/Environment/M01/Sea/Materials/M01_IslandBorders_MI.M01_IslandBorders_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[7] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_E02_Inst.SOU_TER_E02_Inst'
+        MaterialSlotName = SOU_TER_E02_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 50705.3, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_E02Sea_Inst.SOU_TER_E02Sea_Inst'
+        MaterialSlotName = SOU_TER_E02Sea_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 50108.7, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[2] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_AIR_BaseRoadRunwayB_O_Inst.SOU_AIR_BaseRoadRunwayB_O_Inst'
+        MaterialSlotName = SOU_TER_Harbour_Inst1
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 5646.25, 160.496, 7641.07, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[3] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_AIR_BaseRoadRunwayC_O_Inst.SOU_AIR_BaseRoadRunwayC_O_Inst'
+        MaterialSlotName = M01_IslandBorders_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 5672.12, 279.492, 7682.22, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[4] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/BorderTest.BorderTest'
+        MaterialSlotName = SOU_TER_Harbour_Inst1
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 136.06, 20549.9, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[5] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Terrain/Materials/SOU_TER_Harbour_Inst.SOU_TER_Harbour_Inst'
+        MaterialSlotName = SOU_TER_Harbour_Inst1
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 21851.4, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[6] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Sea/Materials/M01_IslandBorders_MI.M01_IslandBorders_MI'
+        MaterialSlotName = M01_IslandBorders_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 210.58, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=175000, Y=-74856.5, Z=1345.46 }
+    BoxExtent = { X=25000, Y=25143.5, Z=1351.23 }
+    SphereRadius = 35482.5
+}

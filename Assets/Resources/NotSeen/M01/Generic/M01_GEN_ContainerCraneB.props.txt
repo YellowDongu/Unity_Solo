@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/DisasterCity/Generic/Materials/DIS_GEN_ContainerCraneB_Inst.DIS_GEN_ContainerCraneB_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/DisasterCity/Generic/Materials/DIS_GEN_ContainerCraneB_Inst.DIS_GEN_ContainerCraneB_Inst'
+        MaterialSlotName = M01_GEN_ContainerCraneA_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 869.577, 1551.98, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=1.87395, Y=213.912, Z=306.5 }
+    BoxExtent = { X=146.563, Y=547.915, Z=307.616 }
+    SphereRadius = 557.479
+}

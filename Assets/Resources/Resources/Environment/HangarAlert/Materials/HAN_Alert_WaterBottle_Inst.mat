@@ -1,0 +1,12 @@
+Diffuse=HAN_Alert_Waterbottle_D
+Normal=NIM_CarrierBridgeRailings_N
+Other[0]=HAN_Alert_Waterbottle_MREC
+Other[1]=NIM_CarrierBridgeRailings_D
+Other[2]=NIM_CarrierBridgeFloorB_MREC
+Other[3]=black_M
+Other[4]=checkerMask
+Other[5]=checkerMaskLinear
+Other[6]=DefaultMREC_Linear
+Other[7]=DefaultNormal
+Other[8]=greyscale_radialGrad
+Other[9]=Default_000_D

@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_RepublicPlaza_MI.M01_LAN_RepublicPlaza_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_RepublicPlaza_MI.M01_LAN_RepublicPlaza_MI'
+        MaterialSlotName = M01_LAN_RepublicPlaza_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1666.26, 2489.33, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-0.0447693, Y=0.304169, Z=886.507 }
+    BoxExtent = { X=407.62, Y=399.85, Z=886.507 }
+    SphereRadius = 1045.12
+}

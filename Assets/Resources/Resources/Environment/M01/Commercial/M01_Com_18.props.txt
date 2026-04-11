@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SuntecCityMall_01_MI.M01_LAN_SuntecCityMall_01_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_SuntecCityMall_01_MI.M01_LAN_SuntecCityMall_01_MI'
+        MaterialSlotName = M01_LAN_SuntecCityMall_01_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 2364.28, 1420.13, 1349.87, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0, Y=-1.52588e-05, Z=346.822 }
+    BoxExtent = { X=285.426, Y=148.208, Z=346.822 }
+    SphereRadius = 472.989
+}

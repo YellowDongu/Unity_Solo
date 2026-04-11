@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/NimitzHangar/Materials/NIM_Hangar_PropsA_Inst.NIM_Hangar_PropsA_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/NimitzHangar/Materials/NIM_Hangar_PropsA_Inst.NIM_Hangar_PropsA_Inst'
+        MaterialSlotName = NIM_Hangar_PropsA_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 53.6189, 8.18716, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0.902859, Y=0.0202309, Z=-0.000734329 }
+    BoxExtent = { X=0.902859, Y=1.38266, Z=5.14774 }
+    SphereRadius = 5.30225
+}

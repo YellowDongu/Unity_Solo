@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_CliffordCentre_MI.M01_LAN_CliffordCentre_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_CliffordCentre_MI.M01_LAN_CliffordCentre_MI'
+        MaterialSlotName = M01_LAN_CliffordCentre_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1347.85, 2421.86, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-32.3616, Y=-96.1894, Z=475 }
+    BoxExtent = { X=622.071, Y=285.42, Z=475 }
+    SphereRadius = 815.299
+}

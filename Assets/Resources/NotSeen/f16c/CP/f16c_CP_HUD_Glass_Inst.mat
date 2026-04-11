@@ -1,0 +1,11 @@
+Normal=Glass_N
+Cube=DefaultDiffuse
+Other[0]=aircraft_CP_Glass_MREC
+Other[1]=PM01_TC00_Tex
+Other[2]=checkerMask
+Other[3]=DefaultNormal
+Other[4]=f18f_Canopy_D
+Other[5]=TC_MaterialTexture_AboveClouds
+Other[6]=TC_MaterialTexture_BelowClouds
+Other[7]=TC_MaterialTexture_InClouds
+Other[8]=TC_MaterialTexture_NoBlending

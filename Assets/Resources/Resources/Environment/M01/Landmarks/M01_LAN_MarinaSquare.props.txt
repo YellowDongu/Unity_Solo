@@ -1,0 +1,50 @@
+Materials[3] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_MarinaSquare_02_MI.M01_LAN_MarinaSquare_02_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_MarinaSquare_01_MI.M01_LAN_MarinaSquare_01_MI'
+    Materials[2] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_MarinaSquareLOD_MI.M01_LAN_MarinaSquareLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[3] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_MarinaSquare_02_MI.M01_LAN_MarinaSquare_02_MI'
+        MaterialSlotName = M01_LAN_MarinaSquare_02_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1020.96, 5655.75, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_MarinaSquare_01_MI.M01_LAN_MarinaSquare_01_MI'
+        MaterialSlotName = M01_LAN_MarinaSquare_01_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1928.03, 5647.64, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[2] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_MarinaSquareLOD_MI.M01_LAN_MarinaSquareLOD_MI'
+        MaterialSlotName = M01_LAN_MarinaSquareLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 4435.16, 4634.6, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-538.353, Y=-207.289, Z=200.647 }
+    BoxExtent = { X=1714.49, Y=1461.33, Z=243.442 }
+    SphereRadius = 2112.99
+}

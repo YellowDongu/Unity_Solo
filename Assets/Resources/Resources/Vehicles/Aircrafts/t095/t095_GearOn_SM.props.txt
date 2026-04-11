@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Vehicles/Aircraft/t095/01/t095_01_Inst.t095_01_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Vehicles/Aircraft/t095/01/t095_01_Inst.t095_01_Inst'
+        MaterialSlotName = t095_01_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 236.199, 175.587, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=85.8603, Y=0, Z=-20.853 }
+    BoxExtent = { X=87.3461, Y=69.4241, Z=22.0009 }
+    SphereRadius = 111.183
+}

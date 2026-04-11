@@ -1,0 +1,114 @@
+Parent = MaterialInstanceConstant'/Game/Environment/SouthernIsland/Airbase/Materials/SOU_AIR_BaseRoadRunwayA_Inst.SOU_AIR_BaseRoadRunwayA_Inst'
+ScalarParameterValues[1] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = 0
+        ParameterName = RefractionDepthBias
+    }
+}
+TextureParameterValues[6] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_AirBase_RunwayA_M.SOU_AirBase_RunwayA_M'
+        ParameterName = Terrain_Mask
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_Airbase_BaseRoadTireMark_D.SOU_Airbase_BaseRoadTireMark_D'
+        ParameterName = B_Detail_Map
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_Airbase_BaseRoadClean_N.SOU_Airbase_BaseRoadClean_N'
+        ParameterName = B_Normal_Map
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_Airbase_BaseRoadCrack_D.SOU_Airbase_BaseRoadCrack_D'
+        ParameterName = G_Detail_Map
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_Airbase_BaseRoadCrack_N.SOU_Airbase_BaseRoadCrack_N'
+        ParameterName = G_Normal_Map
+    }
+    TextureParameterValues[5] =
+    {
+        ParameterInfo = { Name=None }
+        ParameterValue = Texture2D'/Game/Environment/SouthernIsland/Airbase/Textures/SOU_AirBase_RunwayC_D.SOU_AirBase_RunwayC_D'
+        ParameterName = Albedo
+    }
+}
+VectorParameterValues[0] = {}
+BasePropertyOverrides =
+{
+    bOverride_BlendMode = true
+    BlendMode = BLEND_Opaque (0)
+    bOverride_TwoSided = false
+    TwoSided = false
+    bOverride_OpacityMaskClipValue = false
+    OpacityMaskClipValue = 0
+}
+StaticParameters =
+{
+    StaticSwitchParameters[0] = {}
+    StaticComponentMaskParameters[0] = {}
+    TerrainLayerWeightParameters[0] = {}
+    MaterialLayersParameters[0] = {}
+}
+RuntimeVirtualTextureParameterValues[0] = {}
+FontParameterValues[0] = {}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[6] =
+{
+    TextureStreamingData[0] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = SOU_Airbase_BaseRoadCrack_N
+    }
+    TextureStreamingData[1] =
+    {
+        SamplingScale = 15
+        UVChannelIndex = 0
+        TextureName = SOU_Airbase_BaseRoadTireMark_D
+    }
+    TextureStreamingData[2] =
+    {
+        SamplingScale = 30
+        UVChannelIndex = 0
+        TextureName = SOU_Airbase_BaseRoadTireMark_D
+    }
+    TextureStreamingData[3] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = SOU_AirBase_RunwayA_M
+    }
+    TextureStreamingData[4] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 0
+        TextureName = SOU_AirBase_RunwayC_D
+    }
+    TextureStreamingData[5] =
+    {
+        SamplingScale = 1
+        UVChannelIndex = 1
+        TextureName = SOU_Airbase_RunwayMark_D
+    }
+}

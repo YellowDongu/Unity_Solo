@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/HangarAlert/Materials/HAN_Alert_CylinderB_Inst.HAN_Alert_CylinderB_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/HangarAlert/Materials/HAN_Alert_CylinderB_Inst.HAN_Alert_CylinderB_Inst'
+        MaterialSlotName = HAN_Alert_CylinderB_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 8.16867, 20.3902, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0, Y=0, Z=5.0194 }
+    BoxExtent = { X=1.9991, Y=2.72184, Z=5.02057 }
+    SphereRadius = 5.74601
+}

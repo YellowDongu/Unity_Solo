@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = Material3'/Game/VFX/Vehicles/Weapon/TLS/material/m_TLS_01.m_TLS_01'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = Material3'/Game/VFX/Vehicles/Weapon/TLS/material/m_TLS_01.m_TLS_01'
+        MaterialSlotName = lambert1
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 56.0154, 30.806, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=-21.8341, Y=0.107962, Z=-0.149201 }
+    BoxExtent = { X=21.8341, Y=1.84336, Z=1.7967 }
+    SphereRadius = 21.9361
+}

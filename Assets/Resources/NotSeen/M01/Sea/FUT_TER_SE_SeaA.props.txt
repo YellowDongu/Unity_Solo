@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Sea/Materials/M01_OpenSea_MI.M01_OpenSea_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Sea/Materials/M01_OpenSea_MI.M01_OpenSea_MI'
+        MaterialSlotName = WorldGridMaterial
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 99974.7, 0, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=50000, Y=-50000, Z=3.06244e-12 }
+    BoxExtent = { X=50000, Y=50000, Z=3.06244e-12 }
+    SphereRadius = 70710.7
+}

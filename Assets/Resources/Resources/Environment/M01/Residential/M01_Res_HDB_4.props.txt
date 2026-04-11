@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Residential/Materials/HDB_White01_MI.HDB_White01_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Residential/Materials/FUT_HDBAntenna_Inst.FUT_HDBAntenna_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Residential/Materials/HDB_White01_MI.HDB_White01_MI'
+        MaterialSlotName = HDB_White01_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 2534.83, 2140.31, 1818.63, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Residential/Materials/FUT_HDBAntenna_Inst.FUT_HDBAntenna_Inst'
+        MaterialSlotName = FUT_HDBAntenna_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 119.989, 1995.35, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=81.9178, Y=-34.1136, Z=555.037 }
+    BoxExtent = { X=134.897, Y=187.766, Z=554.373 }
+    SphereRadius = 600.652
+}

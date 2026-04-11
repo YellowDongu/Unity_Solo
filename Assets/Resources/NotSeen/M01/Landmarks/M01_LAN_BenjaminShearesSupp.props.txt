@@ -1,0 +1,26 @@
+Materials[1] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BenjaminShearesBridge_MI.M01_LAN_BenjaminShearesBridge_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[1] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_BenjaminShearesBridge_MI.M01_LAN_BenjaminShearesBridge_MI'
+        MaterialSlotName = M01_LAN_BenjaminShearesBridge_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1003.11, 776.269, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0.239746, Y=0.225342, Z=147.474 }
+    BoxExtent = { X=101.63, Y=199.478, Z=147.474 }
+    SphereRadius = 262.815
+}

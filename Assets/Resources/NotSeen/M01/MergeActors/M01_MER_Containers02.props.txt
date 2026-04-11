@@ -1,0 +1,62 @@
+Materials[4] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V1_Inst.Environment_S_Ctsl_V1_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V2_Inst.Environment_S_Ctsl_V2_Inst'
+    Materials[2] = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V3_Inst.Environment_S_Ctsl_V3_Inst'
+    Materials[3] = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V4_Inst.Environment_S_Ctsl_V4_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[4] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V1_Inst.Environment_S_Ctsl_V1_Inst'
+        MaterialSlotName = Environment_S_Ctsl_V1_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1274, 13024.4, 16701.7, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V2_Inst.Environment_S_Ctsl_V2_Inst'
+        MaterialSlotName = Environment_S_Ctsl_V2_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1333.32, 13082.1, 16639.3, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[2] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V3_Inst.Environment_S_Ctsl_V3_Inst'
+        MaterialSlotName = Environment_S_Ctsl_V3_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1249.57, 12897.6, 16623.3, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[3] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/Common/Prop/Materials/Environment_S_Ctsl_V4_Inst.Environment_S_Ctsl_V4_Inst'
+        MaterialSlotName = Environment_S_Ctsl_V4_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1385.67, 13112.9, 16649.5, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=4687.19, Y=-1820.94, Z=38.3596 }
+    BoxExtent = { X=5191.6, Y=1851.23, Z=40.4102 }
+    SphereRadius = 5431.59
+}

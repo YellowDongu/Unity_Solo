@@ -1,0 +1,10 @@
+Diffuse=f14d_01a_D
+Normal=f14d_00_N
+Other[0]=f14d_01_MREC
+Other[1]=black_M
+Other[2]=checkerMask
+Other[3]=checkerMaskLinear
+Other[4]=DefaultMREC_Linear
+Other[5]=DefaultNormal
+Other[6]=greyscale_radialGrad
+Other[7]=Default_000_D

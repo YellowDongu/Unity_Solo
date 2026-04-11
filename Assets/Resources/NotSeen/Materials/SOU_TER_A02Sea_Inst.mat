@@ -1,0 +1,16 @@
+Diffuse=SOU_TER_A02_N
+Normal=SOU_TER_A02_N
+Other[0]=SOU_TER_A02_M
+Other[1]=SOU_TER_A02_D
+Other[2]=Grass_B_Detail_D
+Other[3]=Grass_F_Detail_N
+Other[4]=Ground_Detail_SoilSandy_D
+Other[5]=Ground_Detail_SoilSandy_N
+Other[6]=Ground_Detail_RockGrassC
+Other[7]=Ground_Detail_RockGrassB_N
+Other[8]=Sea_OpenSeaDark_D
+Other[9]=Ground_SoilSand_Grey_D
+Other[10]=Rock_CliffD_N
+Other[11]=Alps_FrozenRiver_N
+Other[12]=Com_M
+Other[13]=DefaultTerrain_D

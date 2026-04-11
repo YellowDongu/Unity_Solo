@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_AsianCivilisationMuseum_MI.M01_LAN_AsianCivilisationMuseum_MI'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_AsianCivilisationMuseumLOD_MI.M01_LAN_AsianCivilisationMuseumLOD_MI'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_AsianCivilisationMuseum_MI.M01_LAN_AsianCivilisationMuseum_MI'
+        MaterialSlotName = M01_LAN_AsianCivilisationMuseum_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 501.742, 1986.6, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/M01/Landmarks/Materials/M01_LAN_AsianCivilisationMuseumLOD_MI.M01_LAN_AsianCivilisationMuseumLOD_MI'
+        MaterialSlotName = M01_LAN_AsianCivilisationMuseumLOD_MI
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 1819.8, 1688.96, 0, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=7.64069, Y=18.9766, Z=123.608 }
+    BoxExtent = { X=611.891, Y=650.088, Z=123.837 }
+    SphereRadius = 719.68
+}

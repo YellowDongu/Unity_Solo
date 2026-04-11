@@ -1,0 +1,38 @@
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'/Game/Environment/HangarAlert/Materials/HAN_Alert_FloorMarking_Inst.HAN_Alert_FloorMarking_Inst'
+    Materials[1] = MaterialInstanceConstant'/Game/Environment/HangarAlert/Materials/HAN_Alert_FloorMarkingDirty_Inst.HAN_Alert_FloorMarkingDirty_Inst'
+}
+SourceModels[0] = {}
+StaticMaterials[2] =
+{
+    StaticMaterials[0] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/HangarAlert/Materials/HAN_Alert_FloorMarking_Inst.HAN_Alert_FloorMarking_Inst'
+        MaterialSlotName = HAN_Alert_FloorMarking_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 121.929, 1533.09, 364.291, 0, 0, 0, 0, 0 }
+        }
+    }
+    StaticMaterials[1] =
+    {
+        MaterialInterface = MaterialInstanceConstant'/Game/Environment/HangarAlert/Materials/HAN_Alert_FloorMarkingDirty_Inst.HAN_Alert_FloorMarkingDirty_Inst'
+        MaterialSlotName = HAN_Alert_FloorMarkingDirty_Inst
+        UVChannelData =
+        {
+            bInitialized = true
+            bOverrideDensities = false
+            LocalUVDensities[8] = { 121.95, 2296.24, 364.106, 0, 0, 0, 0, 0 }
+        }
+    }
+}
+Sockets[0] = {}
+ExtendedBounds =
+{
+    Origin = { X=0.000228882, Y=0, Z=-6.374e-13 }
+    BoxExtent = { X=206.528, Y=157.5, Z=1.04363e-13 }
+    SphereRadius = 259.73
+}
