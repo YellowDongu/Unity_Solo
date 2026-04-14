@@ -18,7 +18,7 @@ public class FireControlSystem : MonoBehaviour
     {
         standardCos = Mathf.Cos(standard[0].LockAngle() * Mathf.Deg2Rad);
         refreshTimer = -1.0f;
-        gunRPM /= 3600.0f;
+        gunRPM = 1.0f / (gunRPM / 60.0f);
     }
 
     public void SetSpecial(int value)
@@ -150,42 +150,40 @@ public class FireControlSystem : MonoBehaviour
         GameMaster.GetInstance().GetFactory().Shoot(gameObject.transform.position + gameObject.transform.forward * 5.0f, gameObject.transform.rotation, 600.0f, vehicle);
     }
 
-    public void Missile()
+    public bool Missile()
     {
         if (targets.Count == 0)
-            return;
+            return false;
 
         if (selectSpecial)
         {
-            int pointerA = 0, pointerB = 0;
+            int pointer = 0, shootCount = 0;
 
-            for (int i = 0; i < multiShoot; i++)
+            for (int i = 0; i < maxCount; i++)
             {
-                if (lockStatus[pointerB] >= 0.001f)
+                if (lockStatus[pointer] >= 0.001f)
                 {
-                    pointerB++;
-                    if (pointerB >= currentTargets.Count)
+                    pointer++;
+                    if (pointer >= currentTargets.Count)
                         break;
                     i--;
                     continue;
                 }
 
-                if (specialSlot[special].slot[pointerA].Shoot(currentTargets[pointerB]))
+                if (specialSlot[special].slot[i].Shoot(currentTargets[pointer]))
                 {
-                    pointerB++;
-                    if (pointerB >= currentTargets.Count)
+                    shootCount++;
+                    pointer++;
+                    if (pointer >= currentTargets.Count || shootCount >= multiShoot)
                         break;
                 }
 
-                pointerA++;
-                if (pointerA >= maxCount)
-                    break;
             }
         }
         else
         {
             if (lockStatus[0] >= 0.001f)
-                return;
+                return false;
 
             foreach (StandardMissile missile in standard)
             {
@@ -193,6 +191,7 @@ public class FireControlSystem : MonoBehaviour
                     break;
             }
         }
+        return true;
     }
 
     public void ChangeTarget(bool forceRefresh = false)
@@ -293,7 +292,7 @@ public class FireControlSystem : MonoBehaviour
 
         targets.Sort((a, b) => a.Item1.CompareTo(b.Item1));
 
-        for (int i = 0; i < maxCount && i < targets.Count; i++)
+        for (int i = 0; i < multiShoot && i < targets.Count; i++)
         {
             currentTargets.Add(targets[i].Item2);
             lockStatus.Add(1.0f);
@@ -318,6 +317,7 @@ public class FireControlSystem : MonoBehaviour
     //===========================================
     public void SetTeam(int value) { team = value; }
     public bool GetSelectState() { return selectSpecial; }
+    public int GetMissileAimLayer() { return selectSpecial ? standard[0].AimLayer() : specialSlot[special].slot[0].AimLayer(); }
     public ReadOnlyCollection<Vehicle> Targets => currentTargets.AsReadOnly();
     public ReadOnlyCollection<float> LockStatus => lockStatus.AsReadOnly();
     public GaugeUI.GaugeUIType NeededUIStandard() { return standard[0].NeededUIType(); }

@@ -51,8 +51,8 @@ MonoBehaviour:
   damage: 210
   targetCount: 1
   coolTime: 10
-  maxRange: 600
-  velocity: 750
+  maxRange: 6000
+  velocity: 350
   rotationSpeed: 150
   lockAngle: 25
   lockSpeed: 0.5

@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
     {
         if(timer < 0.0f || gameObject.transform.position.y < 0.0f)
         {
-            onRelease?.Invoke(this);
+            Release();
             return;
         }
 
@@ -46,7 +46,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == terrainLayer)
-            onRelease?.Invoke(this);
+            Release();
         else if (collision.gameObject.layer == targetLayer)
         {
             Aircraft aircraft = collision.gameObject.GetComponent<Aircraft>();
@@ -56,13 +56,23 @@ public class Bullet : MonoBehaviour
             aircraft.TakeDamage(5);
 
             shooted = null;
-            onRelease?.Invoke(this);
+            Release();
         }
 
+    }
+
+    public void Release()
+    {
+        if (!gameObject.activeInHierarchy)
+            return;
+        timer = 5.0f;
+        onRelease?.Invoke(this);
     }
     //===========================================
     // Variable & GetSet Methods
     //===========================================
+
+    public void InjectReleaseMethod(Action<Bullet> method) { onRelease = method; }
 
     private float timer;
     private int layerMask;

@@ -51,12 +51,13 @@ MonoBehaviour:
   damage: 70
   targetCount: 1
   coolTime: 3.5
-  maxRange: 550
+  maxRange: 5000
   velocity: 200
   rotationSpeed: 50
   lockAngle: 45
   lockSpeed: 1
   multiShoot: 1
+  neededUI: 0
   mesh: {fileID: 7631640164483355924}
   rigidbody: {fileID: 7387634235143444926}
   trail: {fileID: 6734923409599877341}

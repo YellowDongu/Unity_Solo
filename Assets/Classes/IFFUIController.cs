@@ -9,19 +9,6 @@ public class IFFUIController : MonoBehaviour
     //===========================================
     private void Awake()
     {
-        //foreach (var prefab in prefabs)
-        //{
-        //    ObjectPool<GameObject> newPool = new ObjectPool<GameObject>(
-        //        createFunc: () => Instantiate(prefab, screen.transform),
-        //        actionOnGet: obj => obj.SetActive(true),
-        //        actionOnRelease: obj => obj.SetActive(false),
-        //        actionOnDestroy: obj => Destroy(obj),
-        //        collectionCheck: false,
-        //        defaultCapacity: 10,
-        //        maxSize: 100
-        //    );
-        //    pool.Add(""), (prefab, newPool));
-        //}
         ObjectPool<IFFHud> newPool = new ObjectPool<IFFHud>(
             createFunc: () => Instantiate(prefabs[0], screen.transform).GetComponent<IFFHud>(),
             actionOnGet: obj => obj.gameObject.SetActive(true),
@@ -31,17 +18,18 @@ public class IFFUIController : MonoBehaviour
             defaultCapacity: 10,
             maxSize: 100
         );
-        changeColor += ColorChange;
+
+        //changeColor += ColorChange;
         pool.Add("Default", (prefabs[0], newPool));
     }
 
 
-    void Start()
-    {
-        HUDController controller = gameObject.GetComponent<HUDController>();
-        controller.changeColor += (color) => changeColor?.Invoke(color);
-        changeColor?.Invoke(controller.GetColor());
-    }
+    //void Start()
+    //{
+    //    HUDController controller = gameObject.GetComponent<HUDController>();
+    //    controller.changeColor += (color) => changeColor?.Invoke(color);
+    //    changeColor?.Invoke(controller.GetColor());
+    //}
 
     //===========================================
     // Methods
@@ -55,14 +43,14 @@ public class IFFUIController : MonoBehaviour
         hud.SetTarget(select);
     }
 
-    public IFFHud AttachIFF(Vehicle _target, Player _player)
+    public IFFHud AttachIFF(Vehicle _target, Player _player, Aircraft playerAircraft)
     {
         if (targets.ContainsKey(_target))
             return null;
 
         ObjectPool<IFFHud> targetPool = pool["Default"].pool;
         IFFHud hud = targetPool.Get();
-        hud.Attach(_target, _player);
+        hud.Attach(_target, _player, playerAircraft);
         targets.Add(_target, hud);
         hud.SetMaxDistance(maxDistance * 1.1f);
         //changeColor += hud.ChangeColor;
@@ -74,15 +62,14 @@ public class IFFUIController : MonoBehaviour
     //===========================================
     // Variable & GetSet Methods
     //===========================================
-    private void ColorChange(Color _color) { color = _color; }
-    private void ReleaseMethod(IFFHud target) { /*changeColor -= target.ChangeColor;*/ targets.Remove(target.target); }
+    //private void ColorChange(Color _color) { color = _color; }
+    private void ReleaseMethod(IFFHud target) { /*changeColor -= target.ChangeColor;*/ targets.Remove(target.Target); }
     public void SetMaxDistance(float value) { maxDistance = value; }
     public IFFHud GetIFF(Vehicle target) { if(targets.TryGetValue(target, out IFFHud result)) return result; return null; }
 
-    public delegate void ChangeColor(Color color);
-    public event ChangeColor changeColor;
+    //public delegate void ChangeColor(Color color);
+    //public event ChangeColor changeColor;
 
-    //private Dictionary<string, (GameObject prefab, ObjectPool<GameObject> pool)> pool = new Dictionary<string, (GameObject prefab, ObjectPool<GameObject> pool)>();
     private Dictionary<string, (GameObject prefab, ObjectPool<IFFHud> pool)> pool = new Dictionary<string, (GameObject prefab, ObjectPool<IFFHud> pool)>();
 
     Color color;

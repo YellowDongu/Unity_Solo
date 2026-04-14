@@ -6,6 +6,11 @@ using UnityEngine.Pool;
 
 public class SemiActiveRaderMissile : Missile
 {
+    private void Awake()
+    {
+        maxRange /= 5.0f;
+    }
+
     //===========================================
     // FrameCycle Methods
     //===========================================
@@ -32,31 +37,34 @@ public class SemiActiveRaderMissile : Missile
         flyDistance -= distance;
         rigidbody.MovePosition(gameObject.transform.position + gameObject.transform.forward * distance);
 
-        if (target == null || lockStatus[index] <= 0.0f)
+        if (target == null || lockStatus[index] > 0.0f)
         {
             rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(gameObject.transform.eulerAngles.x, 0.0f, 0.0f), rotationSpeed * Time.deltaTime));
             return;
         }
 
-        if (target.IsDestroyed() || target.gameObject.activeInHierarchy)
+        if (target.IsDestroyed() || !target.gameObject.activeInHierarchy)
         {
             target = null;
             return;
         }
 
         Vector3 vector = target.transform.position - gameObject.transform.position;
-        if (vector.sqrMagnitude < 9.0f)
+        SendDistance(vector.sqrMagnitude);
+        if (vector.sqrMagnitude < 100.0f)
         {
             GameMaster.GetInstance().GetFactory().Explosion(gameObject.transform.position, 2.5f);
-            targetRader.TraceEnd(this);
+            if (targetRader != null)
+                targetRader.TraceEnd(this);
             target.TakeDamage(damage);
             Release();
             return;
         }
         //float fps = 1.0f / Time.deltaTime;
-        Vector3 vectorDelta = (target.transform.position - PreviousPosition) / Time.deltaTime;
+        Vector3 vectorDelta = PreviousPosition - target.transform.position;
         PreviousPosition = target.transform.position;
-        Vector3 interceptPosition = target.transform.position + (vectorDelta * Mathf.Sqrt(vector.sqrMagnitude / (velocity * velocity)));
+        //Vector3 interceptPosition = target.transform.position + (vectorDelta * (Mathf.Sqrt(vector.sqrMagnitude / (velocity * velocity)) / 50.0f));
+        Vector3 interceptPosition = target.transform.position + (vectorDelta * Mathf.Clamp(Mathf.Sqrt(vector.sqrMagnitude) / 5.0f, -25.0f, 25.0f));
         interceptPosition -= gameObject.transform.position;
 
         Quaternion targetRotation = Quaternion.LookRotation(interceptPosition);
@@ -80,6 +88,7 @@ public class SemiActiveRaderMissile : Missile
     {
         isProjectile = false;
         mesh.SetActive(false);
+        ReleaseEvent();
         StartCoroutine(DelayRelease());
     }
 
@@ -106,6 +115,5 @@ public class SemiActiveRaderMissile : Missile
     private Vector3 PreviousPosition;
     private ReadOnlyCollection<float> lockStatus;
     static private ObjectPool<SemiActiveRaderMissile> objectPool = null;
-    [SerializeField] private TrailRenderer trail;
     [SerializeField] private FireControlSystem fcs;
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AircraftAnimator : MonoBehaviour
+public abstract class AircraftAnimator : MonoBehaviour
 {
     //===========================================
     // InsideClass
@@ -150,6 +150,8 @@ public class AircraftAnimator : MonoBehaviour
         newInstance.Initialize((isBody ? bodyAnimator : gearAnimator), variableName, clipName, layerName);
         return newInstance;
     }
+
+    public abstract void Initialize(bool isGearDown);
 
     //===========================================
     // Variable & GetSet Methods

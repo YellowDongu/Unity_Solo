@@ -43,7 +43,7 @@ public class SelectAircraft : MonoBehaviour
         foreach (AircraftData item in data)
         {
             Aircraft newInstnace = factory.Create(item.id) as Aircraft;
-
+            newInstnace.StandingSet();
             MonoBehaviour[] behaviours = newInstnace.gameObject.GetComponents<MonoBehaviour>();
             foreach (MonoBehaviour component in behaviours)
                 component.enabled = false;
@@ -59,6 +59,9 @@ public class SelectAircraft : MonoBehaviour
         }
 
         vehicleSelectedHighlight.gameObject.SetActive(false);
+
+        vehicleSelectPanel.SetActive(true);
+        weaponSelectPanel.SetActive(false);
     }
 
     //===========================================
@@ -78,30 +81,26 @@ public class SelectAircraft : MonoBehaviour
         {
             case 0:
                 if (Keyboard.current.sKey.wasPressedThisFrame || Keyboard.current.downArrowKey.wasPressedThisFrame)
-                    ChangeSelect(selected + 1);
+                    ChangeSelectVehicle(selected + 1);
                 else if (Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame)
-                    ChangeSelect(selected - 1);
+                    ChangeSelectVehicle(selected - 1);
                 if (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame)
                 {
                     if (selectedList[selected] != VehicleID.None && selectedList[selected] != VehicleID.END)
                     {
-                        ReserveSpawn();
-                        GameMaster.GetInstance().GetSceneChanger().ChangeScene(nextScene, false);
+                        ChangePhase(1);
                     }
                 }
                 break;
             case 1:
                 if (Keyboard.current.sKey.wasPressedThisFrame || Keyboard.current.downArrowKey.wasPressedThisFrame)
-                    ChangeSelect(selected + 1);
+                    ChangeSelectWeapon(weaponSelected + 1);
                 else if (Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame)
-                    ChangeSelect(selected - 1);
+                    ChangeSelectWeapon(weaponSelected - 1);
                 if (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame)
                 {
-                    if (selectedList[selected] != VehicleID.None && selectedList[selected] != VehicleID.END)
-                    {
                         ReserveSpawn();
                         GameMaster.GetInstance().GetSceneChanger().ChangeScene(nextScene, false);
-                    }
                 }
                 break;
             default:
@@ -111,7 +110,30 @@ public class SelectAircraft : MonoBehaviour
 
     }
 
-    public void ChangeSelect(int index)
+    public void ChangePhase(int next)
+    {
+        switch (next)
+        {
+            case 0:
+                phase = next;
+                vehicleSelectPanel.SetActive(true);
+                weaponSelectPanel.SetActive(false);
+                break;
+            case 1:
+                phase = next;
+                vehicleSelectPanel.SetActive(false);
+                weaponSelectPanel.SetActive(true);
+                break;
+            default:
+                phase = 0;
+                vehicleSelectPanel.SetActive(true);
+                weaponSelectPanel.SetActive(false);
+                break;
+        }
+    }
+
+
+    public void ChangeSelectVehicle(int index)
     {
         if (index <= 0)
             index = selectedList.Count - 1;
@@ -137,6 +159,20 @@ public class SelectAircraft : MonoBehaviour
         }
     }
 
+    public void ChangeSelectWeapon(int index)
+    {
+        if (index < 0)
+            index = 1;
+        if (index > 1)
+            index = 0;
+
+        weaponSelected = index;
+
+        weaponSelectedHighlight.gameObject.SetActive(true);
+        weaponSelectedHighlight.SetParent(weaponSelectPod.transform.GetChild(weaponSelected).transform);
+        weaponSelectedHighlight.anchoredPosition = new Vector2(weaponSelectedHighlight.anchoredPosition.x, 0.0f);
+    }
+
     public void ReserveSpawn()
     {
         PlayerSpawnData newData;
@@ -149,15 +185,17 @@ public class SelectAircraft : MonoBehaviour
     // Variable & GetSet Methods
     //===========================================
     private int phase = 0;
-    private int selected = 0, weaponSelected = 1;
+    private int selected = 0, weaponSelected = 0;
     private GameObject current;
     private List<VehicleID> selectedList;
     private Dictionary<VehicleID, GameObject> preLoaded = new Dictionary<VehicleID, GameObject>((int)VehicleID.END);
     [SerializeField] private string nextScene;
     [SerializeField] private AircraftData[] data;
 
+    [SerializeField] private GameObject vehicleSelectPanel;
     [SerializeField] private GameObject vehicleSelectPod;
     [SerializeField] private RectTransform vehicleSelectedHighlight;
+    [SerializeField] private GameObject weaponSelectPanel;
     [SerializeField] private GameObject weaponSelectPod;
     [SerializeField] private RectTransform weaponSelectedHighlight;
 }

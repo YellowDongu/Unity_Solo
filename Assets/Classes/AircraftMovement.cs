@@ -21,7 +21,7 @@ public class AircraftMovement : MonoBehaviour
         dragFactor.x = 0.25f;
         dragFactor.y = 0.0001f;
         dragFactor.z = 0.0001f;
-
+        layerMask = LayerMask.NameToLayer("Terrain");
     }
 
     //===========================================
@@ -55,13 +55,13 @@ public class AircraftMovement : MonoBehaviour
         //rotationDelta.y = Mathf.Clamp(rotationDelta.y, -rotationSpeed.y, rotationSpeed.y);
         //rotationDelta.z = Mathf.Clamp(rotationDelta.z, -rotationSpeed.z, rotationSpeed.z);
 
-        rotationDelta.x = Mathf.Clamp(rotationDelta.x + (control.yoke.z * rotationSpeed.z /* * rotationSpeed.z*/ * 3.0f * Time.deltaTime - rotationDelta.x /* * rotationSpeed.z * 0.5f*/ * 1.5f * Time.deltaTime), -rotationSpeed.x, rotationSpeed.x);
-        rotationDelta.y = Mathf.Clamp(rotationDelta.y + (control.yoke.y * rotationSpeed.y /* * rotationSpeed.y*/ * 3.0f * Time.deltaTime - rotationDelta.y /* * rotationSpeed.y * 0.5f*/ * 1.5f * Time.deltaTime), -rotationSpeed.y, rotationSpeed.y);
-        rotationDelta.z = Mathf.Clamp(rotationDelta.z + (control.yoke.x * rotationSpeed.x /* * rotationSpeed.x*/ * 3.0f * Time.deltaTime - rotationDelta.z /* * rotationSpeed.x * 0.5f*/ * 1.5f * Time.deltaTime), -rotationSpeed.z, rotationSpeed.z);
+        rotationDelta.x = Mathf.Clamp(rotationDelta.x + (control.yoke.z * rotationSpeed.z /* * rotationSpeed.z*/ * 5.0f * Time.deltaTime - rotationDelta.x /* * rotationSpeed.z * 0.5f*/ * 2.5f * Time.deltaTime), -rotationSpeed.x, rotationSpeed.x);
+        rotationDelta.y = Mathf.Clamp(rotationDelta.y + (control.yoke.y * rotationSpeed.y /* * rotationSpeed.y*/ * 5.0f * Time.deltaTime - rotationDelta.y /* * rotationSpeed.y * 0.5f*/ * 2.5f * Time.deltaTime), -rotationSpeed.y, rotationSpeed.y);
+        rotationDelta.z = Mathf.Clamp(rotationDelta.z + (control.yoke.x * rotationSpeed.x /* * rotationSpeed.x*/ * 5.0f * Time.deltaTime - rotationDelta.z /* * rotationSpeed.x * 0.5f*/ * 2.5f * Time.deltaTime), -rotationSpeed.z, rotationSpeed.z);
 
-        if (Mathf.Abs(rotationDelta.x) < 1.0f) rotationDelta.x = 0.0f;
-        if (Mathf.Abs(rotationDelta.y) < 1.0f) rotationDelta.y = 0.0f;
-        if (Mathf.Abs(rotationDelta.z) < 1.0f) rotationDelta.z = 0.0f;
+        if (Mathf.Abs(rotationDelta.x) < 0.5f) rotationDelta.x = 0.0f;
+        if (Mathf.Abs(rotationDelta.y) < 0.5f) rotationDelta.y = 0.0f;
+        if (Mathf.Abs(rotationDelta.z) < 0.5f) rotationDelta.z = 0.0f;
 
         rigidbody.MoveRotation(transform.rotation * Quaternion.Euler(rotationDelta * Time.deltaTime * control.HighGTurn));
         //transform.rotation *= Quaternion.Euler(rotationDelta);
@@ -82,22 +82,78 @@ public class AircraftMovement : MonoBehaviour
 
         return min + (max - min) * ratio;
     }
-
     public void VelocityCalculation()
     {
-        //float rotationFactor = 1.0f + (yoke.x != 0 ? dragFactor.x : 0.0f) + (yoke.y != 0 ? dragFactor.y : 0.0f) + (yoke.z != 0 ? dragFactor.z : 0.0f);
-        float rotationFactor = control.yoke.x != 0 ? dragFactor.x + 1.0f : 1.0f;
-        float thrust = enginePower * (control.throttle - 0.2f) + MinSpeed;
-        float drag = MaxSpeed * (1 - (MaxSpeed - control.velocity) / MaxSpeed) * rotationFactor;
+        float rotationFactor = 1.0f + dragFactor.x * Mathf.Abs(control.yoke.x);
+        float throttleInput = Mathf.Max(0f, control.throttle - 0.2f);
+        float thrust = enginePower * throttleInput + MinSpeed;
 
-        if (control.isAirBreakOn)
-            drag *= airbreakPower;
+        float speedRatio = control.velocity / MaxSpeed;
+        float drag = MaxSpeed * (speedRatio * speedRatio) * rotationFactor;
+
+        if (control.isAirBrakeOn)
+            drag *= airbrakePower;
 
         control.velocity += (thrust - drag) * Time.deltaTime;
-
-        //Debug.Log($"thrust{thrust} - drag{drag} * {rotationFactor} => velocity{velocity}");
+        control.velocity = Mathf.Max(0f, control.velocity);
     }
 
+    //public void VelocityCalculation()
+    //{
+    //    //float rotationFactor = 1.0f + (yoke.x != 0 ? dragFactor.x : 0.0f) + (yoke.y != 0 ? dragFactor.y : 0.0f) + (yoke.z != 0 ? dragFactor.z : 0.0f);
+    //    float rotationFactor = control.yoke.x != 0 ? dragFactor.x + 1.0f : 1.0f;
+    //    float thrust = enginePower * (control.throttle - 0.2f) + MinSpeed;
+    //    float drag = MaxSpeed * (1 - (MaxSpeed - control.velocity) / MaxSpeed) * rotationFactor;
+    //
+    //    if (control.isAirBreakOn)
+    //        drag *= airbreakPower;
+    //
+    //    control.velocity += (thrust - drag) * Time.deltaTime;
+    //
+    //    //Debug.Log($"thrust{thrust} - drag{drag} * {rotationFactor} => velocity{velocity}");
+    //}
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (layerMask != other.gameObject.layer)
+            return;
+
+        if (Physics.Raycast(transform.position, gameObject.transform.forward, out RaycastHit hit, 10.0f))
+        {
+            Vector3 normal = hit.normal;
+            if (Vector3.Dot(gameObject.transform.forward, normal) < 0.0f)
+            {
+                Quaternion look = Quaternion.LookRotation(Vector3.Reflect(gameObject.transform.forward, normal));
+                //Vector3 direction = rigidbody.linearVelocity.normalized;
+                //rigidbody.MoveRotation(look);
+                //if (gameObject.transform.forward == direction)
+                transform.rotation = look;
+                rigidbody.MovePosition(gameObject.transform.position + gameObject.transform.forward * hit.distance);
+            }
+        }
+
+    }
+
+    //public void OnTriggerStay(Collider other)
+    //{
+    //    if (layerMask != other.gameObject.layer)
+    //        return;
+    //
+    //    if (Physics.Raycast(transform.position, gameObject.transform.forward, out RaycastHit hit, 10.0f))
+    //    {
+    //        Vector3 normal = hit.normal;
+    //        if (Vector3.Dot(gameObject.transform.forward, normal) < 0.0f)
+    //        {
+    //            Quaternion look = Quaternion.LookRotation(Vector3.Reflect(gameObject.transform.forward, normal)s);
+    //            //Vector3 direction = rigidbody.linearVelocity.normalized;
+    //            //rigidbody.MoveRotation(look);
+    //            //if (gameObject.transform.forward == direction)
+    //            transform.rotation = look;
+    //            rigidbody.MovePosition(gameObject.transform.position + gameObject.transform.forward * hit.distance);
+    //        }
+    //    }
+    //
+    //}
     public void OnCollisionStay(Collision collision)
     {
         Vector3 normal = collision.contacts[0].normal;
@@ -117,14 +173,13 @@ public class AircraftMovement : MonoBehaviour
     public Vector3 GetRotationSpeed() { return rotationSpeed; }
 
 
-    [SerializeField] float MaxSpeed, MinSpeed, enginePower, airbreakPower;
+    [SerializeField] float MaxSpeed, MinSpeed, enginePower, airbrakePower;
+    private int layerMask;
 
-
-    Vector3 force;
+    private Vector3 force;
+    private Vector3 dragFactor = Vector3.one; // 회전 시 감속, 1.0하면 증폭 없음, 1보다 낮으면 오히려 속도 늘어남
     [SerializeField] private Vector3 rotationDelta = Vector3.zero;
     [SerializeField] private Vector3 rotationSpeed = Vector3.one;
-    Vector3 dragFactor = Vector3.one; // 회전 시 감속, 1.0하면 증폭 없음, 1보다 낮으면 오히려 속도 늘어남
-
 
     [SerializeField] public Control control = null;
     [SerializeField] private Rigidbody rigidbody = null;

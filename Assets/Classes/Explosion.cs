@@ -19,7 +19,7 @@ public class Explosion : MonoBehaviour
     public IEnumerator UpdateParticle()
     {
         particleSystem.Play();
-
+        GameMaster.GetInstance().Sound().PlayOnce("Explosion", gameObject.transform.position);
         while (true)
         {
             if (!particleSystem.IsAlive())

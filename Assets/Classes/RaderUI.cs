@@ -48,6 +48,7 @@ public class RaderUI : MonoBehaviour
         Initialize();
         StartCoroutine(DistributedHUDUpdate());
     }
+
     //===========================================
     // Methods
     //===========================================

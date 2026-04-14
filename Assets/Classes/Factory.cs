@@ -4,15 +4,21 @@ using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
-using static Rader;
 
 public enum VehicleID
 {
     None,
     F16C,
     F15E,
-    END
+    END = 5,
+    AA = 100,
+    SAM
 }
+
+
+
+
+
 
 public class Factory : MonoBehaviour
 {
@@ -51,7 +57,7 @@ public class Factory : MonoBehaviour
         explosion.gameObject.transform.SetParent(gameObject.transform);
         explosionObjectPool = new ObjectPool<Explosion>(createFunc: () => Instantiate(explosionPrefab).GetComponent<Explosion>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 50);
         aiObjectPool = new ObjectPool<AIPilot>(createFunc: () => Instantiate(aircraftAIPrefab).GetComponent<AIPilot>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 50);
-
+        groundAIPool = new ObjectPool<AIDriver>(createFunc: () => Instantiate(groundAIPrefab).GetComponent<AIDriver>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 50);
         bulletObjectPool = new ObjectPool<Bullet>(createFunc: () => Instantiate(bulletPrefab).GetComponent<Bullet>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 1000);
 
 
@@ -62,6 +68,7 @@ public class Factory : MonoBehaviour
         SARMPool = new ObjectPool<SemiActiveRaderMissile>(createFunc: () => Instantiate(SARMPrefab).GetComponent<SemiActiveRaderMissile>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
         SemiActiveRaderMissile.InjectObjectPool(SARMPool);
 
+        FlarePool = new ObjectPool<Flare>(createFunc: () => Instantiate(FlarePrefab).GetComponent<Flare>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
     }
 
     void Start()
@@ -78,6 +85,7 @@ public class Factory : MonoBehaviour
         StandardMissile.RemoveObjectPool();
         FourAirToAirMissile.RemoveObjectPool();
     }
+    
 
     //===========================================
     // FrameCycle Methods
@@ -232,6 +240,12 @@ public class Factory : MonoBehaviour
         return newInstnace;
     }
 
+    public void ReleaseGroundAI(AIDriver ai)
+    {
+        ai.transform.parent = null;
+        groundAIPool.Release(ai);
+    }
+
     public void ReleaseAI(AIPilot ai)
     {
         ai.transform.parent = null;
@@ -240,9 +254,20 @@ public class Factory : MonoBehaviour
 
     public void Shoot(Vector3 position, Quaternion rotation, float velocity, Vehicle shooted)
     {
-        bulletObjectPool.Get().Shoot(position, rotation, velocity, shooted, bulletObjectPool);
+        Bullet newInstnace = bulletObjectPool.Get();
+        newInstnace.InjectReleaseMethod(bulletObjectPool.Release);
+        newInstnace.Shoot(position, rotation, velocity, shooted, bulletObjectPool);
     }
 
+    public Flare ShootFlare(GameObject pod, float velocity = 15.0f) { return ShootFlare(pod.transform.position, pod.transform.rotation, velocity); }
+    public Flare ShootFlare(Vector3 position, Quaternion rotation, float velocity = 15.0f)
+    {
+        Flare newInstnace = FlarePool.Get();
+        Rigidbody rigidbody = newInstnace.GetComponent<Rigidbody>();
+        newInstnace.InjectReleaseMethod(FlarePool.Release);
+        newInstnace.Shoot(position, rotation, velocity);
+        return newInstnace;
+    }
 
     public void Explosion(GameObject target)
     {
@@ -259,8 +284,6 @@ public class Factory : MonoBehaviour
     //===========================================
     // Variable & GetSet Methods
     //===========================================
-
-    public void EnlistRaderUI(RaderUI target) { raderUI = target; }
     public void ReservePlayerVehicle(PlayerSpawnData infomation) { reserved = infomation; }
     public bool IsTGTEmpty() { return TGTCount <= 0; }
     public ReadOnlyCollection<Vehicle> GetAll(int teamID) { return targets[teamID].AsReadOnly(); }
@@ -270,9 +293,10 @@ public class Factory : MonoBehaviour
     private Player player = null;
     [SerializeField] private GameObject playerPrefab = null;
     [SerializeField] private GameObject aircraftAIPrefab = null;
+    [SerializeField] private GameObject groundAIPrefab = null;
     [SerializeField] private GameObject explosionPrefab = null;
     [SerializeField] private GameObject bulletPrefab = null;
-
+    
     private Explosion explosion = null;
 
 
@@ -280,19 +304,21 @@ public class Factory : MonoBehaviour
     private List<Vehicle>[] targets;
     private int TGTCount = 0;
 
-    private RaderUI raderUI = null;
+    private ObjectPool<AIDriver> groundAIPool = null;
     private ObjectPool<AIPilot> aiObjectPool = null;
     private ObjectPool<Explosion> explosionObjectPool = null;
     private ObjectPool<Bullet> bulletObjectPool = null;
 
 
-    [SerializeField] GameObject FAAMPrefab;
-    [SerializeField] GameObject SMPrefab;
-    [SerializeField] GameObject SARMPrefab;
+    [SerializeField] private GameObject FAAMPrefab;
+    [SerializeField] private GameObject SMPrefab;
+    [SerializeField] private GameObject SARMPrefab;
     private ObjectPool<SemiActiveRaderMissile> SARMPool;
     private ObjectPool<FourAirToAirMissile> FAAMPool;
     private ObjectPool<StandardMissile> SMPool;
 
+    [SerializeField] GameObject FlarePrefab;
+    private ObjectPool<Flare> FlarePool;
 
 
     private Dictionary<VehicleID, (GameObject prefab, ObjectPool<Vehicle> pool)> prefabs;

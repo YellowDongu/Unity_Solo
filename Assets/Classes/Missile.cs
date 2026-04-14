@@ -13,13 +13,16 @@ public abstract class Missile : MonoBehaviour
 
         Missile newInstance = ShootTarget(locked);
         newInstance.target = locked;
+        newInstance.trail.emitting = false;
         newInstance.transform.position = gameObject.transform.position;
         newInstance.transform.rotation = gameObject.transform.rotation;
         newInstance.isProjectile = true;
         newInstance.flyDistance = maxRange;
 
+        newInstance.trail.Clear();
+        newInstance.trail.emitting = true;
         targetRader = locked.gameObject.GetComponent<Rader>();
-        if(targetRader != null)
+        if (targetRader != null)
             targetRader.Trace(newInstance);
 
         StartCoroutine(ActiveCoolTime());
@@ -45,13 +48,22 @@ public abstract class Missile : MonoBehaviour
         mesh.SetActive(true);
     }
 
+    public delegate void MissileWarningEvent(float sqrDistance);
+    public event MissileWarningEvent MissileWarning;
+
+    protected void SendDistance(float sqrDistance) { MissileWarning?.Invoke(sqrDistance); }
+    protected void ReleaseEvent() { MissileWarning = null; }
+
     //===========================================
     // Variable & GetSet Methods
     //===========================================
+    public void ChangeTarget(Vehicle vehicle)  { target = vehicle; }
     public float LockAngle()  { return lockAngle; }
     public float MaxRange()  { return maxRange; }
     public int TargetCount() { return targetCount; }
     public int MultiShoot() { return multiShoot; }
+    public int Damage() { return damage; }
+    public int AimLayer() { return aimLayer; }
     public float LockSpeed() { return lockSpeed; }
     public float CoolTime() { return time; }
     public float MaxCoolTime() { return coolTime; }
@@ -72,10 +84,12 @@ public abstract class Missile : MonoBehaviour
     [SerializeField] protected float lockAngle = 45.0f;
     [SerializeField] protected float lockSpeed = 1.0f;
     [SerializeField] protected int multiShoot = 1;
+    [SerializeField] protected int aimLayer = 0;
     [SerializeField] protected GaugeUI.GaugeUIType neededUI;
 
     protected Rader targetRader = null;
     protected Vehicle target = null;
     [SerializeField] protected GameObject mesh;
+    [SerializeField] protected TrailRenderer trail;
     [SerializeField] protected Rigidbody rigidbody = null;
 }

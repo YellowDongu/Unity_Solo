@@ -294,7 +294,7 @@ public class HorizontalTurnState : FlightState
                 if (vector.sqrMagnitude < 100.0f)
                 {
                     control.throttle = 0.1f;
-                    control.isAirBreakOn = true;
+                    control.isAirBrakeOn = true;
                     absY -= 180.0f * signY;
 
                     Roll(0.0f);
@@ -304,7 +304,7 @@ public class HorizontalTurnState : FlightState
                     return false;
                 }
                 else
-                    control.isAirBreakOn = false;
+                    control.isAirBrakeOn = false;
             }
 
             if (Roll(bankAngle * -signY))
@@ -391,10 +391,10 @@ public class DeepTurnState : FlightState
                 if (vector.sqrMagnitude < 100.0f)
                 {
                     control.throttle = 0.2f;
-                    control.isAirBreakOn = true;
+                    control.isAirBrakeOn = true;
                 }
                 else
-                    control.isAirBreakOn = false;
+                    control.isAirBrakeOn = false;
             }
 
             if (Roll(30.0f * -signY))

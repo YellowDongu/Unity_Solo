@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -20,97 +21,146 @@ public class HUDController : MonoBehaviour
         PitchPOSHPool = new ObjectPool<Image>(createFunc: () => Instantiate(PitchPOS_HPrefab, attitudeIndicator.transform).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 15);
     }
 
-    private void FixedUpdate()
+    private void Initialize()
     {
-        foreach ((Image target, int value) in currentActive)
-        {
-            switch (value)
-            {
-                case 1:
-                    PitchNEGPool.Release(target);
-                    break;
-                case 2:
-                    PitchNEGHPool.Release(target);
-                    break;
-                case 3:
-                    PitchPOSPool.Release(target);
-                    break;
-                case 4:
-                    PitchPOSHPool.Release(target);
-                    break;
-                default:
-                    target.gameObject.SetActive(false);
-                    break;
-            }
-        }
-        currentActive.Clear();
-
-        altitudeIndicator.text = ((int)(player.gameObject.transform.position.y * 10.0f)).ToString();
-        speedIndicator.text = ((int)(player.control.velocity * 10.0f)).ToString();
-
         Vector3 angle = player.gameObject.transform.eulerAngles;
         attitudeIndicator.transform.rotation = Quaternion.Euler(0.0f, 0.0f, AngleCalibration(angle.z));
 
-        float y = AngleCalibration(angle.x) / -2.5f;
-        int ySpace = (int)y;
+        float y = -AngleCalibration(angle.x);
+        y /= 2.5f;
+        int ySpace = yHeight = (int)y;
         float yLeft = (y - (float)ySpace) * 2.5f;
         float baseValue = -50.0f * (yLeft / 2.5f);
         ySpace -= 4;
 
         for (int i = 0; i < 9; i++)
         {
-            Image pitch = null;
-            if (ySpace == 0)
-            {
-                PitchHalf.gameObject.SetActive(true);
-                pitch = PitchHalf;
-                currentActive.Add((PitchHalf, 5));
-            }
-            else if (ySpace < 0)
-            {
-                if (i % 2 == 0)
-                {
-                    pitch = PitchNEGPool.Get();
-                    currentActive.Add((pitch, 1));
+            currentActive.Add(GetImage(ySpace));
 
-                }
-                else
-                {
-                    pitch = PitchNEGHPool.Get();
-                    currentActive.Add((pitch, 2));
-                }
-            }
-            else
-            {
-                if (i % 2 == 0)
-                {
-                    pitch = PitchPOSPool.Get();
-                    currentActive.Add((pitch, 3));
-                }
-                else
-                {
-                    pitch = PitchPOSHPool.Get();
-                    currentActive.Add((pitch, 4));
-                }
-
-            }
             ySpace++;
             if (ySpace > 72)
                 ySpace *= -1;
 
-            pitch.color = currentColor;
-            RectTransform rectTransform = pitch.gameObject.transform as RectTransform;
-            rectTransform.anchoredPosition = new Vector2(0.0f, -200.0f + (float)i * 50.0f + baseValue);
+            currentActive[i].Item1.color = currentColor;
+            currentActive[i].Item1.rectTransform.anchoredPosition = new Vector2(0.0f, -200.0f + (float)i * 50.0f + baseValue);
         }
+    }
 
+    public void BoundPlayer(Aircraft vehicle)
+    {
+        player = vehicle.Movement();
+        playerRader = vehicle.Rader();
+        playerRader.uiWarningEvent += Warning;
+        Initialize();
+    }
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
 
+    private void FixedUpdate()
+    {
+        altitudeIndicator.text = ((int)(player.gameObject.transform.position.y * 10.0f)).ToString();
+        speedIndicator.text = ((int)(player.control.velocity * 10.0f)).ToString();
 
+        UpdateAttitude();
     }
 
 
     //===========================================
     // Methods
     //===========================================
+    private void UpdateAttitude()
+    {
+        Vector3 angle = player.gameObject.transform.eulerAngles;
+        attitudeIndicator.transform.rotation = Quaternion.Euler(0.0f, 0.0f, AngleCalibration(angle.z));
+
+        float y = -AngleCalibration(angle.x);
+        int ySpace = (int)(y / 2.5f);
+        float difference = 50.0f * (y / 2.5f - (float)ySpace);
+
+        if (ySpace != yHeight)
+        {
+            bool back = ySpace > yHeight;
+
+            Dequeue(ySpace > yHeight, ySpace);
+            yHeight = ySpace;
+        }
+
+        for (int i = 0; i < 9; i++)
+        {
+            Image pitch = currentActive[i].Item1;
+            pitch.color = currentColor;
+            pitch.rectTransform.anchoredPosition = new Vector2(0.0f, 200.0f - (float)i * 50.0f - difference);
+        }
+    }
+
+    private (Image image, int value) GetImage(int value)
+    {
+        if (value == 0)
+        {
+            PitchHalf.gameObject.SetActive(true);
+            return (PitchHalf, 5);
+        }
+        else if (value < 0)
+        {
+            if (value % 2 == 0)
+                return (PitchNEGPool.Get(), 1);
+            else
+                return (PitchNEGHPool.Get(), 2);
+        }
+        else
+        {
+            if (value % 2 == 0)
+                return (PitchPOSPool.Get(), 3);
+            else
+                return (PitchPOSHPool.Get(), 4);
+        }
+    }
+
+    private void Dequeue(bool isBack, int pitchValue = 255)
+    {
+        (Image image, int value) target;
+        if (isBack)
+            target = currentActive[currentActive.Count - 1];
+        else
+            target = currentActive[0];
+
+        switch (target.value)
+        {
+            case 1:
+                PitchNEGPool.Release(target.image);
+                break;
+            case 2:
+                PitchNEGHPool.Release(target.image);
+                break;
+            case 3:
+                PitchPOSPool.Release(target.image);
+                break;
+            case 4:
+                PitchPOSHPool.Release(target.image);
+                break;
+            default:
+                target.image.gameObject.SetActive(false);
+                break;
+        }
+
+        if (Mathf.Abs(pitchValue) <= 100)
+        {
+            if (isBack)
+            {
+                target = GetImage(pitchValue + 4);
+                currentActive.Insert(0, target);
+                currentActive.RemoveAt(currentActive.Count - 1);
+            }
+            else
+            {
+                target = GetImage(pitchValue - 4);
+                currentActive.RemoveAt(0);
+                currentActive.Add(target);
+            }
+        }
+    }
+
     public float AngleCalibration(float value) { while (value < -180.0f) { value += 360.0f; } while (value > 180.0f) { value -= 360.0f; } return value; }
 
     public void ChangeColor(Vector4 color)
@@ -127,14 +177,54 @@ public class HUDController : MonoBehaviour
         changeColor?.Invoke(color);
     }
 
+    public void Warning(bool _urgent) { warning = true; urgent |= _urgent; if (!inWarning) StartCoroutine(Warning()); }
+    public void StartWarning() { StartCoroutine(Warning()); }
+
+    private IEnumerator Warning()
+    {
+        inWarning = true;
+        float Timer = 0.0f;
+        int count = 3;
+        ChangeColor(redHUD);
+
+        while (count > 0)
+        {
+            Timer -= Time.deltaTime;
+
+            if (warning)
+                count = 3;
+            else
+                count--;
+
+            warning = false;
+
+            if (Timer >= 0.0f)
+            {
+                yield return new WaitForFixedUpdate();
+                continue;
+            }
+
+            if (urgent)
+            {
+                Timer = 0.5f;
+                urgent = false;
+            }
+            else
+                Timer = 2.0f;
+
+            GameMaster.GetInstance().Sound().PlayOnce("MissileWarning");
+            yield return new WaitForFixedUpdate();
+        }
+        ChangeColor(greenHUD);
+        inWarning = false;
+    }
+
     public delegate void ChangeUIColor(Vector4 color);
     public event ChangeUIColor changeColor;
-
 
     //===========================================
     // Variable & GetSet Methods
     //===========================================
-    public void BoundPlayer(AircraftMovement playerComponent) { player = playerComponent; }
     public LockHUD LinkLockHUD() { return lockHUD; }
     public RaderUI LinkRaderUI() { return raderUI; }
     public IFFUIController LinkIFFUIController() { return iFFUIController; }
@@ -142,21 +232,24 @@ public class HUDController : MonoBehaviour
     public Color GetColor() { return currentColor; }
 
 
-    static public Color ally = new Color(0.0f, 1.0f, 1.0f, 200.0f / 255.0f);
-    static public Color normal = new Color(0.0f, 200.0f / 255.0f, 0.0f, 200.0f / 255.0f);
-    static public Color unknown = new Color(1.0f, 1.0f, 0.0f, 200.0f / 255.0f);
-
-    static public Color greenHUD = normal;
-    static public Color redHUD = new Color(180.0f / 255.0f, 0.0f, 0.0f, 200.0f / 255.0f);
+    private bool inWarning = false, warning = false, urgent = false;
+    private int yHeight = 0;
 
     private Color currentColor = greenHUD;
-    private AircraftMovement player;
-    [SerializeField] private AircraftMovement debug;
+    private AircraftMovement player = null;
+    private Rader playerRader = null;
 
-    [SerializeField] private LockHUD lockHUD = null;
-    [SerializeField] private RaderUI raderUI = null;
-    [SerializeField] private IFFUIController iFFUIController = null;
-    [SerializeField] private GaugeUIController gaugeUIController = null;
+    private List<(Image, int)> currentActive = new List<(Image, int)>(10);
+    private Image PitchHalf = null;
+    private ObjectPool<Image> PitchNEGPool = null;
+    private ObjectPool<Image> PitchNEGHPool = null;
+    private ObjectPool<Image> PitchPOSPool = null;
+    private ObjectPool<Image> PitchPOSHPool = null;
+
+    [SerializeField] private LockHUD lockHUD;
+    [SerializeField] private RaderUI raderUI;
+    [SerializeField] private IFFUIController iFFUIController;
+    [SerializeField] private GaugeUIController gaugeUIController;
 
     [SerializeField] private GameObject attitudeIndicator;
     [SerializeField] private TextMeshProUGUI speedIndicator;
@@ -170,10 +263,11 @@ public class HUDController : MonoBehaviour
     [SerializeField] private GameObject PitchPOSPrefab;
     [SerializeField] private GameObject PitchPOS_HPrefab;
 
-    [SerializeField] private List<(Image, int)> currentActive = new List<(Image, int)>(10);
-    [SerializeField] private Image PitchHalf;
-    [SerializeField] private ObjectPool<Image> PitchNEGPool;
-    [SerializeField] private ObjectPool<Image> PitchNEGHPool;
-    [SerializeField] private ObjectPool<Image> PitchPOSPool;
-    [SerializeField] private ObjectPool<Image> PitchPOSHPool;
+
+    /*Color Presets*/
+    static public Color ally = new Color(0.0f, 1.0f, 1.0f, 220.0f / 255.0f);
+    static public Color normal = new Color(0.0f, 200.0f / 255.0f, 0.0f, 220.0f / 255.0f);
+    static public Color unknown = new Color(1.0f, 1.0f, 0.0f, 220.0f / 255.0f);
+    static public Color greenHUD = normal;
+    static public Color redHUD = new Color(180.0f / 255.0f, 0.0f, 0.0f, 200.0f / 255.0f);
 }

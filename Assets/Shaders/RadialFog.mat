@@ -25,8 +25,8 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _FogEnd: 1000
-    - _FogStart: 900
+    - _FogEnd: 3000
+    - _FogStart: 1500
     - _Maximum: 0
     - _Minimum: 0
     m_Colors:

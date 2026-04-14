@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.Pool;
 
 
-
-
 public class FourAirToAirMissile : Missile
 {
+    private void Awake()
+    {
+        maxRange /= 5.0f;
+    }
+
     //===========================================
     // FrameCycle Methods
     //===========================================
@@ -40,17 +43,19 @@ public class FourAirToAirMissile : Missile
             rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(gameObject.transform.eulerAngles.x, 0.0f, 0.0f), rotationSpeed * Time.deltaTime));
             return;
         }
-        if (target.IsDestroyed() || target.gameObject.activeInHierarchy)
+        if (target.IsDestroyed() || !target.gameObject.activeInHierarchy)
         {
             target = null;
             return;
         }
 
         Vector3 vector = target.transform.position - gameObject.transform.position;
-        if (vector.sqrMagnitude < 9.0f)
+        SendDistance(vector.sqrMagnitude);
+        if (vector.sqrMagnitude < 49.0f)
         {
             GameMaster.GetInstance().GetFactory().Explosion(gameObject.transform.position, 2.5f);
-            targetRader.TraceEnd(this);
+            if (targetRader != null)
+                targetRader.TraceEnd(this);
             target.TakeDamage(damage);
             Release();
             return;
@@ -74,6 +79,7 @@ public class FourAirToAirMissile : Missile
     {
         isProjectile = false;
         mesh.SetActive(false);
+        ReleaseEvent();
         StartCoroutine(DelayRelease());
     }
     
@@ -97,5 +103,4 @@ public class FourAirToAirMissile : Missile
     public static void RemoveObjectPool() { objectPool = null; }
 
     static private ObjectPool<FourAirToAirMissile> objectPool = null;
-    [SerializeField] private TrailRenderer trail = null;
 }

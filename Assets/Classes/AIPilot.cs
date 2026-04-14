@@ -109,21 +109,17 @@ public class AIPilot : AircraftPilot
     {
         if (gameObject.transform.position.y < 200.0f)
         {
-            queue.Enqueue((currentState, currentStatus));
-            currentState = altutudeMatcher;
             altutudeMatcher.SetAltitude(500.0f);
-            currentStatus = Status.Override;
+            OverrideOrder(altutudeMatcher);
         }
         else if (gameObject.transform.position.y > 4000.0f)
         {
-            queue.Enqueue((currentState, currentStatus));
-            currentState = altutudeMatcher;
             altutudeMatcher.SetAltitude(3500.0f);
-            currentStatus = Status.Override;
+            OverrideOrder(altutudeMatcher);
         }
         else if (als != null && !isLeader)
         {
-            if ((als.GetLeader().gameObject.transform.position - gameObject.transform.position).sqrMagnitude >= 1000.0f * 1000.0f)
+            if ((als.GetLeader().gameObject.transform.position - gameObject.transform.position).sqrMagnitude >= 1000000.0f)
             {
                 currentState = followLeader;
                 currentStatus = Status.Follow;
@@ -133,15 +129,25 @@ public class AIPilot : AircraftPilot
 
     }
 
+    public void OverrideOrder(FlightState overrideState)
+    {
+        queue.Enqueue((currentState, currentStatus));
+        currentState = overrideState;
+        currentStatus = Status.Override;
+    }
+
     public override void Attach(Vehicle target)
     {
         base.Attach(target);
+        rader.SetAutoFlare();
 
         leveling = new LevelingState(gameObject.transform, control);
         horizontalTurn = new HorizontalTurnState(gameObject.transform, control);
         followLeader = new HorizontalTurnState(gameObject.transform, control);
         altutudeMatcher = new AltitudeState(gameObject.transform, control);
         horizontalTurn.SetTurnValue(movement, TurnType.Deep);
+        followLeader.SetTurnValue(movement, TurnType.Deep);
+
         targets = fcs.Targets;
         lockState = fcs.LockStatus;
         gunAngleValue = Mathf.Cos(5.0f * Mathf.Deg2Rad);
@@ -214,7 +220,7 @@ public class AIPilot : AircraftPilot
                         currentStatus = Status.Attack;
                         currentState = horizontalTurn;
                         horizontalTurn.Initialize(targets[0].gameObject);
-                        chasing = targets[0].gameObject;
+                        chasing = targets[0];
                         state = 0;
                     }
                 }
@@ -244,13 +250,13 @@ public class AIPilot : AircraftPilot
                         currentStatus = Status.Attack;
                         currentState = horizontalTurn;
                         horizontalTurn.Initialize(targets[0].gameObject);
-                        chasing = targets[0].gameObject;
+                        chasing = targets[0];
                         state = -10;
                     }
                 }
                 break;
             case 1:
-                if (!chasing.activeInHierarchy)
+                if (!chasing.gameObject.activeInHierarchy)
                 {
                     state = 0;
                     break;
@@ -265,7 +271,7 @@ public class AIPilot : AircraftPilot
                         currentStatus = Status.Attack;
                         currentState = horizontalTurn;
                         horizontalTurn.Initialize(targets[0].gameObject);
-                        chasing = targets[0].gameObject;
+                        chasing = targets[0];
                         state = -10;
                     }
                 }
@@ -300,7 +306,7 @@ public class AIPilot : AircraftPilot
 
         if(selected != -1)
         {
-            chasing = list[selected].gameObject;
+            chasing = list[selected];
             currentState = horizontalTurn;
             horizontalTurn.Initialize(list[selected].gameObject);
             state = 1;
@@ -329,7 +335,7 @@ public class AIPilot : AircraftPilot
             }
             else
             {
-                chasing = targets[0].gameObject;
+                chasing = targets[0];
                 horizontalTurn.Initialize(targets[0].gameObject);
             }
 
@@ -338,7 +344,7 @@ public class AIPilot : AircraftPilot
 
         if(chasing != targets[0])
         {
-            chasing = targets[0].gameObject;
+            chasing = targets[0];
             horizontalTurn.Initialize(targets[0].gameObject);
         }
 
@@ -359,7 +365,7 @@ public class AIPilot : AircraftPilot
     private int state = 0;
     private int team = 0;
     private float gunAngleValue = 0.0f;
-    private GameObject chasing = null;
+    private Vehicle chasing = null;
 
     private ReadOnlyCollection<float> lockState;
     private ReadOnlyCollection<Vehicle> targets;

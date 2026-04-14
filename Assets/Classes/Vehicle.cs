@@ -17,6 +17,7 @@ public abstract class Vehicle : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp -= damage;
+        SetIntValue?.Invoke(hp);
         if (hp <= 0)
         {
             gameObject.SetActive(false);
@@ -33,23 +34,32 @@ public abstract class Vehicle : MonoBehaviour
     //===========================================
     public void SetRelease(ReleaseMethod listener) { release = listener; }
     public float HPPresentage() { return (float)hp / (float)maxHp; }
+    public GameObject FirstView() { return firstView; }
+    public GameObject ThirdView() { return thirdView; }
     public VehicleID ID { get { return id; } private set { id = value; } }
     public string VehicleName { get { return vehicleName; } private set { vehicleName = value; } }
+    public int VehicleLayer { get { return vehicleLayer; } private set { vehicleLayer = value; } }
     public int Team { get { return team; } private set { team = value; } }
     public bool IsTGT { get { return tgt; } private set { tgt = value; } }
     public bool IsLand { get { return isLand; } private set { isLand = value; } }
 
 
     public delegate void ReleaseMethod(Vehicle vehicle);
-    private event ReleaseMethod release; // 나중에 고침
+    private event ReleaseMethod release;
     public delegate void ReleaseEventMethod();
-    public event ReleaseEventMethod releaseEvent; // 나중에 고침
+    public event ReleaseEventMethod releaseEvent;
+    public delegate void SetIntValueMethod(int value);
+    public event SetIntValueMethod SetIntValue;
 
     [SerializeField] private VehicleID id = VehicleID.END;
     [SerializeField] private string vehicleName = "NULL";
+    [SerializeField] private int vehicleLayer = 0;
     [SerializeField] protected int hp = 0;
     [SerializeField] protected int maxHp = 0;
     [SerializeField] protected int team = 0;
     [SerializeField] public bool tgt;
     [SerializeField] public bool isLand;
+
+    [SerializeField] protected GameObject firstView;
+    [SerializeField] protected GameObject thirdView;
 }

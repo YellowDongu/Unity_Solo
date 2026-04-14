@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,20 +25,23 @@ public class Player : AircraftPilot
 
         if (Keyboard.current.wKey.isPressed)
             control.throttle = 1.0f;
+        else
+            control.throttle = 0.2f;
+
         if (Keyboard.current.sKey.isPressed)
         {
-            control.throttle = 0.2f;
-            control.isAirBreakOn = true;
+            control.isAirBrakeOn = true;
+            control.throttle = 0.0f;
             if (Keyboard.current.wKey.isPressed)
             {
-                control.HighGTurn = Mathf.Clamp(control.HighGTurn + 6.0f * Time.deltaTime, 1.0f, 3.0f);
+                control.HighGTurn = Mathf.Clamp(control.HighGTurn + 4.0f * Time.deltaTime, 1.0f, 2.0f);
                 control.throttle = 0.2f;
             }
         }
         else
         {
-            control.isAirBreakOn = false;
-            control.HighGTurn = Mathf.Clamp(control.HighGTurn - 6.0f * Time.deltaTime, 1.0f, 3.0f);
+            control.isAirBrakeOn = false;
+            control.HighGTurn = Mathf.Clamp(control.HighGTurn - 4.0f * Time.deltaTime, 1.0f, 2.0f);
         }
 
         if (Keyboard.current.tKey.wasPressedThisFrame)
@@ -47,6 +51,7 @@ public class Player : AircraftPilot
         if (Keyboard.current.leftCtrlKey.isPressed)
         {
             fcs.Gun(aircraft);
+            GameMaster.GetInstance().Sound().PlayOnce(sfxChannel, "Valcan20mm");
         }
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
@@ -54,7 +59,12 @@ public class Player : AircraftPilot
         }
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            fcs.Missile();
+            if(fcs.Missile())
+                GameMaster.GetInstance().Sound().PlayOnce(sfxChannel, fcs.GetSelectState() ? "MissileFired2" : "MissileFired");
+        }
+        if (Keyboard.current.fKey.wasPressedThisFrame)
+        {
+            rader.DeployFlare(sfxChannel, GameMaster.GetInstance().Sound().GetSound("Flare_Temp"));
         }
         if (Keyboard.current.gKey.wasPressedThisFrame)
             control.isGearDown = !control.isGearDown;
@@ -87,12 +97,12 @@ public class Player : AircraftPilot
     public override void Attach(Vehicle target)
     {
         CameraController camera = gameObject.GetComponent<CameraController>();
-        camera.Attach(target.gameObject, true);
+        camera.Attach(target, true);
 
         target.SetVehicleInfo(ref infomation);
 
         aircraft = target as Aircraft;
-
+        sfxChannel = aircraft.LinkSFXChannel();
         control = aircraft.Control();
         movement = aircraft.Movement();
         animator = aircraft.Animator();
@@ -100,28 +110,30 @@ public class Player : AircraftPilot
         fcs = aircraft.FCS();
         fcs.SetTeam(infomation.team);
         rader.SetTeam(infomation.team);
-
+        rader.SetFlareCoolTime(2);
         GameMaster.GetInstance().LinkBaseCanvas(this);
     }
 
     public void AttachHUD(HUDController baseHUD) // 굳이 여기서 할 필요가 있을까
     {
-        baseHUD.BoundPlayer(movement);
+        baseHUD.BoundPlayer(aircraft);
         baseHUD.LinkLockHUD().BoundPlayer(fcs);
         baseHUD.LinkRaderUI().BoundPlayer(aircraft);
         baseHUD.LinkGaugeUIController().BoundPlayer(aircraft);
         iffHud = baseHUD.LinkIFFUIController();
         iffHud.SetMaxDistance(rader.RaderDistance());
+        IFFAttach = iffHud.AttachIFF;
+        SelectIFF = iffHud.Select;
         rader.enterEvent += AttachIFF;
     }
 
-    public void AttachIFF(Vehicle target) { iffHud.AttachIFF(target, this); }
+    public void AttachIFF(Vehicle target) { IFFAttach(target, this, aircraft); }
 
     public void ChangeTarget()
     {
         foreach (var target in fcs.Targets)
         {
-            iffHud.Select(target, false);
+            SelectIFF(target, false);
         }
 
         fcs.ChangeTarget();
@@ -133,12 +145,12 @@ public class Player : AircraftPilot
         {
             foreach (var target in fcs.Targets)
             {
-                iffHud.Select(target, true);
+                SelectIFF(target, true);
             }
         }
         else
         {
-            iffHud.Select(fcs.Targets[0], true);
+            SelectIFF(fcs.Targets[0], true);
         }
     }
     public void SwitchWeapon()
@@ -152,17 +164,17 @@ public class Player : AircraftPilot
         {
             foreach (var target in fcs.Targets)
             {
-                iffHud.Select(target, true);
+                SelectIFF(target, true);
             }
         }
         else
         {
             foreach (var target in fcs.Targets)
             {
-                iffHud.Select(target, false);
+                SelectIFF(target, false);
             }
 
-            iffHud.Select(fcs.Targets[0], true);
+            SelectIFF(fcs.Targets[0], true);
         }
     }
 
@@ -172,5 +184,8 @@ public class Player : AircraftPilot
     //===========================================
 
     private IFFUIController iffHud;
-
+    private Func<Vehicle, Player, Aircraft, IFFHud> IFFAttach;
+    private Action<Vehicle, bool> SelectIFF;
+    private AudioSource sfxChannel;
+    private AudioSource engineChannel;
 }

@@ -1,9 +1,18 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class IFFHud : MonoBehaviour
 {
+    [System.Serializable]
+    private struct ImageSet
+    {
+        public GameObject container;
+        public Image image;
+        public Image secondImage; // not
+    }
+
     //===========================================
     // Initializer/Destructor
     //===========================================
@@ -19,26 +28,27 @@ public class IFFHud : MonoBehaviour
     //===========================================
     private void LateUpdate()
     {
-        if (!target.gameObject.activeInHierarchy)
+        if (!Target.gameObject.activeInHierarchy)
         {
             release?.Invoke(this);
             return;
         }
-        distance = (target.transform.position - player.gameObject.transform.position).sqrMagnitude;
+        distance = (Target.transform.position - player.gameObject.transform.position).sqrMagnitude;
         if (distance > maxDistance)
         {
             release?.Invoke(this);
             return;
         }
 
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(Target.transform.position);
         if (screenPos.z <= 0)
         {
-            image.enabled = false;
+            ImageActive(false);
             return;
         }
 
-        image.enabled = true;
+        ImageActive(true);
+        GetAimMask();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(screenTransform, screenPos, null, out Vector2 localPoint);
         uiTransform.localPosition = localPoint;
 
@@ -48,24 +58,23 @@ public class IFFHud : MonoBehaviour
         //uiTransform.localScale = Vector3.one * scale;
 
         if (isTarget)
-            distanceText.text = ((int)(Mathf.Sqrt(distance) * 10.0f)).ToString();
+            distanceText.text = ((int)(Mathf.Sqrt(distance) * 5.0f)).ToString();
     }
 
     //===========================================
     // Methods
     //===========================================
-    public void Attach(Vehicle _target, Player _player)
+    public void Attach(Vehicle _target, Player _player, Aircraft playerAircraft)
     {
         player = _player;
-        target = _target;
+        Target = _target;
 
-        distanceText.text = target.VehicleName;
         ChangeColor(_target.Team == 0 ? HUDController.unknown : (_target.Team == _player.Team ? HUDController.ally : HUDController.normal));
         nameText.gameObject.SetActive(_target.Team == _player.Team);
         distanceText.gameObject.SetActive(false);
+        GetLayer = playerAircraft.FCS().GetMissileAimLayer;
         screenTransform = uiTransform.parent as RectTransform;
-        isTGT = _target.IsTGT;
-        TGTText.gameObject.SetActive(isTGT);
+        ImageInitialize(_target);
     }
 
     public void SetTarget(bool value)
@@ -77,24 +86,84 @@ public class IFFHud : MonoBehaviour
             TGTText.gameObject.SetActive(value);
     }
 
+    public void ChangeImage(int mask)
+    {
+        aimMask = mask;
+        switch (aimMask)
+        {
+            case -1://ground
+                imageSet[preset].image.gameObject.SetActive(!isAir);
+                imageSet[preset].secondImage.gameObject.SetActive(isAir);
+                break;
+            case 0:
+                imageSet[preset].image.gameObject.SetActive(true);
+                imageSet[preset].secondImage.gameObject.SetActive(false);
+                break;
+            case 1://air
+                imageSet[preset].image.gameObject.SetActive(isAir);
+                imageSet[preset].secondImage.gameObject.SetActive(!isAir);
+                break;
+            default:
+                aimMask = 0;
+                imageSet[preset].image.gameObject.SetActive(true);
+                imageSet[preset].secondImage.gameObject.SetActive(false);
+                break;
+        }
+
+    }
+
+    public void ImageInitialize(Vehicle target)
+    {
+        isAir = !target.isLand;
+        preset = target.VehicleLayer;
+        isTGT = target.IsTGT;
+        distanceText.text = target.VehicleName;
+        TGTText.gameObject.SetActive(isTGT);
+
+        foreach (var item in imageSet)
+            item.container.SetActive(false);
+
+        imageSet[preset].container.SetActive(true);
+        isActive = true;
+        ChangeImage(aimMask);
+    }
+    public void ImageActive(bool active)
+    {
+        if (isActive == active)
+            return;
+        isActive = active;
+        imageSet[preset].container.SetActive(isActive);
+    }
+    public void GetAimMask()
+    {
+        int layer = GetLayer();
+        if (aimMask == layer)
+            return;
+        aimMask = layer;
+        ChangeImage(aimMask);
+    }
+
     //===========================================
     // Variable & GetSet Methods
     //===========================================
-    public void ChangeImageColor(Color color) { image.color = color; }
-    private void ChangeColor(Color color) { image.color = nameText.color = distanceText.color = color; }
+    public void ChangeImageColor(Color color) { imageSet[preset].secondImage.color = imageSet[preset].image.color = color; }
+    private void ChangeColor(Color color) { imageSet[preset].secondImage.color = imageSet[preset].image.color = nameText.color = distanceText.color = color; }
     public void SetMaxDistance(float value) { maxDistance = value * value; }
     public bool IsTarget() { return isTarget; }
+    public Vehicle Target { get { return target; } private set { target = value; } }
 
     public delegate void ReleaseMethod(IFFHud iffHUD);
     public event ReleaseMethod release;
-        
-    private bool isTarget, isTGT;
+    private bool isTarget, isTGT, isActive = true;
     private float distance, maxDistance = 1000.0f * 1000.0f;
-    public Vehicle target { get; private set; }
+    private int aimMask = 0, preset = 0;
+    private Func<int> GetLayer;
+    public Vehicle target = null;
     private Player player;
+    private RectTransform screenTransform;
 
-    [SerializeField] private Image image;
-    [SerializeField] private RectTransform screenTransform;
+    [SerializeField] private bool isAir;
+    [SerializeField] private ImageSet[] imageSet;
     [SerializeField] private RectTransform uiTransform;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI distanceText;

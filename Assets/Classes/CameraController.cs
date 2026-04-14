@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 public class CameraController : MonoBehaviour
 {
@@ -12,6 +14,9 @@ public class CameraController : MonoBehaviour
         public float distance;  // 가시 거리
     }
 
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     public void Awake()
     {
         Camera cam = camera;
@@ -19,7 +24,6 @@ public class CameraController : MonoBehaviour
 
         foreach (var item in customDistances)
         {
-            // LayerMask에서 실제 레이어 인덱스(0~31)를 추출
             int layerIndex = 0;
             int layerVal = item.layer.value;
             while (layerVal > 1)
@@ -34,37 +38,69 @@ public class CameraController : MonoBehaviour
         cam.layerCullDistances = distances;
     }
 
+    private void Update()
+    {
+        if (Keyboard.current.vKey.isPressed)
+        {
+            thirdView = !thirdView;
+
+            if (thirdView)
+                ThirdProspective();
+            else
+                FirstProspective();
+
+        }
+        if (Keyboard.current.numpad5Key.isPressed)
+            attachedPoint.rotation = Quaternion.LookRotation(target.transform.forward);
+        if (Keyboard.current.numpad4Key.isPressed)
+            attachedPoint.rotation *= Quaternion.Euler(0.0f, -rotationSpeed * Time.deltaTime, 0.0f);
+        if (Keyboard.current.numpad6Key.isPressed)
+            attachedPoint.rotation *= Quaternion.Euler(0.0f, rotationSpeed * Time.deltaTime, 0.0f);
+        if (Keyboard.current.numpad8Key.isPressed)
+            attachedPoint.rotation *= Quaternion.Euler(-rotationSpeed * Time.deltaTime, 0.0f, 0.0f);
+        if (Keyboard.current.numpad2Key.isPressed)
+            attachedPoint.rotation *= Quaternion.Euler(rotationSpeed * Time.deltaTime, 0.0f, 0.0f);
+    }
+
     //===========================================
     // Methods
     //===========================================
-    public void Attach(GameObject target, bool thirdProspective)
+    public void Attach(Vehicle _target, bool thirdProspective)
     {
-        if(thirdProspective)
-            ThirdProspective(target);
+        thirdView = thirdProspective;
+        target = _target;
+        if (thirdView)
+            ThirdProspective();
         else
-            FirstProspective(target);
+            FirstProspective();
 
-        transform.SetParent(attachedPoint.transform);
         transform.localPosition = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
         camera.gameObject.transform.localPosition = Vector3.zero;
         camera.gameObject.transform.localEulerAngles = Vector3.zero;
     }
 
-    public void FirstProspective(GameObject target)
+    public void FirstProspective()
     {
         camera.fieldOfView = 45.0f;
-        attachedPoint = target.transform.GetChild(3);
+        attachedPoint = target.FirstView().transform;
+        transform.SetParent(attachedPoint);
     }
-    public void ThirdProspective(GameObject target)
+    public void ThirdProspective()
     {
         camera.fieldOfView = 60.0f;
-        attachedPoint = target.transform.GetChild(2);
+        transform.SetParent(target.ThirdView().transform);
+        attachedPoint = transform.parent.parent;
     }
 
     //===========================================
     // Variable & GetSet Methods
     //===========================================
+
+    private bool thirdView = true;
+    private float rotationSpeed = 45.0f;
+    private GameObject thirdViewArm;
+    private Vehicle target;
 
     private Transform attachedPoint = null;
     [SerializeField] private Camera camera = null;

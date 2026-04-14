@@ -1,25 +1,33 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneChanger : MonoBehaviour
 {
+    private void Awake()
+    {
+        if(fadeOutPrefab != null)
+        {
+            GameObject newInstnace = Instantiate(fadeOutPrefab);
+            fadeOut = newInstnace.GetComponent<Image>();
+        }
+
+    }
+
+
     //===========================================
     // Methods
     //===========================================
 
     public void ChangeScene(string nextSceneName, bool changeToTrigger)
     {
-        if (changeToTrigger)
-        {
-            SceneChangeTrigger = true;
-            StartCoroutine(LoadSceneRoutine(nextSceneName));
-        }
-        else
-        {
-            StartCoroutine(LoadSceneAsync(nextSceneName));
-        }
+        if (changing)
+            return;
+        SceneChangeTrigger = !changeToTrigger;
+        StartCoroutine(LoadSceneRoutine(nextSceneName));
     }
+
     private IEnumerator LoadSceneAsync(string nextSceneName)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(nextSceneName);
@@ -32,24 +40,23 @@ public class SceneChanger : MonoBehaviour
             yield return null;
         }
     }
-    IEnumerator LoadSceneRoutine(string nextSceneName)
+
+    private IEnumerator LoadSceneRoutine(string nextSceneName)
     {
+        changing = true;
         AsyncOperation operation = SceneManager.LoadSceneAsync(nextSceneName);
         operation.allowSceneActivation = false;
-
         while (!operation.isDone)
         {
-            if (operation.progress >= 0.99f)
+            if (operation.progress >= 0.9f)
             {
                 if (SceneChangeTrigger)
-                {
                     operation.allowSceneActivation = true;
-                    SceneChangeTrigger = false;
-                    break;
-                }
             }
             yield return null;
         }
+        SceneChangeTrigger = false;
+        changing = false;
     }
 
     //===========================================
@@ -58,4 +65,8 @@ public class SceneChanger : MonoBehaviour
     public void ActiveTrigger() { SceneChangeTrigger = true; }
 
     private bool SceneChangeTrigger = false;
+    private bool changing = false;
+
+    private Image fadeOut;
+    [SerializeField] private GameObject fadeOutPrefab;
 }
