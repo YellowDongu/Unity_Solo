@@ -39,26 +39,64 @@ public class Bullet : MonoBehaviour
         gameObject.transform.rotation = rotation;
         shooted = _shooted;
         rigidBody.AddForce(gameObject.transform.forward * velocity, ForceMode.VelocityChange);
+        rigidBody.useGravity = true;
         onRelease = objectPool.Release;
         timer = 5.0f;
     }
 
+    public void ShootNonGravity(Vector3 position, Quaternion rotation, float velocity, Vehicle _shooted, ObjectPool<Bullet> objectPool)
+    {
+        gameObject.transform.position = position;
+        gameObject.transform.rotation = rotation;
+        shooted = _shooted;
+        rigidBody.AddForce(gameObject.transform.forward * velocity, ForceMode.VelocityChange);
+        rigidBody.useGravity = false;
+        onRelease = objectPool.Release;
+        timer = 5.0f;
+    }
+
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == terrainLayer)
-            Release();
-        else if (collision.gameObject.layer == targetLayer)
+        if (!gameObject.activeInHierarchy)
+            return;
+        int layer = collision.collider.gameObject.layer;
+        if (layer == targetLayer)
         {
-            Aircraft aircraft = collision.gameObject.GetComponent<Aircraft>();
-            if (shooted.Team == aircraft.Team)
-                return;
+            Vehicle vehicle = collision.gameObject.GetComponent<Vehicle>();
 
-            aircraft.TakeDamage(5);
+            if(vehicle != null && shooted != null)
+            {
+                if (shooted == vehicle || shooted.Team == vehicle.Team)
+                    return;
 
-            shooted = null;
+                vehicle.TakeDamage(5);
+            }
+
             Release();
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!gameObject.activeInHierarchy)
+            return;
+        int layer = other.gameObject.layer;
+        if (layer == targetLayer)
+        {
+            Vehicle vehicle = other.attachedRigidbody.gameObject.GetComponent<Vehicle>();
+
+            if (vehicle != null && shooted != null)
+            {
+                if (shooted == vehicle || shooted.Team == vehicle.Team)
+                    return;
+
+                vehicle.TakeDamage(5);
+            }
+
+            Release();
+        }
     }
 
     public void Release()
@@ -66,6 +104,9 @@ public class Bullet : MonoBehaviour
         if (!gameObject.activeInHierarchy)
             return;
         timer = 5.0f;
+        shooted = null;
+        rigidBody.linearVelocity = Vector3.zero;
+        rigidBody.angularVelocity = Vector3.zero;
         onRelease?.Invoke(this);
     }
     //===========================================

@@ -27,6 +27,15 @@ public class Aircraft : Vehicle
 
     public void SystemIntegration()
     {
+        if (integrated)
+        {
+            engineChannel.clip = GameMaster.GetInstance().Sound().GetSound("Engine_Outside");
+            //engineChannel.Play();
+            engineChannel.loop = true;
+            return;
+        }
+
+        integrated = true;
         movement.control = control;
         animator.control = control;
         SetIntValue += rader.GetHP;
@@ -74,6 +83,7 @@ public class Aircraft : Vehicle
     public AudioSource LinkSFXChannel() { return sfxChannel; }
     public void LinkSoundChannel(out AudioSource sfx, out AudioSource engine) { sfx = sfxChannel; engine = engineChannel; }
 
+    private bool integrated = false;
     private Control control = new Control();
     [SerializeField] private AudioClip engine_Outside;
     [SerializeField] private bool dummy = false;

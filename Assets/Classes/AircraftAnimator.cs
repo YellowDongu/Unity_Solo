@@ -138,6 +138,10 @@ public abstract class AircraftAnimator : MonoBehaviour
         private Animator animator;
     }
 
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
+
     protected PartsAnimationData AddAnimationData(string variableName, string clipName, string layerName, int baseState, bool isBody = true)
     {
         PartsAnimationData newInstance = new PartsAnimationData();

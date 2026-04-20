@@ -1,6 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//===========================================
+// struct/enum
+public enum TurnType
+{
+    Shallow,
+    Normal,
+    Deep,
+    END
+}
+//===========================================
+
 public abstract class FlightState
 {
     //===========================================
@@ -11,9 +22,12 @@ public abstract class FlightState
     public float AngleCalibration(float value) { while (value < -180.0f) { value += 360.0f; } while (value > 180.0f) { value -= 360.0f; } return value; }
     public float GetMinAngleDifference(float angle, float myAngle)
     {
+        myAngle = AngleCalibration(myAngle);
+        angle = AngleCalibration(angle);
+
         float origin = angle - myAngle;
-        float minus = angle - myAngle - 360.0f;
-        float plus = angle - myAngle + 360.0f;
+        float minus = origin - 360.0f;
+        float plus = origin + 360.0f;
 
         float difference = Mathf.Abs(origin) > Mathf.Abs(minus) ? minus : origin;
         difference = Mathf.Abs(difference) > Mathf.Abs(plus) ? plus : difference;
@@ -65,9 +79,11 @@ public abstract class FlightState
     //===========================================
     // Variable & GetSet Methods
     //===========================================
+
     protected Transform transform;
     protected Control control;
     protected Vector3 targetAngle;
+    public float tempStoringTime;
 }
 
 public class LevelingState : FlightState
@@ -126,17 +142,6 @@ public class AltitudeState : FlightState
 public class HorizontalTurnState : FlightState
 {
     //===========================================
-    // struct/enum
-    //===========================================
-    public enum TurnType
-    {
-        Shallow,
-        Normal,
-        Deep,
-        END
-    }
-
-    //===========================================
     // Initializer/Destructor
     //===========================================
     public HorizontalTurnState(Transform _transform, Control _control)
@@ -149,22 +154,6 @@ public class HorizontalTurnState : FlightState
     {
         targetPosition = _targetPosition;
         mode = 1;
-
-        SetTurnValue(movement, turnType);
-    }
-
-    public void Initialize(GameObject _target, Vector3 offset, AircraftMovement movement, TurnType turnType = TurnType.Normal)
-    {
-        target = _target;
-        mode = 2;
-
-        SetTurnValue(movement, turnType);
-    }
-
-    public void Initialize(GameObject _target, AircraftMovement movement, TurnType turnType = TurnType.Normal)
-    {
-        target = _target;
-        mode = 3;
 
         SetTurnValue(movement, turnType);
     }
@@ -183,18 +172,6 @@ public class HorizontalTurnState : FlightState
     {
         targetPosition = _targetPosition;
         mode = 1;
-    }
-
-    public void Initialize(GameObject _target, Vector3 offset)
-    {
-        target = _target;
-        mode = 2;
-    }
-
-    public void Initialize(GameObject _target)
-    {
-        target = _target;
-        mode = 3;
     }
 
     public void Initialize(Quaternion quaternion)
@@ -231,8 +208,7 @@ public class HorizontalTurnState : FlightState
                 zAngle = 1.0f;
                 break;
         }
-        yaw = Mathf.Clamp01(rotationSpeed.z * Mathf.Tan(maxX) / rotationSpeed.y);
-
+        yaw = Mathf.Clamp01(rotationSpeed.z * Mathf.Tan(maxX * Mathf.Deg2Rad) / rotationSpeed.y);
     }
 
     //===========================================
@@ -283,28 +259,26 @@ public class HorizontalTurnState : FlightState
         if (absY < 15.0f)
         {
             Roll(0.0f);
-            Pitch(-angleX);
+            Pitch(Mathf.Clamp(vector.y, -45.0f, 45.0f) * -1.0f);
             Yaw(targetAngle.y, y);
-            control.throttle = Mathf.Clamp01(vector.sqrMagnitude / 100.0f);
+            control.throttle = 0.2f;
         }
         else
         {
             if (absY > 165.0f)
             {
-                if (vector.sqrMagnitude < 100.0f)
+                if (vector.sqrMagnitude < 1375.0f)
                 {
                     control.throttle = 0.1f;
                     control.isAirBrakeOn = true;
-                    absY -= 180.0f * signY;
+                    y = (180.0f - absY) * -signY;
 
                     Roll(0.0f);
-                    Pitch(-angleX);
+                    Pitch(Mathf.Clamp(vector.y, -45.0f, 45.0f) * -1.0f);
                     Yaw(targetAngle.y, y);
 
                     return false;
                 }
-                else
-                    control.isAirBrakeOn = false;
             }
 
             if (Roll(bankAngle * -signY))
@@ -314,14 +288,17 @@ public class HorizontalTurnState : FlightState
             }
 
             control.throttle = 1.0f;
+            control.isAirBrakeOn = false;
         }
 
-        return vector.sqrMagnitude < 25.0f;
+        return vector.sqrMagnitude < 100.0f;
     }
 
     //===========================================
     // Variable & GetSet Methods
     //===========================================
+
+    public void SetOffset(Vector3 position) { offset = position; }
 
     private int mode = 0;
     private Vector3 targetPosition;
@@ -333,87 +310,194 @@ public class HorizontalTurnState : FlightState
     private float minX = -10.0f, maxX = 10.0f, zAngle = 5.0f;
 }
 
-public class DeepTurnState : FlightState
+public class FollowState : FlightState
 {
     //===========================================
     // Initializer/Destructor
     //===========================================
-    public DeepTurnState(Transform _transform, Control _control)
+    public FollowState(Transform _transform, Control _control)
     {
         transform = _transform;
         control = _control;
     }
 
-    public void Initialize(Vector3 _targetPosition)
+    public void Initialize(GameObject _target, Vector3 _offset, AircraftMovement movement, TurnType turnType = TurnType.Normal)
     {
-        targetPosition = _targetPosition;
-        moveTowardPosition = true;
+        target = _target;
+        mode = 0;
+        offset = _offset;
+        SetTurnValue(movement, turnType);
     }
-    public void Initialize(Quaternion quaternion)
+
+    public void Initialize(Aircraft _targetVehicle, Vector3 _offset, AircraftMovement movement, TurnType turnType = TurnType.Normal)
     {
-        targetAngle = quaternion.eulerAngles;
-        targetAngle.x = AngleCalibration(targetAngle.x);
-        targetAngle.y = AngleCalibration(targetAngle.y);
-        targetAngle.z = AngleCalibration(targetAngle.z);
-        moveTowardPosition = false;
+        target = _targetVehicle.gameObject;
+        mode = 0;
+        offset = _offset;
+        targetVehicle = _targetVehicle;
+        SetTurnValue(movement, turnType);
+    }
+    public void Initialize(GameObject _target, AircraftMovement movement, TurnType turnType = TurnType.Normal)
+    {
+        target = _target;
+        mode = 1;
+
+        SetTurnValue(movement, turnType);
+    }
+
+    public void Initialize(GameObject _target, Vector3 _offset)
+    {
+        target = _target;
+        offset = _offset;
+        mode = 0;
+    }
+
+    public void Initialize(GameObject _target)
+    {
+        target = _target;
+        mode = 1;
+    }
+
+
+    public void SetTurnValue(AircraftMovement movement, TurnType turnType)
+    {
+        Vector3 rotationSpeed = movement.GetRotationSpeed();
+
+        switch (turnType)
+        {
+            case TurnType.Shallow:
+                bankAngle = 15.0f;
+                maxX = 7.5f;
+                minX = -7.5f;
+                zAngle = 4.0f;
+                break;
+            case TurnType.Deep:
+                bankAngle = 70.0f;
+                maxX = 45.0f;
+                minX = -45.0f;
+                zAngle = 2.0f;
+                break;
+            default: // case TurnType.Normal:
+                bankAngle = 45.0f;
+                maxX = 12.5f;
+                minX = -12.5f;
+                zAngle = 1.0f;
+                break;
+        }
+        yaw = Mathf.Clamp01(rotationSpeed.z * Mathf.Tan(maxX * Mathf.Deg2Rad) / rotationSpeed.y);
     }
 
     //===========================================
-    // FrameCycle Methods
+    // Methods
     //===========================================
+
     public override bool Update()
     {
-        Vector3 vector = targetPosition - transform.position;
-        if (moveTowardPosition)
+        Vector3 vector = Vector3.zero;
+
+        switch (mode)
         {
-            targetAngle = Quaternion.LookRotation(vector).eulerAngles;
-            targetAngle.y = AngleCalibration(targetAngle.y);
+            case 0:
+                {
+                    Vector3 forward = Vector3.Scale(target.gameObject.transform.forward, new Vector3(1, 0, 1)).normalized;
+                    Vector3 right = Vector3.Scale(target.gameObject.transform.right, new Vector3(1, 0, 1)).normalized;
+                    vector = (forward * offset.x) + (right * offset.z) + target.gameObject.transform.position - transform.position;
+                    targetAngle = Quaternion.LookRotation(vector).eulerAngles;
+                    targetAngle.y = AngleCalibration(targetAngle.y);
+                }
+                break;
+            case 1:
+                vector = target.gameObject.transform.position - transform.position;
+                targetAngle = Quaternion.LookRotation(vector).eulerAngles;
+                targetAngle.y = AngleCalibration(targetAngle.y);
+                break;
+            default:
+                return true;
         }
+
 
         float y = AngleCalibration(transform.eulerAngles.y);
         y = GetMinAngleDifference(targetAngle.y, y);
 
         float absY = Mathf.Abs(y);
         float signY = Mathf.Sign(y);
-        float angleX = Mathf.Clamp(vector.y / 10.0f, -10.0f, 10.0f);
+        float angleX = Mathf.Clamp(vector.y / zAngle, minX, maxX);
 
         if (absY < 15.0f)
         {
             Roll(0.0f);
-            Pitch(-angleX);
+            Pitch(Mathf.Clamp(vector.y, -45.0f, 45.0f) * -1.0f);
             Yaw(targetAngle.y, y);
+            SetThrottle(vector);
 
         }
         else
         {
             if (absY > 165.0f)
             {
-                if (vector.sqrMagnitude < 100.0f)
+                if (vector.sqrMagnitude < 1375.0f)
                 {
-                    control.throttle = 0.2f;
+                    control.throttle = 0.1f;
                     control.isAirBrakeOn = true;
+                    y = (180.0f - absY) * -signY;
+
+                    Roll(0.0f);
+                    Pitch(Mathf.Clamp(vector.y, -45.0f, 45.0f) * -1.0f);
+                    Yaw(targetAngle.y, y);
+
+                    return false;
                 }
-                else
-                    control.isAirBrakeOn = false;
             }
 
-            if (Roll(30.0f * -signY))
+            if (Roll(bankAngle * -signY))
             {
                 Pitch(-angleX);
-                control.yoke.y = signY;
+                control.yoke.y = signY * yaw;
             }
+
+            control.isAirBrakeOn = false;
+            control.throttle = 1.0f;
         }
 
-        return false;
+        return vector.sqrMagnitude < 100.0f;
     }
 
+    private void SetThrottle(Vector3 vector)
+    {
+        if (targetVehicle != null)
+        {
+            float distanceFactor = Mathf.Clamp01(vector.sqrMagnitude / 60000.0f);
+            float targetVelocity = targetVehicle.Control().velocity * (distanceFactor + 1.0f);
+
+            if (control.velocity > targetVelocity)
+            {
+                control.isAirBrakeOn = true;
+                control.throttle = 0.1f;
+            }
+            else
+            {
+                control.throttle = Mathf.Clamp01(distanceFactor + 0.2f);
+                control.isAirBrakeOn = false;
+            }
+
+        }
+        else
+            control.throttle = 1.0f;
+    }
     //===========================================
     // Variable & GetSet Methods
     //===========================================
-    private Vector3 targetPosition;
-    private bool moveTowardPosition = false;
-}
 
+    public void SetOffset(Vector3 position) { offset = position; }
+
+    private int mode = 0;
+    private float bankAngle = 30.0f, yaw = 0.5f;
+    private float minX = -10.0f, maxX = 10.0f, zAngle = 5.0f;
+
+    private GameObject target;
+    private Aircraft targetVehicle;
+    private Vector3 offset;
+}
 
 
 
@@ -466,11 +550,15 @@ public class AviationLeaderSystem : LeaderSystem
         if (i == wings.Count) return Vector3.zero;
 
         float left = i % 2 == 0 ? -1.0f : 1.0f;
-        float back = (float)(i / 2);
+        float back = -(float)((i + 1) / 2);
 
-        return new Vector3(7.5f * back * left, 0.0f, 7.5f * back);
+        return new Vector3(7.5f * back, 0.0f, 7.5f * back * left);
     }
+
     public void Add(AircraftPilot pilot, Aircraft aircraft) { wings.Add((pilot, aircraft)); }
+
+    public delegate void ChangeLeaderMethod(Aircraft newLeader);
+    public event ChangeLeaderMethod ChangeLeader;
 
     //===========================================
     // Variable & GetSet Methods
@@ -479,9 +567,6 @@ public class AviationLeaderSystem : LeaderSystem
     public bool IsLeader(Aircraft aircraft) { return aircraft == wings[0].aircraft; }
 
     public Aircraft GetLeader() { return wings[0].aircraft; }
-
-    public delegate void ChangeLeaderMethod(Aircraft newLeader);
-    public event ChangeLeaderMethod ChangeLeader;
 
     List<(AircraftPilot pilot, Aircraft aircraft)> wings = new List<(AircraftPilot, Aircraft)>();
 }

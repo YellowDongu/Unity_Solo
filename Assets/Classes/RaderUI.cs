@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -49,9 +50,6 @@ public class RaderUI : MonoBehaviour
         StartCoroutine(DistributedHUDUpdate());
     }
 
-    //===========================================
-    // Methods
-    //===========================================
     private void OnDisable()
     {
         running = false;
@@ -62,14 +60,16 @@ public class RaderUI : MonoBehaviour
         running = false;
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     public IEnumerator DistributedHUDUpdate()
     {
+        Color color = HUDController.greenHUD;
+        Image dispatched = null;
+
         while (running)
         {
-            Color baseColor = HUDController.greenHUD;
-            Color color = HUDController.greenHUD;
-            Image dispatched = null;
-
             if (raderState)
             {
                 for (int i = 0; i < teamMax; i++)
@@ -86,10 +86,10 @@ public class RaderUI : MonoBehaviour
 
                     switch (i)
                     {
-                        case 0: color = baseColor = HUDController.unknown; break;
-                        case 1: color = baseColor = HUDController.ally; break;
-                        case 2: color = baseColor = HUDController.normal; break;
-                        default: color = baseColor = HUDController.greenHUD; break;
+                        case 0: color = HUDController.unknown; break;
+                        case 1: color = HUDController.ally; break;
+                        case 2: color = HUDController.normal; break;
+                        default: color = HUDController.greenHUD; break;
                     }
 
                     foreach (Vehicle target in whole[i])
@@ -105,16 +105,18 @@ public class RaderUI : MonoBehaviour
 
                         dispatched = uiPool[flag].Get();
                         dispatched.rectTransform.SetParent(expendedRaderTransform);
-                        dispatched.rectTransform.anchoredPosition = GetRaderPosition(target.gameObject.transform.position);
+                        dispatched.color = color;
+                        dispatched.rectTransform.anchoredPosition = GetRaderPosition(target.gameObject.transform.position) - size * 0.5f;
+                        dispatched.rectTransform.rotation = Quaternion.Euler(0.0f, 0.0f, -target.gameObject.transform.eulerAngles.y);
                         aliveUI[i].Add((dispatched, flag));
-                        color = baseColor;
                     }
                     yield return new WaitForFixedUpdate();
                 }
             }
             else
             {
-                Quaternion inversed = Quaternion.Euler(0.0f, -player.gameObject.transform.eulerAngles.y, 0.0f);
+                float playerY = -player.gameObject.transform.eulerAngles.y;
+                Quaternion inversed = Quaternion.Euler(0.0f, playerY, 0.0f);
 
                 foreach ((Image item, int flag) in aliveUI[0])
                 {
@@ -152,6 +154,7 @@ public class RaderUI : MonoBehaviour
                     dispatched.rectTransform.SetParent(raderTransform);
                     dispatched.color = color;
                     dispatched.rectTransform.anchoredPosition = position;
+                    dispatched.rectTransform.rotation = Quaternion.Euler(0.0f, 0.0f, -target.gameObject.transform.eulerAngles.y - playerY);
 
                     aliveUI[0].Add((dispatched, flag));
                 }
@@ -189,8 +192,8 @@ public class RaderUI : MonoBehaviour
         }
         else
         {
-            sizeX = localRaderSize;
-            sizeZ = localRaderSize;
+            sizeX = localRaderSize * 2.0f;
+            sizeZ = localRaderSize * 2.0f;
 
             minX = 0;
             minZ = 0;

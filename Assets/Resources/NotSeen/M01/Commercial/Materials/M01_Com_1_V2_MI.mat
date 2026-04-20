@@ -1,9 +1,0 @@
-Diffuse=M01_Comm_D
-Normal=M01_Comm_N
-Other[0]=M01_Comm_D_Mask
-Other[1]=M01_Comm_MREC
-Other[2]=Prop_HDB_D
-Other[3]=Prop_HDB_D_Mask
-Other[4]=Prop_HDB_MREC
-Other[5]=Prop_HDB_N
-Other[6]=clouds

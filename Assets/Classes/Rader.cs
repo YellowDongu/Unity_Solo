@@ -14,6 +14,7 @@ public class Rader : MonoBehaviour
     {
         layerMask = LayerMask.GetMask("MovingVehicle");
         targetLayer = LayerMask.NameToLayer("MovingVehicle");
+        raderDistance = GameMaster.ConvertWorldScale(raderDistance);
         collider.radius = raderDistance;
         rpm = 1.0f / (rpm / 60.0f);
     }
@@ -46,13 +47,15 @@ public class Rader : MonoBehaviour
         if (other.gameObject.layer != targetLayer)
             return;
 
-        Vehicle component = other.gameObject.transform.parent.gameObject.GetComponent<Vehicle>();
-        if (component == null)
-        {
+        Vehicle component = null;
+        if (other.gameObject.transform.parent != null)
+            component = other.gameObject.transform.parent.gameObject.GetComponent<Vehicle>();
+        else
             component = other.gameObject.GetComponent<Vehicle>();
-            if (component == null)
-                return;
-        }
+
+        if (component == null)
+            return;
+
         if (inDistance.Remove(component))
             exitEvent?.Invoke(component);
     }
@@ -61,7 +64,6 @@ public class Rader : MonoBehaviour
     {
         foreach (int index in targets)
             inDistance.RemoveAt(index);
-
     }
 
     public void DeployFlare(AudioSource source, AudioClip sound)

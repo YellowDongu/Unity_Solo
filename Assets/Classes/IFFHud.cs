@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class IFFHud : MonoBehaviour
 {
+    //===========================================
+    // struct/enum
+    //===========================================
     [System.Serializable]
     private struct ImageSet
     {
@@ -21,6 +24,20 @@ public class IFFHud : MonoBehaviour
         isTarget = false;
         nameText.gameObject.SetActive(false);
         distanceText.gameObject.SetActive(false);
+        TGTText.gameObject.SetActive(false);
+    }
+
+    public void Attach(Vehicle _target, Player _player, Aircraft playerAircraft)
+    {
+        player = _player;
+        Target = _target;
+
+        nameText.gameObject.SetActive(_target.Team == _player.Team);
+        distanceText.gameObject.SetActive(false);
+        GetLayer = playerAircraft.FCS().GetMissileAimLayer;
+        screenTransform = uiTransform.parent as RectTransform;
+        ImageInitialize(_target);
+        ChangeColor(_target.Team == 0 ? HUDController.unknown : (_target.Team == _player.Team ? HUDController.ally : HUDController.normal));
     }
 
     //===========================================
@@ -58,58 +75,34 @@ public class IFFHud : MonoBehaviour
         //uiTransform.localScale = Vector3.one * scale;
 
         if (isTarget)
-            distanceText.text = ((int)(Mathf.Sqrt(distance) * 5.0f)).ToString();
+            distanceText.text = ((int)GameMaster.ConvertInGameScale(Mathf.Sqrt(distance))).ToString();
     }
 
     //===========================================
     // Methods
     //===========================================
-    public void Attach(Vehicle _target, Player _player, Aircraft playerAircraft)
-    {
-        player = _player;
-        Target = _target;
-
-        ChangeColor(_target.Team == 0 ? HUDController.unknown : (_target.Team == _player.Team ? HUDController.ally : HUDController.normal));
-        nameText.gameObject.SetActive(_target.Team == _player.Team);
-        distanceText.gameObject.SetActive(false);
-        GetLayer = playerAircraft.FCS().GetMissileAimLayer;
-        screenTransform = uiTransform.parent as RectTransform;
-        ImageInitialize(_target);
-    }
-
     public void SetTarget(bool value)
     {
         isTarget = value;
         nameText.gameObject.SetActive(value);
         distanceText.gameObject.SetActive(value);
-        if (isTGT)
-            TGTText.gameObject.SetActive(value);
     }
 
     public void ChangeImage(int mask)
     {
         aimMask = mask;
-        switch (aimMask)
-        {
-            case -1://ground
-                imageSet[preset].image.gameObject.SetActive(!isAir);
-                imageSet[preset].secondImage.gameObject.SetActive(isAir);
-                break;
-            case 0:
-                imageSet[preset].image.gameObject.SetActive(true);
-                imageSet[preset].secondImage.gameObject.SetActive(false);
-                break;
-            case 1://air
-                imageSet[preset].image.gameObject.SetActive(isAir);
-                imageSet[preset].secondImage.gameObject.SetActive(!isAir);
-                break;
-            default:
-                aimMask = 0;
-                imageSet[preset].image.gameObject.SetActive(true);
-                imageSet[preset].secondImage.gameObject.SetActive(false);
-                break;
-        }
+        int bit = isAir ? 0 : 1;
 
+        if ((aimMask & (1 << bit)) != 0)
+        {
+            imageSet[preset].image.gameObject.SetActive(true);
+            imageSet[preset].secondImage.gameObject.SetActive(false);
+        }
+        else
+        {
+            imageSet[preset].image.gameObject.SetActive(false);
+            imageSet[preset].secondImage.gameObject.SetActive(true);
+        }
     }
 
     public void ImageInitialize(Vehicle target)
@@ -117,7 +110,7 @@ public class IFFHud : MonoBehaviour
         isAir = !target.isLand;
         preset = target.VehicleLayer;
         isTGT = target.IsTGT;
-        distanceText.text = target.VehicleName;
+        nameText.text = target.VehicleName;
         TGTText.gameObject.SetActive(isTGT);
 
         foreach (var item in imageSet)
@@ -127,13 +120,16 @@ public class IFFHud : MonoBehaviour
         isActive = true;
         ChangeImage(aimMask);
     }
+
     public void ImageActive(bool active)
     {
         if (isActive == active)
             return;
         isActive = active;
         imageSet[preset].container.SetActive(isActive);
+        TGTText.gameObject.SetActive(active ? isTGT : false);
     }
+
     public void GetAimMask()
     {
         int layer = GetLayer();

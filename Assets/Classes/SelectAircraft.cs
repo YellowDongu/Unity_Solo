@@ -1,6 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.LowLevel;
 
 public struct PlayerSpawnData
 {
@@ -44,11 +47,13 @@ public class SelectAircraft : MonoBehaviour
         {
             Aircraft newInstnace = factory.Create(item.id) as Aircraft;
             newInstnace.StandingSet();
-            MonoBehaviour[] behaviours = newInstnace.gameObject.GetComponents<MonoBehaviour>();
+
+            MonoBehaviour[] behaviours = newInstnace.gameObject.GetComponents<MonoBehaviour>(); // all Off
             foreach (MonoBehaviour component in behaviours)
                 component.enabled = false;
+
             newInstnace.gameObject.GetComponent<AircraftAnimator>().enabled = true;
-            newInstnace.gameObject.transform.localScale = Vector3.one * 2.5f;
+            newInstnace.gameObject.transform.localScale = Vector3.one * 2.0f;
             newInstnace.gameObject.transform.position = item.hangerPosition;
             newInstnace.gameObject.transform.rotation = eulerAngle;
             newInstnace.SystemIntegration();
@@ -58,10 +63,22 @@ public class SelectAircraft : MonoBehaviour
             selectedList.Add(item.id);
         }
 
-        vehicleSelectedHighlight.gameObject.SetActive(false);
+        vehicleSelector.SetActive(true);
+        vehicleSelector.gameObject.SetActive(true);
+        weaponSelector.SetActive(false);
+        weaponSelector.gameObject.SetActive(false);
+        currentSelector = vehicleSelector;
+        phase = 0;
 
-        vehicleSelectPanel.SetActive(true);
-        weaponSelectPanel.SetActive(false);
+        SoundManager sound = GameMaster.GetInstance().Sound();
+        MenuSelected = sound.GetSound("MenuSelected");
+        MenuChange = sound.GetSound("MenuChange");
+        returnSound = sound.GetSound("MenuCancel");
+        //sound.Play("main", true, true);
+    }
+    private void Start()
+    {
+        GameMaster.GetInstance().Sound().Play("Select");
     }
 
     //===========================================
@@ -69,133 +86,119 @@ public class SelectAircraft : MonoBehaviour
     //===========================================
     private void Update()
     {
-        Selected();
+        if (deactive)
+            return;
+
+        switch (phase)
+        {
+            case 0:
+                if (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame)
+                {
+                    selected = currentSelector.Selected + 1;
+                    if (selectedList[selected] != VehicleID.None && selectedList[selected] != VehicleID.END)
+                    {
+                        vehicleSelector.SetActive(false);
+                        vehicleSelector.gameObject.SetActive(false);
+                        weaponSelector.SetActive(true);
+                        weaponSelector.gameObject.SetActive(true);
+                        currentSelector = weaponSelector;
+                        phase = 1;
+                        GameMaster.GetInstance().Sound().PlayOnce(MenuSelected);
+                    }
+                }
+                if (Keyboard.current.escapeKey.wasPressedThisFrame)
+                {
+                    GameMaster.GetInstance().Sound().PlayOnce(returnSound);
+                    GameMaster.GetInstance().ReturnToMain();
+                }
+
+                break;
+            case 1:
+                if (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame)
+                {
+                    deactive = true;
+                    PlayerSpawnData newData;
+                    newData.weaponSelected = weaponSelector.Selected;
+                    newData.selected = selectedList[selected];
+
+                    SoundManager sound = GameMaster.GetInstance().Sound();
+                    sound.PlayOnce("AircraftSelected");
+                    sound.FadeOut(4.0f);
+
+                    GameMaster.GetInstance().StartMission(newData);
+                    return;
+                }
+
+                if (Keyboard.current.escapeKey.wasPressedThisFrame)
+                {
+                    vehicleSelector.SetActive(true);
+                    vehicleSelector.gameObject.SetActive(true);
+                    weaponSelector.SetActive(false);
+                    weaponSelector.gameObject.SetActive(false);
+                    weaponSelected = currentSelector.Selected;
+                    currentSelector = vehicleSelector;
+                    phase = 0;
+                    GameMaster.GetInstance().Sound().PlayOnce(returnSound);
+                }
+
+                break;
+            default:
+                phase = 0;
+                break;
+        }
+
+        if (Keyboard.current.sKey.wasPressedThisFrame || Keyboard.current.downArrowKey.wasPressedThisFrame)
+        {
+            currentSelector.SelectNext();
+            Change();
+            GameMaster.GetInstance().Sound().PlayOnce(MenuChange);
+        }
+        else if (Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame)
+        {
+            currentSelector.SelectPrevious();
+            Change();
+            GameMaster.GetInstance().Sound().PlayOnce(MenuChange);
+        }
     }
 
     //===========================================
     // Methods
     //===========================================
-    private void Selected()
+
+    private void Change()
     {
-        switch (phase)
+        if (phase != 0)
+            return;
+
+        if(preLoaded.TryGetValue(selectedList[currentSelector.Selected + 1], out GameObject next))
         {
-            case 0:
-                if (Keyboard.current.sKey.wasPressedThisFrame || Keyboard.current.downArrowKey.wasPressedThisFrame)
-                    ChangeSelectVehicle(selected + 1);
-                else if (Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame)
-                    ChangeSelectVehicle(selected - 1);
-                if (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame)
-                {
-                    if (selectedList[selected] != VehicleID.None && selectedList[selected] != VehicleID.END)
-                    {
-                        ChangePhase(1);
-                    }
-                }
-                break;
-            case 1:
-                if (Keyboard.current.sKey.wasPressedThisFrame || Keyboard.current.downArrowKey.wasPressedThisFrame)
-                    ChangeSelectWeapon(weaponSelected + 1);
-                else if (Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame)
-                    ChangeSelectWeapon(weaponSelected - 1);
-                if (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame)
-                {
-                        ReserveSpawn();
-                        GameMaster.GetInstance().GetSceneChanger().ChangeScene(nextScene, false);
-                }
-                break;
-            default:
-                phase = 0;
-                break;
-        }
+            if (current != null)
+                current.SetActive(false);
 
-    }
-
-    public void ChangePhase(int next)
-    {
-        switch (next)
-        {
-            case 0:
-                phase = next;
-                vehicleSelectPanel.SetActive(true);
-                weaponSelectPanel.SetActive(false);
-                break;
-            case 1:
-                phase = next;
-                vehicleSelectPanel.SetActive(false);
-                weaponSelectPanel.SetActive(true);
-                break;
-            default:
-                phase = 0;
-                vehicleSelectPanel.SetActive(true);
-                weaponSelectPanel.SetActive(false);
-                break;
-        }
-    }
-
-
-    public void ChangeSelectVehicle(int index)
-    {
-        if (index <= 0)
-            index = selectedList.Count - 1;
-        if (index >= selectedList.Count)
-            index = 1;
-
-        GameObject previous = current;
-        if (!preLoaded.TryGetValue(selectedList[index], out current))
-            current = previous;
-
-        if (previous != null)
-            previous.SetActive(false);
-        if (current != null)
+            current = next;
             current.SetActive(true);
-
-        selected = index;
-
-        if (selected != 0)
-        {
-            vehicleSelectedHighlight.gameObject.SetActive(true);
-            vehicleSelectedHighlight.SetParent(vehicleSelectPod.transform.GetChild(selected - 1).transform);
-            vehicleSelectedHighlight.anchoredPosition = new Vector2(vehicleSelectedHighlight.anchoredPosition.x, 0.0f);
         }
     }
 
-    public void ChangeSelectWeapon(int index)
-    {
-        if (index < 0)
-            index = 1;
-        if (index > 1)
-            index = 0;
-
-        weaponSelected = index;
-
-        weaponSelectedHighlight.gameObject.SetActive(true);
-        weaponSelectedHighlight.SetParent(weaponSelectPod.transform.GetChild(weaponSelected).transform);
-        weaponSelectedHighlight.anchoredPosition = new Vector2(weaponSelectedHighlight.anchoredPosition.x, 0.0f);
-    }
-
-    public void ReserveSpawn()
-    {
-        PlayerSpawnData newData;
-        newData.weaponSelected = weaponSelected;
-        newData.selected = selectedList[selected];
-        GameMaster.GetInstance().GetFactory().ReservePlayerVehicle(newData);
-    }
 
     //===========================================
     // Variable & GetSet Methods
     //===========================================
+    private bool deactive = false;
     private int phase = 0;
     private int selected = 0, weaponSelected = 0;
+
+    private AudioClip MenuSelected;
+    private AudioClip MenuChange;
+    private AudioClip returnSound;
+    private UISelector currentSelector;
     private GameObject current;
+    
+    [SerializeField] private string nextScene;
+    [SerializeField] private UISelector vehicleSelector;
+    [SerializeField] private UISelector weaponSelector;
+
     private List<VehicleID> selectedList;
     private Dictionary<VehicleID, GameObject> preLoaded = new Dictionary<VehicleID, GameObject>((int)VehicleID.END);
-    [SerializeField] private string nextScene;
     [SerializeField] private AircraftData[] data;
-
-    [SerializeField] private GameObject vehicleSelectPanel;
-    [SerializeField] private GameObject vehicleSelectPod;
-    [SerializeField] private RectTransform vehicleSelectedHighlight;
-    [SerializeField] private GameObject weaponSelectPanel;
-    [SerializeField] private GameObject weaponSelectPod;
-    [SerializeField] private RectTransform weaponSelectedHighlight;
 }

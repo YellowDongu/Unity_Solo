@@ -17,6 +17,8 @@ public class AIPilot : AircraftPilot
         Chase,
         Follow,
         Override,
+        Search,
+        Timed,
         END
     }
 
@@ -27,14 +29,60 @@ public class AIPilot : AircraftPilot
     {
         currentState = null;
         currentStatus = Status.Attack;
+        gunDistance = GameMaster.ConvertWorldScale(gunDistance);
+        gunDistance *= gunDistance;
+        gunAngleValue = Mathf.Cos(5.0f * Mathf.Deg2Rad);
+        if (als != null)
+            followLeader.SetOffset(als.GetOffset(this));
     }
 
+    public override void Attach(Vehicle target)
+    {
+        base.Attach(target);
+        rader.SetAutoFlare();
+        fcs.TargetChanged += TargetChanged;
+
+        leveling = new LevelingState(gameObject.transform, control);
+        horizontalTurn = new FollowState(gameObject.transform, control);
+        followLeader = new FollowState(gameObject.transform, control);
+        altutudeMatcher = new AltitudeState(gameObject.transform, control);
+        evade = new HorizontalTurnState(gameObject.transform, control);
+
+        horizontalTurn.SetTurnValue(movement, TurnType.Deep);
+        followLeader.SetTurnValue(movement, TurnType.Deep);
+        evade.SetTurnValue(movement, TurnType.Deep);
+
+        targets = fcs.Targets;
+        lockState = fcs.LockStatus;
+    }
+
+    public override void Release()
+    {
+        aircraft = null;
+        control = null;
+        movement = null;
+        animator = null;
+        rader = null;
+        fcs = null;
+
+        GameMaster.GetInstance().GetFactory().ReleaseAI(this);
+    }
+
+    public override void SetLeaderSystem(LeaderSystem system)
+    {
+        als = system as AviationLeaderSystem;
+        isLeader = als.IsLeader(this);
+        followLeader.Initialize(als.GetLeader(), als.GetOffset(this), movement, TurnType.Normal);
+    }
     //===========================================
     // FrameCycle Methods
     //===========================================
 
     void FixedUpdate()
     {
+        if(rader.AlartMissile())
+            ActiveEvade();
+
         if (als != null)
             als.Update();
 
@@ -43,11 +91,13 @@ public class AIPilot : AircraftPilot
             if (queue.Count > 0)
             {
                 (currentState, currentStatus) = queue.Dequeue();
+                if (currentStatus == Status.Timed)
+                    timer = currentState.tempStoringTime;
             }
             else if (isLeader)
             {
                 currentState = leveling;
-                currentStatus = Status.Chase;
+                currentStatus = Status.Search;
                 state = 0;
             }
             else
@@ -84,22 +134,63 @@ public class AIPilot : AircraftPilot
                             horizontalTurn.Initialize(targets[0].gameObject);
                             state = -10;
                         }
+                        else
+                            currentState = null;
                     }
                     break;
                 case Status.Override:
-                    if(currentState.Update())
-                    {
+                    if (currentState.Update())
                         currentState = null;
-
-                    }
-
                     return;
+                case Status.Search:
+                    currentState.Update();
+                    timer -= Time.deltaTime;
+                    if (timer <= 0.0f)
+                    {
+                        timer = 5.0f;
+                        if (rader.InRangeTarget.Count == 0)
+                        {
+                            chasing = null;
+                            ChangeTarget();
+                            if (chasing != null)
+                                currentStatus = Status.Chase;
+                        }
+                        else
+                        {
+                            fcs.ChangeTarget(true);
+
+                            if (targets.Count != 0)
+                            {
+                                currentStatus = Status.Attack;
+                                currentState = horizontalTurn;
+                                horizontalTurn.Initialize(targets[0].gameObject);
+                                chasing = targets[0];
+                                state = -10;
+                            }
+                            else
+                            {
+                                chasing = null;
+                                ChangeTarget();
+                                if (chasing == null)
+                                    currentStatus = Status.Chase;
+                            }
+                        }
+                    }
+                    break;
+                case Status.Timed:
+                    currentState.Update();
+                    timer -= Time.deltaTime;
+                    if (timer <= 0.0f)
+                    {
+                        timer = 0.0f;
+                        currentState = null;
+                    }
+                    Check();
+                    break;
                 default:
                     break;
             }
         }
-
-
     }
 
     //===========================================
@@ -132,73 +223,50 @@ public class AIPilot : AircraftPilot
     public void OverrideOrder(FlightState overrideState)
     {
         queue.Enqueue((currentState, currentStatus));
+        
         currentState = overrideState;
         currentStatus = Status.Override;
     }
 
-    public override void Attach(Vehicle target)
+    public void EnqueueTimedOrder(FlightState overrideState, float time)
     {
-        base.Attach(target);
-        rader.SetAutoFlare();
-
-        leveling = new LevelingState(gameObject.transform, control);
-        horizontalTurn = new HorizontalTurnState(gameObject.transform, control);
-        followLeader = new HorizontalTurnState(gameObject.transform, control);
-        altutudeMatcher = new AltitudeState(gameObject.transform, control);
-        horizontalTurn.SetTurnValue(movement, TurnType.Deep);
-        followLeader.SetTurnValue(movement, TurnType.Deep);
-
-        targets = fcs.Targets;
-        lockState = fcs.LockStatus;
-        gunAngleValue = Mathf.Cos(5.0f * Mathf.Deg2Rad);
+        overrideState.tempStoringTime = time;
+        queue.Enqueue((overrideState, Status.Timed));
     }
 
-    //public void ChangeTarget() // 전역 검색
-    //{
-    //    int index = infomation.team == 2 ? 1 : 2;
-    //    var list = GameMaster.GetInstance().GetFactory().GetAll(index);
-    //    float distance = float.MaxValue;
-    //    int selected = -1;
-    //
-    //    for (int i = 0; i < list.Count; i++)
-    //    {
-    //        if (!list[i].gameObject.activeInHierarchy)
-    //            continue;
-    //
-    //        float current = (list[i].transform.position - gameObject.transform.position).sqrMagnitude;
-    //        if(distance > current)
-    //        {
-    //            distance = current;
-    //            selected = i;
-    //        }
-    //    }
-    //}
+    public void TargetChanged()
+    {
+        if (currentStatus != Status.Attack)
+            return;
+
+        if (targets.Count == 0)
+        {
+            if (isLeader)
+            {
+                currentStatus = Status.Search;
+                currentState = leveling;
+            }
+            else
+            {
+                currentStatus = Status.Follow;
+                currentState = followLeader;
+            }
+
+            state = 0;
+        }
+        else
+        {
+            chasing = targets[0];
+            horizontalTurn.Initialize(targets[0].gameObject);
+        }
+    }
 
     public void ChangeLeader(Aircraft newLeader)
     {
         isLeader = newLeader == this;
         if (!isLeader)
-            followLeader.Initialize(als.GetLeader().gameObject, als.GetOffset(this), movement, TurnType.Normal);
+            followLeader.Initialize(als.GetLeader(), als.GetOffset(this), movement, TurnType.Normal);
     }
-
-    public override void Release()
-    {
-        aircraft = null;
-        control = null;
-        movement = null;
-        animator = null;
-        rader = null;
-        fcs = null;
-
-        GameMaster.GetInstance().GetFactory().ReleaseAI(this);
-    }
-    public override void SetLeaderSystem(LeaderSystem system)
-    {
-        als = system as AviationLeaderSystem;
-        isLeader = als.IsLeader(this);
-        followLeader.Initialize(als.GetLeader().gameObject, als.GetOffset(this), movement, TurnType.Normal);
-    }
-
 
     public bool BattleStatusUpdate()
     {
@@ -223,6 +291,8 @@ public class AIPilot : AircraftPilot
                         chasing = targets[0];
                         state = 0;
                     }
+                    else
+                        currentState = null;
                 }
                 break;
             default:
@@ -230,7 +300,6 @@ public class AIPilot : AircraftPilot
         }
         return false;
     }
-
 
     public bool FindTarget() // 근접 검색
     {
@@ -240,6 +309,10 @@ public class AIPilot : AircraftPilot
                 if (rader.InRangeTarget.Count == 0)
                 {
                     ChangeTarget();
+                    if (chasing != null)
+                        currentStatus = Status.Chase;
+                    else
+                        currentState = null;
                 }
                 else
                 {
@@ -274,6 +347,11 @@ public class AIPilot : AircraftPilot
                         chasing = targets[0];
                         state = -10;
                     }
+                    else
+                    {
+                        currentState = null;
+                        state = 0;
+                    }
                 }
                 break;
             default:
@@ -286,7 +364,10 @@ public class AIPilot : AircraftPilot
 
     public void ChangeTarget() // 전역 검색
     {
-        int index = team == 2 ? team - 1 : team + 1;
+        if (infomation.team == 0)
+            return;
+
+        int index = infomation.team == 2 ? infomation.team - 1 : infomation.team + 1;
         var list = GameMaster.GetInstance().GetFactory().GetAll(index);
         float distance = float.MaxValue;
         int selected = -1;
@@ -320,17 +401,7 @@ public class AIPilot : AircraftPilot
             fcs.ChangeTarget(true);
             if (targets.Count == 0)
             {
-                if (isLeader)
-                {
-                    currentStatus = Status.Chase;
-                    currentState = leveling;
-                }
-                else
-                {
-                    currentStatus = Status.Follow;
-                    currentState = followLeader;
-                }
-
+                currentState = null;
                 state = 0;
             }
             else
@@ -348,7 +419,8 @@ public class AIPilot : AircraftPilot
             horizontalTurn.Initialize(targets[0].gameObject);
         }
 
-        if (Vector3.Dot(fcs.gameObject.transform.forward, Vector3.Normalize(targets[0].gameObject.transform.position - fcs.gameObject.transform.position)) >= gunAngleValue)
+        Vector3 vector = targets[0].gameObject.transform.position - fcs.gameObject.transform.position;
+        if (vector.sqrMagnitude <= gunDistance && Vector3.Dot(fcs.gameObject.transform.forward, Vector3.Normalize(vector)) >= gunAngleValue)
             fcs.Gun(aircraft);
 
         if (lockState[0] <= 0.0f)
@@ -357,30 +429,44 @@ public class AIPilot : AircraftPilot
         return false;
     }
 
+    public void ActiveEvade()
+    {
+        if (currentStatus == Status.Override)
+            return;
+        if (currentStatus == Status.Timed && (currentState == evade || currentState == leveling))
+            return;
+
+        queue.Clear();
+        evade.Initialize(gameObject.transform.position + gameObject.transform.forward * -30.0f);
+        EnqueueTimedOrder(evade, 10.0f);
+        EnqueueTimedOrder(leveling, 5.0f);
+        currentState = null;
+    }
+
     //===========================================
     // Variable & GetSet Methods
     //===========================================
 
     private Status currentStatus = Status.Chase;
+    private bool isLeader = true;
     private int state = 0;
-    private int team = 0;
-    private float gunAngleValue = 0.0f;
+    private float gunAngleValue = 0.0f, gunDistance = 1000.0f;
+    private float timer = 0.0f;
+
+
     private Vehicle chasing = null;
+    private AviationLeaderSystem als = null;
+
+    private FlightState currentState;
+    private LevelingState leveling;
+    private FollowState horizontalTurn;
+    private FollowState followLeader;
+    private HorizontalTurnState evade;
+    private AltitudeState altutudeMatcher;
+
 
     private ReadOnlyCollection<float> lockState;
     private ReadOnlyCollection<Vehicle> targets;
-
-
-    private FlightState currentState;
-
-    private LevelingState leveling;
-    private HorizontalTurnState horizontalTurn;
-    private HorizontalTurnState followLeader;
-    private AltitudeState altutudeMatcher;
-
     private Queue<(FlightState, Status)> queue = new Queue<(FlightState, Status)>();
-
-    private bool isLeader = true;
-    private AviationLeaderSystem als = null;
 
 }

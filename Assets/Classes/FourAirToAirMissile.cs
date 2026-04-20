@@ -6,9 +6,12 @@ using UnityEngine.Pool;
 
 public class FourAirToAirMissile : Missile
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
-        maxRange /= 5.0f;
+        maxRange = GameMaster.ConvertWorldScale(maxRange);
     }
 
     //===========================================

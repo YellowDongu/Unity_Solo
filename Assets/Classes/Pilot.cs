@@ -10,7 +10,7 @@ public abstract class Pilot : MonoBehaviour
     {
         public int team;
         public bool invincible;
-        public bool tgt;
+        public bool isTGT;
 
     }
 

@@ -13,6 +13,7 @@ public class GaugeUI : MonoBehaviour
         stm,
         faam,
         sarm,
+        fagm,
         END
     }
 

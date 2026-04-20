@@ -1,10 +1,12 @@
-using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
 using System.IO;
+using UnityEngine;
+#endif
 
 public class EditorTools
 {
-
+#if UNITY_EDITOR
     [MenuItem("Assets/Convert Selected DDS to PNG", false, 1)]
     public static void ConvertMultipleDDSToPNG()
     {
@@ -69,4 +71,5 @@ public class EditorTools
         // 메모리 해제
         Object.DestroyImmediate(newTex);
     }
+#endif
 }

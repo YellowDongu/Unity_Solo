@@ -44,7 +44,9 @@ Shader "Custom/RadialFog"
                 float4 positionCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
             };
-
+            
+            //==========================================================
+            // Vertex Shader
             VS_Output vert(Attributes input)
             {
                 VS_Output output;
@@ -52,7 +54,10 @@ Shader "Custom/RadialFog"
                 output.uv = GetFullScreenTriangleTexCoord(input.vertexID);
                 return output;
             }
+            //==========================================================
             
+            //==========================================================
+            // Pixel Shader
             float4 frag(VS_Output input) : SV_Target
             {
                 float3 rawColor = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_LinearClamp, input.uv).rgb;// blit Àü¿ë
@@ -81,6 +86,7 @@ Shader "Custom/RadialFog"
                 float fogFactor = saturate((distance(worldPosition.xyz, _WorldSpaceCameraPos.xyz) - _FogStart) / (_FogEnd - _FogStart));
                 return float4(lerp(rawColor, _FogColor.rgb, fogFactor), 1.0);
             }
+            //==========================================================
 
             ENDHLSL
         }

@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.GraphicsBuffer;
 
 public class CameraController : MonoBehaviour
 {
@@ -32,12 +31,30 @@ public class CameraController : MonoBehaviour
                 layerIndex++;
             }
 
-            distances[layerIndex] = item.distance;
+            distances[layerIndex] = GameMaster.ConvertWorldScale(item.distance);
         }
 
         cam.layerCullDistances = distances;
     }
 
+    public void Attach(Vehicle _target, bool thirdProspective)
+    {
+        thirdView = thirdProspective;
+        target = _target;
+        if (thirdView)
+            ThirdProspective();
+        else
+            FirstProspective();
+
+        gameObject.transform.localPosition = Vector3.zero;
+        gameObject.transform.localEulerAngles = Vector3.zero;
+        camera.gameObject.transform.localPosition = Vector3.zero;
+        camera.gameObject.transform.localEulerAngles = Vector3.zero;
+    }
+
+    //===========================================
+    // FrameCycle Methods
+    //===========================================
     private void Update()
     {
         if (Keyboard.current.vKey.isPressed)
@@ -65,20 +82,6 @@ public class CameraController : MonoBehaviour
     //===========================================
     // Methods
     //===========================================
-    public void Attach(Vehicle _target, bool thirdProspective)
-    {
-        thirdView = thirdProspective;
-        target = _target;
-        if (thirdView)
-            ThirdProspective();
-        else
-            FirstProspective();
-
-        transform.localPosition = Vector3.zero;
-        transform.localEulerAngles = Vector3.zero;
-        camera.gameObject.transform.localPosition = Vector3.zero;
-        camera.gameObject.transform.localEulerAngles = Vector3.zero;
-    }
 
     public void FirstProspective()
     {
@@ -99,9 +102,8 @@ public class CameraController : MonoBehaviour
 
     private bool thirdView = true;
     private float rotationSpeed = 45.0f;
-    private GameObject thirdViewArm;
-    private Vehicle target;
 
+    private Vehicle target;
     private Transform attachedPoint = null;
     [SerializeField] private Camera camera = null;
     [SerializeField] private LayerDistance[] customDistances;

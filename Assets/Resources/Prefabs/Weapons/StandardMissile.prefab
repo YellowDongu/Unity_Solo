@@ -57,10 +57,11 @@ MonoBehaviour:
   lockAngle: 45
   lockSpeed: 1
   multiShoot: 1
+  aimLayer: 3
   neededUI: 0
   mesh: {fileID: 7631640164483355924}
-  rigidbody: {fileID: 7387634235143444926}
   trail: {fileID: 6734923409599877341}
+  rigidbody: {fileID: 7387634235143444926}
 --- !u!54 &7387634235143444926
 Rigidbody:
   m_ObjectHideFlags: 0

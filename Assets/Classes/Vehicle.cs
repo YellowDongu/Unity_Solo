@@ -4,12 +4,18 @@ using static Pilot;
 public abstract class Vehicle : MonoBehaviour
 {
     //===========================================
+    // Initializer/Destructor
+    //===========================================
+
+    public void Release() { releaseEvent?.Invoke(); releaseEvent = null; release?.Invoke(this); }
+
+    //===========================================
     // Methods
     //===========================================
     public void SetVehicleInfo(ref PilotInfo infomation)
     {
         team = infomation.team;
-        tgt = infomation.tgt;
+        tgt = infomation.isTGT;
         if (infomation.invincible)
             hp = int.MaxValue;
     }
@@ -27,7 +33,6 @@ public abstract class Vehicle : MonoBehaviour
         }
     }
 
-    public void Release() { releaseEvent?.Invoke(); releaseEvent = null; release.Invoke(this); }
 
     //===========================================
     // Variable & GetSet Methods
@@ -45,7 +50,7 @@ public abstract class Vehicle : MonoBehaviour
 
 
     public delegate void ReleaseMethod(Vehicle vehicle);
-    private event ReleaseMethod release;
+    public event ReleaseMethod release;
     public delegate void ReleaseEventMethod();
     public event ReleaseEventMethod releaseEvent;
     public delegate void SetIntValueMethod(int value);

@@ -20,6 +20,7 @@ public abstract class AircraftPilot : Pilot
         fcs = aircraft.FCS();
         fcs.SetTeam(infomation.team);
         rader.SetTeam(infomation.team);
+
     }
 
     //===========================================

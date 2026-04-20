@@ -52,16 +52,17 @@ MonoBehaviour:
   targetCount: 1
   coolTime: 10
   maxRange: 6000
-  velocity: 350
-  rotationSpeed: 150
+  velocity: 250
+  rotationSpeed: 250
   lockAngle: 25
   lockSpeed: 0.5
   multiShoot: 1
+  aimLayer: 1
   neededUI: 2
   mesh: {fileID: 7631640164483355924}
+  trail: {fileID: 5712748414710622329}
   rigidbody: {fileID: 7387634235143444926}
   index: 0
-  trail: {fileID: 5712748414710622329}
   fcs: {fileID: 0}
 --- !u!54 &7387634235143444926
 Rigidbody:

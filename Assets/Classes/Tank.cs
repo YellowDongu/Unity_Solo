@@ -7,6 +7,9 @@ public class GroundControl
 
 public class Tank : Vehicle
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     void Start()
     {
         SystemIntegration();
@@ -26,7 +29,7 @@ public class Tank : Vehicle
     public void SetSpecial(int value) { fcs.SetSpecial(value); }
     public GroundMovement Movement() { return movement; }
     public TankAnimator Animator() { return animator; }
-    public FireControlSystem FCS() { return fcs; }
+    public TurretFireControlSystem FCS() { return fcs; }
     public Rader Rader() { return rader; }
     public GroundControl Control() { return control; }
 
@@ -35,7 +38,7 @@ public class Tank : Vehicle
 
     [SerializeField] private GroundMovement movement;
     [SerializeField] private TankAnimator animator;
-    [SerializeField] private FireControlSystem fcs;
+    [SerializeField] private TurretFireControlSystem fcs;
     [SerializeField] private Rader rader;
 
 

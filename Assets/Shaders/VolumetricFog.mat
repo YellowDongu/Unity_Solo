@@ -31,7 +31,7 @@ Material:
     m_Floats:
     - _DensityMultiplier: 100
     - _NoiseScale: 5
-    - _StepCount: 32
+    - _StepCount: 12
     - _Threshold: 0.47
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

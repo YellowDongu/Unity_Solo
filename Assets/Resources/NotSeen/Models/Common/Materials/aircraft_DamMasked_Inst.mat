@@ -1,9 +1,0 @@
-Diffuse=Aircraft_Dam_D
-Normal=Aircraft_Dam_N
-Other[0]=Aircraft_Dam_MREC
-Other[1]=Aircraft_Dam_Detail_N
-Other[2]=checkerMask
-Other[3]=DefaultDamageNormal
-Other[4]=DefaultMREC_Linear
-Other[5]=DefaultNormal
-Other[6]=Default_000_D

@@ -13,15 +13,17 @@ public class HUDController : MonoBehaviour
     private void Awake()
     {
         GameMaster.GetInstance().EnlistBaseCanvas(this);
+        warningSound = GameMaster.GetInstance().Sound().GetSound("MissileWarn");
         ChangeColor(greenHUD);
-        PitchHalf = Instantiate(PitchHalfPrefab, attitudeIndicator.transform).GetComponent<Image>();
-        PitchNEGPool = new ObjectPool<Image>(createFunc: () => Instantiate(PitchNEGPrefab, attitudeIndicator.transform).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 15);
-        PitchNEGHPool = new ObjectPool<Image>(createFunc: () => Instantiate(PitchNEG_HPrefab, attitudeIndicator.transform).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 15);
-        PitchPOSPool = new ObjectPool<Image>(createFunc: () => Instantiate(PitchPOSPrefab, attitudeIndicator.transform).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 15);
-        PitchPOSHPool = new ObjectPool<Image>(createFunc: () => Instantiate(PitchPOS_HPrefab, attitudeIndicator.transform).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 15);
+        PitchHalf = Instantiate(PitchHalfPrefab, attitudeIndicator.transform).GetComponent<PitchUI>();
+        PitchNEGPool = new ObjectPool<PitchUI>(createFunc: () => Instantiate(PitchNEGPrefab, attitudeIndicator.transform).GetComponent<PitchUI>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 15);
+        PitchNEGHPool = new ObjectPool<PitchUI>(createFunc: () => Instantiate(PitchNEG_HPrefab, attitudeIndicator.transform).GetComponent<PitchUI>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 15);
+        PitchPOSPool = new ObjectPool<PitchUI>(createFunc: () => Instantiate(PitchPOSPrefab, attitudeIndicator.transform).GetComponent<PitchUI>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 15);
+        PitchPOSHPool = new ObjectPool<PitchUI>(createFunc: () => Instantiate(PitchPOS_HPrefab, attitudeIndicator.transform).GetComponent<PitchUI>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 15);
+
     }
 
-    private void Initialize()
+    private void InitializeHUD()
     {
         Vector3 angle = player.gameObject.transform.eulerAngles;
         attitudeIndicator.transform.rotation = Quaternion.Euler(0.0f, 0.0f, AngleCalibration(angle.z));
@@ -41,8 +43,9 @@ public class HUDController : MonoBehaviour
             if (ySpace > 72)
                 ySpace *= -1;
 
-            currentActive[i].Item1.color = currentColor;
-            currentActive[i].Item1.rectTransform.anchoredPosition = new Vector2(0.0f, -200.0f + (float)i * 50.0f + baseValue);
+            PitchUI image = currentActive[i].Item1;
+            image.ChangeColor(currentColor);
+            image.CalibratePosition(-200.0f + (float)i * 50.0f + baseValue);
         }
     }
 
@@ -51,11 +54,16 @@ public class HUDController : MonoBehaviour
         player = vehicle.Movement();
         playerRader = vehicle.Rader();
         playerRader.uiWarningEvent += Warning;
-        Initialize();
+        InitializeHUD();
     }
+
     //===========================================
     // FrameCycle Methods
     //===========================================
+    private void Update()
+    {
+        gameTimer += Time.deltaTime;
+    }
 
     private void FixedUpdate()
     {
@@ -88,13 +96,13 @@ public class HUDController : MonoBehaviour
 
         for (int i = 0; i < 9; i++)
         {
-            Image pitch = currentActive[i].Item1;
-            pitch.color = currentColor;
-            pitch.rectTransform.anchoredPosition = new Vector2(0.0f, 200.0f - (float)i * 50.0f - difference);
+            PitchUI pitch = currentActive[i].Item1;
+            pitch.ChangeColor(currentColor);
+            pitch.CalibratePosition(200.0f - (float)i * 50.0f - difference);
         }
     }
 
-    private (Image image, int value) GetImage(int value)
+    private (PitchUI image, int value) GetImage(int value)
     {
         if (value == 0)
         {
@@ -104,14 +112,22 @@ public class HUDController : MonoBehaviour
         else if (value < 0)
         {
             if (value % 2 == 0)
-                return (PitchNEGPool.Get(), 1);
+            {
+                PitchUI newInstnce = PitchNEGPool.Get();
+                newInstnce.ChangeText((int)((float)value * 2.5f));
+                return (newInstnce, 1);
+            }
             else
                 return (PitchNEGHPool.Get(), 2);
         }
         else
         {
             if (value % 2 == 0)
-                return (PitchPOSPool.Get(), 3);
+            {
+                PitchUI newInstnce = PitchPOSPool.Get();
+                newInstnce.ChangeText((int)((float)value * 2.5f));
+                return (newInstnce, 3);
+            }
             else
                 return (PitchPOSHPool.Get(), 4);
         }
@@ -119,7 +135,7 @@ public class HUDController : MonoBehaviour
 
     private void Dequeue(bool isBack, int pitchValue = 255)
     {
-        (Image image, int value) target;
+        (PitchUI image, int value) target;
         if (isBack)
             target = currentActive[currentActive.Count - 1];
         else
@@ -212,7 +228,7 @@ public class HUDController : MonoBehaviour
             else
                 Timer = 2.0f;
 
-            GameMaster.GetInstance().Sound().PlayOnce("MissileWarning");
+            GameMaster.GetInstance().Sound().PlayOnce(warningSound);
             yield return new WaitForFixedUpdate();
         }
         ChangeColor(greenHUD);
@@ -225,6 +241,7 @@ public class HUDController : MonoBehaviour
     //===========================================
     // Variable & GetSet Methods
     //===========================================
+    public float GetGameTimer() { return gameTimer; }
     public LockHUD LinkLockHUD() { return lockHUD; }
     public RaderUI LinkRaderUI() { return raderUI; }
     public IFFUIController LinkIFFUIController() { return iFFUIController; }
@@ -232,19 +249,23 @@ public class HUDController : MonoBehaviour
     public Color GetColor() { return currentColor; }
 
 
+    private bool initialized = false;
     private bool inWarning = false, warning = false, urgent = false;
     private int yHeight = 0;
+    private float gameTimer = 0.0f;
 
     private Color currentColor = greenHUD;
     private AircraftMovement player = null;
     private Rader playerRader = null;
 
-    private List<(Image, int)> currentActive = new List<(Image, int)>(10);
-    private Image PitchHalf = null;
-    private ObjectPool<Image> PitchNEGPool = null;
-    private ObjectPool<Image> PitchNEGHPool = null;
-    private ObjectPool<Image> PitchPOSPool = null;
-    private ObjectPool<Image> PitchPOSHPool = null;
+    private AudioClip warningSound = null;
+
+    private List<(PitchUI, int)> currentActive = new List<(PitchUI, int)>(10);
+    private PitchUI PitchHalf = null;
+    private ObjectPool<PitchUI> PitchNEGPool = null;
+    private ObjectPool<PitchUI> PitchNEGHPool = null;
+    private ObjectPool<PitchUI> PitchPOSPool = null;
+    private ObjectPool<PitchUI> PitchPOSHPool = null;
 
     [SerializeField] private LockHUD lockHUD;
     [SerializeField] private RaderUI raderUI;

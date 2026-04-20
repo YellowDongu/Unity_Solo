@@ -6,9 +6,33 @@ using UnityEngine.Pool;
 
 public class SemiActiveRaderMissile : Missile
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
-        maxRange /= 5.0f;
+        maxRange = GameMaster.ConvertWorldScale(maxRange);
+    }
+
+    protected override void Release()
+    {
+        isProjectile = false;
+        mesh.SetActive(false);
+        ReleaseEvent();
+        StartCoroutine(DelayRelease());
+    }
+
+    protected IEnumerator DelayRelease()
+    {
+        float time = trail.time;
+
+        while (time > 0.0f)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+
+        objectPool.Release(this);
     }
 
     //===========================================
@@ -82,27 +106,6 @@ public class SemiActiveRaderMissile : Missile
         newInstance.lockStatus = fcs.LockStatus;
         newInstance.fcs = null;
         return newInstance;
-    }
-
-    protected override void Release()
-    {
-        isProjectile = false;
-        mesh.SetActive(false);
-        ReleaseEvent();
-        StartCoroutine(DelayRelease());
-    }
-
-    protected IEnumerator DelayRelease()
-    {
-        float time = trail.time;
-
-        while (time > 0.0f)
-        {
-            time -= Time.deltaTime;
-            yield return null;
-        }
-
-        objectPool.Release(this);
     }
 
     //===========================================

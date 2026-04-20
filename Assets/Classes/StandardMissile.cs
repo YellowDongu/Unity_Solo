@@ -5,9 +5,33 @@ using UnityEngine.Pool;
 
 public class StandardMissile : Missile
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
     private void Awake()
     {
-        maxRange /= 5.0f;
+        maxRange = GameMaster.ConvertWorldScale(maxRange);
+    }
+
+    protected override void Release()
+    {
+        isProjectile = false;
+        mesh.SetActive(false);
+        ReleaseEvent();
+        StartCoroutine(DelayRelease());
+    }
+
+    protected IEnumerator DelayRelease()
+    {
+        float time = trail.time;
+
+        while (time > 0.0f)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+
+        objectPool.Release(this);
     }
 
     //===========================================
@@ -72,27 +96,6 @@ public class StandardMissile : Missile
         StandardMissile newInstance = objectPool.Get();
         newInstance.trail.gameObject.SetActive(true);
         return newInstance;
-    }
-
-    protected override void Release()
-    {
-        isProjectile = false;
-        mesh.SetActive(false);
-        ReleaseEvent();
-        StartCoroutine(DelayRelease());
-    }
-
-    protected IEnumerator DelayRelease()
-    {
-        float time = trail.time;
-
-        while (time > 0.0f)
-        {
-            time -= Time.deltaTime;
-            yield return null;
-        }
-
-        objectPool.Release(this);
     }
 
     //===========================================

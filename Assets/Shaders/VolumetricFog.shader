@@ -9,15 +9,14 @@ Shader "Custom/VolumetricFog"
         _Threshold ("Cloud Cutoff", Range(0, 1)) = 0.3
         
         [Header(Performance)]
-        _StepCount ("Ray Steps", Range(16, 256)) = 64
+        _StepCount ("Ray Steps", Range(4, 256)) = 64
         _NoiseScale ("Noise Scale", Float) = 1.0
     }
-
 
     SubShader
     {
 
-        Tags // 유니티 6 URP 표준 태그
+        Tags
         {
             "RenderType"="Transparent"
             "Queue"="Transparent"
@@ -76,9 +75,9 @@ Shader "Custom/VolumetricFog"
                 //f += 0.1250 * Noise(p);
                 return f;
             }
-
-            // --------------------------------------------------
-
+            
+            //==========================================================
+            // Vertex Shader
             VS_OUTPUT VS_Main(VS_INPUT input)
             {
                 VS_OUTPUT output;
@@ -88,7 +87,9 @@ Shader "Custom/VolumetricFog"
                 output.screenPos = ComputeScreenPos(vertexInput.positionCS);
                 return output;
             }
-
+            
+            //==========================================================
+            // Pixel Shader
             float4 PS_Main(VS_OUTPUT input) : SV_Target
             {
                 float3 worldRayOrigin = GetCameraPositionWS();
@@ -126,7 +127,7 @@ Shader "Custom/VolumetricFog"
 
                 return float4(_Color.rgb, accumulatedAlpha);
             }
-
+            //==========================================================
 
             ENDHLSL
         }
