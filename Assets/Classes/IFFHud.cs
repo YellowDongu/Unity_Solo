@@ -45,7 +45,7 @@ public class IFFHud : MonoBehaviour
     //===========================================
     private void LateUpdate()
     {
-        if (!Target.gameObject.activeInHierarchy)
+        if (Target == null || !Target.gameObject.activeInHierarchy)
         {
             release?.Invoke(this);
             return;

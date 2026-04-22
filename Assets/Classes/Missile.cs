@@ -17,7 +17,7 @@ public abstract class Missile : MonoBehaviour
         newInstance.transform.position = gameObject.transform.position;
         newInstance.transform.rotation = gameObject.transform.rotation;
         newInstance.isProjectile = true;
-        newInstance.flyDistance = maxRange;
+        newInstance.flyDistance = maxRange * 1.5f;
 
         newInstance.trail.Clear();
         newInstance.trail.emitting = true;

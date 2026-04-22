@@ -104,7 +104,17 @@ public class LevelingState : FlightState
     {
         bool reutrnValue = Roll(0.0f);
         reutrnValue |= Pitch(0.0f);
+        SetThrottle();
         return reutrnValue;
+    }
+
+    private void SetThrottle()
+    {
+        if (control.velocity > 33.0f)
+            control.throttle = 0.2f;
+        else
+            control.throttle = 1.0f;
+        control.isAirBrakeOn = false;
     }
 }
 
@@ -128,9 +138,18 @@ public class AltitudeState : FlightState
         float difference = targetAltitude - transform.position.y;
         float targetAngle = Mathf.Clamp(difference * 5.0f, -45.0f, 45.0f) * -1.0f;
         Pitch(targetAngle);
+        SetThrottle(targetAngle);
         return difference < 2.5f;
     }
 
+    private void SetThrottle(float targetAngle)
+    {
+        if (targetAngle > 5.0f)
+            control.throttle = 1.0f;
+        else
+            control.throttle = 0.2f;
+        control.isAirBrakeOn = false;
+    }
     //===========================================
     // Variable & GetSet Methods
     //===========================================

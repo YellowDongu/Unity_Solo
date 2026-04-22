@@ -56,7 +56,7 @@ public class GaugeUIController : MonoBehaviour
         image.sprite = infomation.progress;
 
         hp.GaugeList[0].LinkCoolTime(vehicle.HPPresentage);
-        hp.GaugeList[0].GetMaxCoolTime(0);
+        hp.GaugeList[0].GetMaxCoolTime(1);
 
         FireControlSystem fcs = vehicle.FCS();
         standardGauge = Instantiate(uiPrefabs[fcs.NeededUIStandard()], gameObject.transform).GetComponent<GaugeUI>();

@@ -17,6 +17,7 @@ public class Tank : Vehicle
 
     public void SystemIntegration()
     {
+        hp = maxHp;
         movement.control = control;
         animator.Initialize(control);
         SetIntValue += rader.GetHP;

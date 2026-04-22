@@ -52,6 +52,11 @@ public class CameraController : MonoBehaviour
         camera.gameObject.transform.localEulerAngles = Vector3.zero;
     }
 
+    public void DetachCamera()
+    {
+        camera.gameObject.transform.SetParent(null);
+    }
+
     //===========================================
     // FrameCycle Methods
     //===========================================

@@ -178,7 +178,7 @@ MonoBehaviour:
     id: 1
     pilot:
       team: 1
-      invincible: 1
+      invincible: 0
       isTGT: 0
   - player: 0
     specialWeapon: 0

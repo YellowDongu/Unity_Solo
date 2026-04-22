@@ -27,10 +27,11 @@ public class Aircraft : Vehicle
 
     public void SystemIntegration()
     {
+        hp = maxHp;
         if (integrated)
         {
             engineChannel.clip = GameMaster.GetInstance().Sound().GetSound("Engine_Outside");
-            //engineChannel.Play();
+            engineChannel.Play();
             engineChannel.loop = true;
             return;
         }
@@ -41,7 +42,7 @@ public class Aircraft : Vehicle
         SetIntValue += rader.GetHP;
         rader.GetHP(hp);
         engineChannel.clip = GameMaster.GetInstance().Sound().GetSound("Engine_Outside");
-        //engineChannel.Play();
+        engineChannel.Play();
         engineChannel.loop = true;
     }
 
@@ -67,8 +68,8 @@ public class Aircraft : Vehicle
     }
     private void OnEnable()
     {
-        //if (engineChannel != null)
-        //    engineChannel.Play();
+        if (engineChannel != null)
+            engineChannel.Play();
     }
 
     //===========================================

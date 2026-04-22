@@ -38,7 +38,7 @@ public class GaugeUI : MonoBehaviour
         public delegate float GetCoolTimeMethod();
         private GetCoolTimeMethod GetCoolTime;
 
-        private float progressMax;
+        private float progressMax = 1;
         private float progress;
         [SerializeField] private Image container;
         [SerializeField] private Image gauge;

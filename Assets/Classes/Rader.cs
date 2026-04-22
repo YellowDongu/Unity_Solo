@@ -60,10 +60,20 @@ public class Rader : MonoBehaviour
             exitEvent?.Invoke(component);
     }
 
-    public void Remove(List<int> targets)
+    public void Remove(List<Vehicle> targets)
     {
-        foreach (int index in targets)
-            inDistance.RemoveAt(index);
+        foreach (Vehicle current in targets)
+        {
+            int max = inDistance.Count;
+            for (int i = 0; i < max; i++)
+            {
+                if (inDistance[i] != current)
+                    continue;
+
+                inDistance.RemoveAt(i);
+                break;
+            }
+        }
     }
 
     public void DeployFlare(AudioSource source, AudioClip sound)

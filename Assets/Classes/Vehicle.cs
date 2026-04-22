@@ -7,7 +7,7 @@ public abstract class Vehicle : MonoBehaviour
     // Initializer/Destructor
     //===========================================
 
-    public void Release() { releaseEvent?.Invoke(); releaseEvent = null; release?.Invoke(this); }
+    public void Release() { releaseEvent?.Invoke(); releaseEvent = null; release?.Invoke(this); release = null; }
 
     //===========================================
     // Methods
@@ -38,7 +38,7 @@ public abstract class Vehicle : MonoBehaviour
     // Variable & GetSet Methods
     //===========================================
     public void SetRelease(ReleaseMethod listener) { release = listener; }
-    public float HPPresentage() { return (float)hp / (float)maxHp; }
+    public float HPPresentage() { return 1.0f - (float)hp / (float)maxHp; }
     public GameObject FirstView() { return firstView; }
     public GameObject ThirdView() { return thirdView; }
     public VehicleID ID { get { return id; } private set { id = value; } }

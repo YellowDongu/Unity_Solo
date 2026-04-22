@@ -67,7 +67,9 @@ public class Player : AircraftPilot
         fcs = null;
 
         gameObject.transform.SetParent(null);
+        gameObject.GetComponent<CameraController>().DetachCamera();
         GameMaster.GetInstance().EndMission(false);
+        gameObject.SetActive(false);
     }
 
     public override void SetLeaderSystem(LeaderSystem system)

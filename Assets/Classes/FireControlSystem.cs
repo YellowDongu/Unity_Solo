@@ -304,7 +304,7 @@ public class FireControlSystem : MonoBehaviour
             Vehicle target = list[i];
             if (!target.gameObject.activeInHierarchy)
             {
-                removeList.Add(i);
+                removeList.Add(target);
                 continue;
             }
 
@@ -385,7 +385,7 @@ public class FireControlSystem : MonoBehaviour
     protected float bulletTime = 0.0f;
     [SerializeField] protected float gunRPM = 350.0f;
 
-    protected List<int> removeList = new List<int>(20);
+    protected List<Vehicle> removeList = new List<Vehicle>(20);
     protected List<float> lockStatus = new List<float>(16);
     protected List<Vehicle> currentTargets = new List<Vehicle>(16);
     protected List<(float, Vehicle)> targets = new List<(float, Vehicle)>(16);

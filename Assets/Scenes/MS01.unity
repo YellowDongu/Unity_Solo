@@ -846,21 +846,21 @@ MonoBehaviour:
       invincible: 1
       isTGT: 0
   - player: 0
-    specialWeapon: 0
+    specialWeapon: -1
     id: 1
     pilot:
       team: 1
       invincible: 1
       isTGT: 0
   - player: 0
-    specialWeapon: 0
+    specialWeapon: -1
     id: 1
     pilot:
       team: 1
       invincible: 0
       isTGT: 0
   - player: 0
-    specialWeapon: 0
+    specialWeapon: -1
     id: 1
     pilot:
       team: 1
@@ -1196,15 +1196,15 @@ MonoBehaviour:
     spawnPoint: {fileID: 1352431976}
     pilot:
       team: 2
-      invincible: 1
-      isTGT: 0
+      invincible: 0
+      isTGT: 1
   - isTGT: 1
     id: 101
     spawnPoint: {fileID: 1216149370}
     pilot:
       team: 2
-      invincible: 1
-      isTGT: 0
+      invincible: 0
+      isTGT: 1
   linkedPoint:
   - {fileID: 28139310}
 --- !u!1 &1987764931
