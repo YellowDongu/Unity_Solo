@@ -25,7 +25,7 @@ public abstract class Pilot : MonoBehaviour
     // Variable & GetSet Methods
     //===========================================
     public void SetInfomation(PilotInfo _infomation) { infomation = _infomation; }
-    public int Team { get { return infomation.team; } private set { infomation.team = value; } }
+    public int Team => infomation.team;
 
     [SerializeField] protected PilotInfo infomation;
 }

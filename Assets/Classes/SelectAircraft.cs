@@ -38,7 +38,7 @@ public class SelectAircraft : MonoBehaviour
     private void Awake()
     {
         selectedList = new List<VehicleID>(data.Length);
-        Factory factory = GameMaster.GetInstance().GetFactory();
+        Factory factory = GameMaster.Instance.Factory;
         Quaternion eulerAngle = Quaternion.Euler(0.0f, 180.0f, 0.0f);
         preLoaded.Add(VehicleID.None, null);
         selectedList.Add(VehicleID.None);
@@ -57,7 +57,7 @@ public class SelectAircraft : MonoBehaviour
             newInstnace.gameObject.transform.position = item.hangerPosition;
             newInstnace.gameObject.transform.rotation = eulerAngle;
             newInstnace.SystemIntegration();
-            newInstnace.Control().isGearDown = true;
+            newInstnace.Control.isGearDown = true;
             newInstnace.gameObject.SetActive(false);
             preLoaded.Add(item.id, newInstnace.gameObject);
             selectedList.Add(item.id);
@@ -70,7 +70,7 @@ public class SelectAircraft : MonoBehaviour
         currentSelector = vehicleSelector;
         phase = 0;
 
-        SoundManager sound = GameMaster.GetInstance().Sound();
+        SoundManager sound = GameMaster.Instance.Sound;
         MenuSelected = sound.GetSound("MenuSelected");
         MenuChange = sound.GetSound("MenuChange");
         returnSound = sound.GetSound("MenuCancel");
@@ -78,7 +78,7 @@ public class SelectAircraft : MonoBehaviour
     }
     private void Start()
     {
-        GameMaster.GetInstance().Sound().Play("Select");
+        GameMaster.Instance.Sound.Play("Select");
     }
 
     //===========================================
@@ -103,13 +103,13 @@ public class SelectAircraft : MonoBehaviour
                         weaponSelector.gameObject.SetActive(true);
                         currentSelector = weaponSelector;
                         phase = 1;
-                        GameMaster.GetInstance().Sound().PlayOnce(MenuSelected);
+                        GameMaster.Instance.Sound.PlayOnce(MenuSelected);
                     }
                 }
                 if (Keyboard.current.escapeKey.wasPressedThisFrame)
                 {
-                    GameMaster.GetInstance().Sound().PlayOnce(returnSound);
-                    GameMaster.GetInstance().ReturnToMain();
+                    GameMaster.Instance.Sound.PlayOnce(returnSound);
+                    GameMaster.Instance.ReturnToMain();
                 }
 
                 break;
@@ -121,11 +121,11 @@ public class SelectAircraft : MonoBehaviour
                     newData.weaponSelected = weaponSelector.Selected;
                     newData.selected = selectedList[selected];
 
-                    SoundManager sound = GameMaster.GetInstance().Sound();
+                    SoundManager sound = GameMaster.Instance.Sound;
                     sound.PlayOnce("AircraftSelected");
                     sound.FadeOut(4.0f);
 
-                    GameMaster.GetInstance().StartMission(newData);
+                    GameMaster.Instance.StartMission(newData);
                     return;
                 }
 
@@ -138,7 +138,7 @@ public class SelectAircraft : MonoBehaviour
                     weaponSelected = currentSelector.Selected;
                     currentSelector = vehicleSelector;
                     phase = 0;
-                    GameMaster.GetInstance().Sound().PlayOnce(returnSound);
+                    GameMaster.Instance.Sound.PlayOnce(returnSound);
                 }
 
                 break;
@@ -151,13 +151,13 @@ public class SelectAircraft : MonoBehaviour
         {
             currentSelector.SelectNext();
             Change();
-            GameMaster.GetInstance().Sound().PlayOnce(MenuChange);
+            GameMaster.Instance.Sound.PlayOnce(MenuChange);
         }
         else if (Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame)
         {
             currentSelector.SelectPrevious();
             Change();
-            GameMaster.GetInstance().Sound().PlayOnce(MenuChange);
+            GameMaster.Instance.Sound.PlayOnce(MenuChange);
         }
     }
 

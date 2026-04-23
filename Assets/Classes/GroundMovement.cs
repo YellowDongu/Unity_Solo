@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class GroundMovement : MonoBehaviour
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
+
     void Start()
     {
         CalibrateGround();
     }
 
+    //===========================================
+    // Methods
+    //===========================================
     private void CalibrateGround()
     {
         int terrain = LayerMask.GetMask("Terrain");
@@ -20,6 +27,10 @@ public class GroundMovement : MonoBehaviour
             }
         }
     }
+
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
 
     public GroundControl control;
 }

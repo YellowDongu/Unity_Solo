@@ -19,7 +19,7 @@ public class Explosion : MonoBehaviour
     public IEnumerator UpdateParticle()
     {
         particleSystem.Play();
-        GameMaster.GetInstance().Sound().PlayOnce("Explosion", gameObject.transform.position);
+        GameMaster.Instance.Sound.PlayOnce("Explosion", gameObject.transform.position);
         while (true)
         {
             if (!particleSystem.IsAlive())
@@ -59,16 +59,13 @@ public class Explosion : MonoBehaviour
         particleSystem.Emit(emitParameter, 1);
     }
 
+    public delegate void ReleaseMethod(Explosion explosion);
+    public event ReleaseMethod release;
+
     //===========================================
     // Variable & GetSet Methods
     //===========================================
     private GameObject target;
-
-    ParticleSystem.EmitParams emitParameter;
-    public delegate void ReleaseMethod(Explosion explosion);
-    public event ReleaseMethod release;
-
+    private ParticleSystem.EmitParams emitParameter;
     [SerializeField] private ParticleSystem particleSystem = null;
-
-
 }

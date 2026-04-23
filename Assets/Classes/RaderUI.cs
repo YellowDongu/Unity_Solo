@@ -30,7 +30,7 @@ public class RaderUI : MonoBehaviour
 
         whole = new ReadOnlyCollection<Vehicle>[teamMax];
         for (int i = 0; i < teamMax; i++)
-            whole[i] = GameMaster.GetInstance().GetFactory().GetAll(i);
+            whole[i] = GameMaster.Instance.Factory.GetAll(i);
 
         for (int i = 0; i < 4; i++)
             aliveUI[i] = new List<(Image item, int flag)>(50);
@@ -42,7 +42,7 @@ public class RaderUI : MonoBehaviour
     public void BoundPlayer(Aircraft _player)
     {
         player = _player;
-        rader = _player.Rader();
+        rader = _player.Rader;
         inRader = rader.InRangeTarget;
         running = true;
 

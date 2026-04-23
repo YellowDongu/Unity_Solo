@@ -113,7 +113,7 @@ public class Rader : MonoBehaviour
 
                 foreach (var item in flarePod)
                 {
-                    Flare newInstance = GameMaster.GetInstance().GetFactory().ShootFlare(item);
+                    Flare newInstance = GameMaster.Instance.Factory.ShootFlare(item);
                     length = Mathf.Clamp(i + count, 0, collection.Length);
                     for (; i < length; i++)
                     {
@@ -127,7 +127,7 @@ public class Rader : MonoBehaviour
             else
             {
                 foreach (var item in flarePod)
-                    GameMaster.GetInstance().GetFactory().ShootFlare(item);
+                    GameMaster.Instance.Factory.ShootFlare(item);
                 source.PlayOneShot(sound);// GameMaster.GetInstance().Sound().PlayOnce(source, sound);
             }
 
@@ -161,7 +161,7 @@ public class Rader : MonoBehaviour
 
                 foreach (var item in flarePod)
                 {
-                    Flare newInstance = GameMaster.GetInstance().GetFactory().ShootFlare(item);
+                    Flare newInstance = GameMaster.Instance.Factory.ShootFlare(item);
                     length = Mathf.Clamp(i + count, 0, collection.Length);
                     for (; i < length; i++)
                     {
@@ -173,7 +173,7 @@ public class Rader : MonoBehaviour
             }
             else
                 foreach (var item in flarePod)
-                    GameMaster.GetInstance().GetFactory().ShootFlare(item);
+                    GameMaster.Instance.Factory.ShootFlare(item);
 
             yield return null;
         }
@@ -221,6 +221,8 @@ public class Rader : MonoBehaviour
     {
         uiWarningEvent?.Invoke(sqrDistance < 10000.0f);
     }
+    public void Trace(Missile target) { tracing.Add(target); target.MissileWarning += Warning; AutoDeployFlare(); }
+    public void TraceEnd(Missile target) { tracing.Remove(target); target.MissileWarning -= Warning; }
 
     public delegate void RaderEvent(Vehicle target);
     public delegate void WarningUIEvent(bool inDistance);
@@ -230,14 +232,11 @@ public class Rader : MonoBehaviour
     //===========================================
     // Variable & GetSet Methods
     //===========================================
-    public bool AlartMissile() { return tracing.Count != 0; }
-    public void Trace(Missile target) { tracing.Add(target); target.MissileWarning += Warning; AutoDeployFlare(); }
-    public void TraceEnd(Missile target) { tracing.Remove(target); target.MissileWarning -= Warning; }
-    public float RaderDistance() { return raderDistance; }
-    public void ChangeRaderDistance(float value) { raderDistance = value; collider.radius = raderDistance; }
+    public bool MissileAlart { get { return tracing.Count != 0; } set { } }
+    public float RaderDistance { get { return raderDistance; } set { raderDistance = value; collider.radius = raderDistance; } }
     public ReadOnlyCollection<Vehicle> InRangeTarget => inDistance.AsReadOnly();
     public void SetTeam(int value) { team = value; }
-    public void GetHP(int value) { hp = value; }
+    public void SetHP(int value) { hp = value; }
     public void SetFlareCoolTime(float value) { flareCoolTime = value; }
     public void SetAutoFlare() { autoFlare = true; }
 

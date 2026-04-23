@@ -12,8 +12,8 @@ public class HUDController : MonoBehaviour
     //===========================================
     private void Awake()
     {
-        GameMaster.GetInstance().EnlistBaseCanvas(this);
-        warningSound = GameMaster.GetInstance().Sound().GetSound("MissileWarn");
+        GameMaster.Instance.EnlistBaseCanvas(this);
+        warningSound = GameMaster.Instance.Sound.GetSound("MissileWarn");
         ChangeColor(greenHUD);
         PitchHalf = Instantiate(PitchHalfPrefab, attitudeIndicator.transform).GetComponent<PitchUI>();
         PitchNEGPool = new ObjectPool<PitchUI>(createFunc: () => Instantiate(PitchNEGPrefab, attitudeIndicator.transform).GetComponent<PitchUI>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj), maxSize: 15);
@@ -51,8 +51,8 @@ public class HUDController : MonoBehaviour
 
     public void BoundPlayer(Aircraft vehicle)
     {
-        player = vehicle.Movement();
-        playerRader = vehicle.Rader();
+        player = vehicle.Movement;
+        playerRader = vehicle.Rader;
         playerRader.uiWarningEvent += Warning;
         InitializeHUD();
     }
@@ -228,7 +228,7 @@ public class HUDController : MonoBehaviour
             else
                 Timer = 2.0f;
 
-            GameMaster.GetInstance().Sound().PlayOnce(warningSound);
+            GameMaster.Instance.Sound.PlayOnce(warningSound);
             yield return new WaitForFixedUpdate();
         }
         ChangeColor(greenHUD);
@@ -242,14 +242,12 @@ public class HUDController : MonoBehaviour
     // Variable & GetSet Methods
     //===========================================
     public float GetGameTimer() { return gameTimer; }
-    public LockHUD LinkLockHUD() { return lockHUD; }
-    public RaderUI LinkRaderUI() { return raderUI; }
-    public IFFUIController LinkIFFUIController() { return iFFUIController; }
-    public GaugeUIController LinkGaugeUIController() { return gaugeUIController; }
     public Color GetColor() { return currentColor; }
+    public LockHUD LockUI => lockHUD;
+    public RaderUI Rader => raderUI;
+    public IFFUIController IFFController => iFFUIController;
+    public GaugeUIController GaugeController => gaugeUIController;
 
-
-    private bool initialized = false;
     private bool inWarning = false, warning = false, urgent = false;
     private int yHeight = 0;
     private float gameTimer = 0.0f;

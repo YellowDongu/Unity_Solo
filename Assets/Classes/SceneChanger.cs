@@ -5,17 +5,6 @@ using UnityEngine.UI;
 
 public class SceneChanger : MonoBehaviour
 {
-    private void Awake()
-    {
-        if(fadeOutPrefab != null)
-        {
-            GameObject newInstnace = Instantiate(fadeOutPrefab);
-            fadeOut = newInstnace.GetComponent<Image>();
-        }
-
-    }
-
-
     //===========================================
     // Methods
     //===========================================
@@ -80,15 +69,12 @@ public class SceneChanger : MonoBehaviour
     // Variable & GetSet Methods
     //===========================================
     public void ActiveTrigger() { SceneChangeTrigger = true; }
-    public bool LoadingDone() { return preDone; }
-    public bool Loading() { return changing; }
-    public float LoadingProgress() { return progress; }
+    public bool IsLoadingDone => preDone;
+    public bool IsLoading => changing;
+    public float LoadingProgress => progress;
 
-    private float progress = 0.0f;
     private bool SceneChangeTrigger = false;
     private bool changing = false;
     private bool preDone = false;
-
-    private Image fadeOut;
-    [SerializeField] private GameObject fadeOutPrefab;
+    private float progress = 0.0f;
 }

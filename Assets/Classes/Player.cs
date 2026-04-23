@@ -21,38 +21,38 @@ public class Player : AircraftPilot
         target.SetVehicleInfo(ref infomation);
 
         aircraft = target as Aircraft;
-        sfxChannel = aircraft.LinkSFXChannel();
-        control = aircraft.Control();
-        movement = aircraft.Movement();
-        animator = aircraft.Animator();
-        rader = aircraft.Rader();
-        fcs = aircraft.FCS();
+        sfxChannel = aircraft.LinkSFXChannel;
+        control = aircraft.Control;
+        movement = aircraft.Movement;
+        animator = aircraft.Animator;
+        rader = aircraft.Rader;
+        fcs = aircraft.FCS;
         fcs.SetTeam(infomation.team);
         rader.SetTeam(infomation.team);
         rader.SetFlareCoolTime(2);
         fcs.TargetChanged += TargetChanged;
         fcs.BeforeTargetChanged += BeforeTargetChanged;
 
-        GameMaster.GetInstance().LinkBaseCanvas(this);
+        GameMaster.Instance.LinkBaseCanvas(this);
     }
 
     public void AttachHUD(HUDController baseHUD)
     {
         baseHUD.BoundPlayer(aircraft);
-        baseHUD.LinkGaugeUIController().BoundPlayer(aircraft);
+        baseHUD.GaugeController.BoundPlayer(aircraft);
 
-        iffHud = baseHUD.LinkIFFUIController();
-        iffHud.SetMaxDistance(rader.RaderDistance());
+        iffHud = baseHUD.IFFController;
+        iffHud.SetMaxDistance(rader.RaderDistance);
         IFFAttach = iffHud.AttachIFF;
         SelectIFF = iffHud.Select;
         rader.enterEvent += AttachIFF;
 
-        LockHUD lockHUD = baseHUD.LinkLockHUD();
+        LockHUD lockHUD = baseHUD.LockUI;
         lockHUD.BoundPlayer(fcs);
         fcs.TargetChanged += lockHUD.TargetChanged;
         fcs.BeforeTargetChanged += lockHUD.BeforeTargetChanged;
 
-        RaderUI raderUI = baseHUD.LinkRaderUI();
+        RaderUI raderUI = baseHUD.Rader;
         raderUI.BoundPlayer(aircraft);
         RaderChange = raderUI.ChangeState;
     }
@@ -68,8 +68,9 @@ public class Player : AircraftPilot
 
         gameObject.transform.SetParent(null);
         gameObject.GetComponent<CameraController>().DetachCamera();
-        GameMaster.GetInstance().EndMission(false);
+        GameMaster.Instance.EndMission(false);
         gameObject.SetActive(false);
+        iffHud.gameObject.SetActive(false);
     }
 
     public override void SetLeaderSystem(LeaderSystem system)
@@ -118,7 +119,7 @@ public class Player : AircraftPilot
         if (Keyboard.current.leftCtrlKey.isPressed)
         {
             fcs.Gun(aircraft);
-            GameMaster.GetInstance().Sound().Play(loopSFXChannel, "Valcan20mm", true, false);
+            GameMaster.Instance.Sound.Play(loopSFXChannel, "Valcan20mm", true, false);
         }
         else
             loopSFXChannel.Stop();
@@ -130,11 +131,11 @@ public class Player : AircraftPilot
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             if(fcs.Missile())
-                GameMaster.GetInstance().Sound().PlayOnce(sfxChannel, fcs.GetSelectState() ? "MissileFired2" : "MissileFired");
+                GameMaster.Instance.Sound.PlayOnce(sfxChannel, fcs.SelectState ? "MissileFired2" : "MissileFired");
         }
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
-            rader.DeployFlare(sfxChannel, GameMaster.GetInstance().Sound().GetSound("Flare_Temp"));
+            rader.DeployFlare(sfxChannel, GameMaster.Instance.Sound.GetSound("Flare_Temp"));
         }
         if (Keyboard.current.gKey.wasPressedThisFrame)
             control.isGearDown = !control.isGearDown;
@@ -169,7 +170,7 @@ public class Player : AircraftPilot
         if (targets.Count == 0)
             return;
 
-        if (fcs.GetSelectState())
+        if (fcs.SelectState)
         {
             foreach (var target in targets)
             {
@@ -190,7 +191,7 @@ public class Player : AircraftPilot
         if (targets.Count == 0)
             return;
 
-        if (fcs.GetSelectState())
+        if (fcs.SelectState)
         {
             foreach (var target in targets)
             {

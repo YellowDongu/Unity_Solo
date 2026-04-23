@@ -20,23 +20,21 @@ public class Tank : Vehicle
         hp = maxHp;
         movement.control = control;
         animator.Initialize(control);
-        SetIntValue += rader.GetHP;
-        rader.GetHP(hp);
+        SetIntValue += rader.SetHP;
+        rader.SetHP(hp);
     }
 
     //===========================================
     // Variable & GetSet Methods
     //===========================================
     public void SetSpecial(int value) { fcs.SetSpecial(value); }
-    public GroundMovement Movement() { return movement; }
-    public TankAnimator Animator() { return animator; }
-    public TurretFireControlSystem FCS() { return fcs; }
-    public Rader Rader() { return rader; }
-    public GroundControl Control() { return control; }
-
+    public GroundMovement Movement => movement;
+    public TankAnimator Animator => animator;
+    public TurretFireControlSystem FCS => fcs;
+    public Rader Rader => rader;
+    public GroundControl Control => control;
 
     private GroundControl control = new GroundControl();
-
     [SerializeField] private GroundMovement movement;
     [SerializeField] private TankAnimator animator;
     [SerializeField] private TurretFireControlSystem fcs;

@@ -16,7 +16,7 @@ public class FireControlSystem : MonoBehaviour
     //===========================================
     void Start()
     {
-        standardCos = Mathf.Cos(standard[0].LockAngle() * Mathf.Deg2Rad);
+        standardCos = Mathf.Cos(standard[0].LockAngle * Mathf.Deg2Rad);
         refreshTimer = -1.0f;
         gunRPM = 1.0f / (gunRPM / 60.0f);
     }
@@ -28,28 +28,28 @@ public class FireControlSystem : MonoBehaviour
 
         special = value;
         specialSlot[special].parent.SetActive(true);
-        specialCos = Mathf.Cos(specialSlot[special].slot[0].LockAngle() * Mathf.Deg2Rad);
+        specialCos = Mathf.Cos(specialSlot[special].slot[0].LockAngle * Mathf.Deg2Rad);
         maxCount = specialSlot[special].slot.Count;
-        multiShoot = specialSlot[special].slot[0].MultiShoot();
+        multiShoot = specialSlot[special].slot[0].MultiShoot;
     }
 
     public void LinkStandard(ReadOnlyCollection<Gauge> gauge)
     {
-        float value = standard[0].MaxCoolTime();
+        float value = standard[0].MaxCoolTime;
 
         for (int i = 0; i < 2; i++)
         {
-            gauge[i].LinkCoolTime(standard[i].CoolTime);
+            gauge[i].LinkCoolTime(standard[i].GetCoolTime);
             gauge[i].GetMaxCoolTime(value);
         }
     }
 
     public void LinkSpecial(ReadOnlyCollection<Gauge> gauge)
     {
-        float value = specialSlot[special].slot[0].MaxCoolTime();
+        float value = specialSlot[special].slot[0].MaxCoolTime;
         for (int i = 0; i < maxCount; i++)
         {
-            gauge[i].LinkCoolTime(specialSlot[special].slot[i].CoolTime);
+            gauge[i].LinkCoolTime(specialSlot[special].slot[i].GetCoolTime);
             gauge[i].GetMaxCoolTime(value);
         }
     }
@@ -70,16 +70,16 @@ public class FireControlSystem : MonoBehaviour
         if (currentTargets.Count == 0)
             return;
 
-        float raderDistance = rader.RaderDistance();
+        float raderDistance = rader.RaderDistance;
         raderDistance *= raderDistance;
         raderDistance *= 1.25f;
 
         if (selectSpecial)
         {
-            float distance = specialSlot[special].slot[0].MaxRange();
-            float lockSpeed = specialSlot[special].slot[0].LockSpeed() * Time.deltaTime;
+            float distance = specialSlot[special].slot[0].MaxRange;
+            float lockSpeed = specialSlot[special].slot[0].LockSpeed * Time.deltaTime;
             distance *= distance;
-            int mask = specialSlot[special].slot[0].AimLayer();
+            int mask = specialSlot[special].slot[0].AimLayer;
             for (int i = 0; i < currentTargets.Count; i++)
             {
                 if (!Lockable(currentTargets[i], mask))
@@ -114,7 +114,7 @@ public class FireControlSystem : MonoBehaviour
         }
         else
         {
-            float distance = standard[0].MaxRange();
+            float distance = standard[0].MaxRange;
             distance *= distance;
 
             GameObject current = currentTargets[0].gameObject;
@@ -134,9 +134,9 @@ public class FireControlSystem : MonoBehaviour
 
             directionToTarget.Normalize();
             if (Vector3.Dot(gameObject.transform.forward, directionToTarget) >= standardCos && magnitude <= distance)
-                lockStatus[0] -= standard[0].LockSpeed() * Time.deltaTime;
+                lockStatus[0] -= standard[0].LockSpeed * Time.deltaTime;
             else
-                lockStatus[0] += standard[0].LockSpeed() * Time.deltaTime;
+                lockStatus[0] += standard[0].LockSpeed * Time.deltaTime;
 
             lockStatus[0] = Mathf.Clamp01(lockStatus[0]);
         }
@@ -152,7 +152,7 @@ public class FireControlSystem : MonoBehaviour
             return;
 
         bulletTime = 0.0f;
-        GameMaster.GetInstance().GetFactory().Shoot(gameObject.transform.position + gameObject.transform.forward * 5.0f, gameObject.transform.rotation, 450.0f, vehicle);
+        GameMaster.Instance.Factory.Shoot(gameObject.transform.position + gameObject.transform.forward * 5.0f, gameObject.transform.rotation, 450.0f, vehicle);
     }
 
     public bool Missile()
@@ -343,7 +343,7 @@ public class FireControlSystem : MonoBehaviour
     public bool Lockable(Vehicle vehicle, int mask)
     {
         // bit,    ground/air => 11 air => 1 Ground => 10
-        int bit = vehicle.isLand ? 1 : 0;
+        int bit = vehicle.IsLand ? 1 : 0;
         bit = 1 << bit;
 
         return (mask & bit) != 0;
@@ -362,12 +362,12 @@ public class FireControlSystem : MonoBehaviour
     // Variable & GetSet Methods
     //===========================================
     public void SetTeam(int value) { team = value; }
-    public bool GetSelectState() { return selectSpecial; }
-    public virtual int GetMissileAimLayer() { return selectSpecial ? specialSlot[special].slot[0].AimLayer() : standard[0].AimLayer(); }
+    public bool SelectState => selectSpecial;
+    public virtual int GetMissileAimLayer() { return selectSpecial ? specialSlot[special].slot[0].AimLayer : standard[0].AimLayer; }
     public ReadOnlyCollection<Vehicle> Targets => currentTargets.AsReadOnly();
     public ReadOnlyCollection<float> LockStatus => lockStatus.AsReadOnly();
-    public GaugeUI.GaugeUIType NeededUIStandard() { return standard[0].NeededUIType(); }
-    public GaugeUI.GaugeUIType NeededUISpecial() { if (special == -1) return GaugeUIType.END; return specialSlot[special].slot[0].NeededUIType(); }
+    public GaugeUI.GaugeUIType NeededUIStandard() { return standard[0].NeededUIType; }
+    public GaugeUI.GaugeUIType NeededUISpecial() { if (special == -1) return GaugeUIType.END; return specialSlot[special].slot[0].NeededUIType; }
 
 
 

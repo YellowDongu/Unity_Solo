@@ -31,7 +31,7 @@ public class Title : MonoBehaviour
             Calculate();
             mainMenuSelector.MovePosition(0.0f, outerZ, 0.75f);
             missionSelector.MovePosition(outerZ * -0.5f, outerZ + outerZ * -0.5f, 0.75f);
-            SoundManager sound = GameMaster.GetInstance().Sound();
+            SoundManager sound = GameMaster.Instance.Sound;
             MenuSelected = sound.GetSound("MenuSelected");
             MenuChange = sound.GetSound("MenuChange");
             sound.Play("main", true, true);
@@ -97,7 +97,7 @@ public class Title : MonoBehaviour
     private IEnumerator ChangeToMainMenu()
     {
         disable = true;
-        SoundManager sound = GameMaster.GetInstance().Sound();
+        SoundManager sound = GameMaster.Instance.Sound;
         AudioClip clip = sound.GetSound("TurnToMainMenu");
         MenuSelected = sound.GetSound("MenuSelected");
         MenuChange = sound.GetSound("MenuChange");
@@ -143,21 +143,21 @@ public class Title : MonoBehaviour
                         currentSelector = missionSelector;
                         secondPhase = 1;
                         TitleText.text = "SELECT MISSION";
-                        GameMaster.GetInstance().Sound().PlayOnce(MenuSelected);
+                        GameMaster.Instance.Sound.PlayOnce(MenuSelected);
                     }
                     else if (currentSelector.Selected == 1)
                     {
-                        GameMaster.GetInstance().QuitApplication();
-                        GameMaster.GetInstance().Sound().PlayOnce(MenuSelected);
+                        GameMaster.Instance.QuitApplication();
+                        GameMaster.Instance.Sound.PlayOnce(MenuSelected);
                     }
                     break;
                 case 1:
                     {
                         disable = true;
-                        SoundManager sound = GameMaster.GetInstance().Sound();
+                        SoundManager sound = GameMaster.Instance.Sound;
                         sound.Stop();
-                        GameMaster.GetInstance().Sound().PlayOnce(MenuSelected);
-                        GameMaster.GetInstance().ChangeToSelect(currentSelector.Selected);
+                        GameMaster.Instance.Sound.PlayOnce(MenuSelected);
+                        GameMaster.Instance.ChangeToSelect(currentSelector.Selected);
                     }
                     break;
                 default:
@@ -169,7 +169,7 @@ public class Title : MonoBehaviour
             switch (secondPhase)
             {
                 case 0:
-                    GameMaster.GetInstance().Sound().PlayOnce(MenuSelected);
+                    GameMaster.Instance.Sound.PlayOnce(MenuSelected);
                     break;
                 case 1:
                     mainMenuSelector.SetActive(true);
@@ -179,7 +179,7 @@ public class Title : MonoBehaviour
                     currentSelector = mainMenuSelector;
                     secondPhase = 0;
                     TitleText.text = "MAIN MENU";
-                    GameMaster.GetInstance().Sound().PlayOnce(MenuSelected);
+                    GameMaster.Instance.Sound.PlayOnce(MenuSelected);
                     break;
                 default:
                     break;
@@ -188,13 +188,13 @@ public class Title : MonoBehaviour
 
         if (Keyboard.current.downArrowKey.wasPressedThisFrame)
         {
-            GameMaster.GetInstance().Sound().PlayOnce(MenuChange);
+            GameMaster.Instance.Sound.PlayOnce(MenuChange);
             currentSelector.SelectNext();
         }
         if (Keyboard.current.upArrowKey.wasPressedThisFrame)
         {
             currentSelector.SelectPrevious();
-            GameMaster.GetInstance().Sound().PlayOnce(MenuChange);
+            GameMaster.Instance.Sound.PlayOnce(MenuChange);
         }
     }
 
@@ -203,7 +203,6 @@ public class Title : MonoBehaviour
     //===========================================
     // Variable & GetSet Methods
     //===========================================
-    public static string GetSelectedMission() { return selectedMission; }
 
     private static string selectedMission;
     private static bool fistTime = true;

@@ -91,13 +91,13 @@ public class CameraController : MonoBehaviour
     public void FirstProspective()
     {
         camera.fieldOfView = 45.0f;
-        attachedPoint = target.FirstView().transform;
+        attachedPoint = target.FirstView.transform;
         transform.SetParent(attachedPoint);
     }
     public void ThirdProspective()
     {
         camera.fieldOfView = 60.0f;
-        transform.SetParent(target.ThirdView().transform);
+        transform.SetParent(target.ThirdView.transform);
         attachedPoint = transform.parent.parent;
     }
 

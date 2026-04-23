@@ -486,7 +486,7 @@ public class FollowState : FlightState
         if (targetVehicle != null)
         {
             float distanceFactor = Mathf.Clamp01(vector.sqrMagnitude / 60000.0f);
-            float targetVelocity = targetVehicle.Control().velocity * (distanceFactor + 1.0f);
+            float targetVelocity = targetVehicle.Control.velocity * (distanceFactor + 1.0f);
 
             if (control.velocity > targetVelocity)
             {
@@ -584,8 +584,8 @@ public class AviationLeaderSystem : LeaderSystem
     //===========================================
     public bool IsLeader(AircraftPilot pilot) { return pilot == wings[0].pilot; }
     public bool IsLeader(Aircraft aircraft) { return aircraft == wings[0].aircraft; }
+    public Aircraft Leader => wings[0].aircraft;
 
-    public Aircraft GetLeader() { return wings[0].aircraft; }
 
     List<(AircraftPilot pilot, Aircraft aircraft)> wings = new List<(AircraftPilot, Aircraft)>();
 }

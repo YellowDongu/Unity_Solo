@@ -65,14 +65,14 @@ public class AIPilot : AircraftPilot
         rader = null;
         fcs = null;
 
-        GameMaster.GetInstance().GetFactory().ReleaseAI(this);
+        GameMaster.Instance.Factory.ReleaseAI(this);
     }
 
     public override void SetLeaderSystem(LeaderSystem system)
     {
         als = system as AviationLeaderSystem;
         isLeader = als.IsLeader(this);
-        followLeader.Initialize(als.GetLeader(), als.GetOffset(this), movement, TurnType.Normal);
+        followLeader.Initialize(als.Leader, als.GetOffset(this), movement, TurnType.Normal);
     }
     //===========================================
     // FrameCycle Methods
@@ -80,7 +80,7 @@ public class AIPilot : AircraftPilot
 
     void FixedUpdate()
     {
-        if(rader.AlartMissile())
+        if(rader.MissileAlart)
             ActiveEvade();
 
         if (als != null)
@@ -210,7 +210,7 @@ public class AIPilot : AircraftPilot
         }
         else if (als != null && !isLeader)
         {
-            if ((als.GetLeader().gameObject.transform.position - gameObject.transform.position).sqrMagnitude >= 1000000.0f)
+            if ((als.Leader.gameObject.transform.position - gameObject.transform.position).sqrMagnitude >= 1000000.0f)
             {
                 currentState = followLeader;
                 currentStatus = Status.Follow;
@@ -265,7 +265,7 @@ public class AIPilot : AircraftPilot
     {
         isLeader = newLeader == this;
         if (!isLeader)
-            followLeader.Initialize(als.GetLeader(), als.GetOffset(this), movement, TurnType.Normal);
+            followLeader.Initialize(als.Leader, als.GetOffset(this), movement, TurnType.Normal);
     }
 
     public bool BattleStatusUpdate()
@@ -368,7 +368,7 @@ public class AIPilot : AircraftPilot
             return;
 
         int index = infomation.team == 2 ? infomation.team - 1 : infomation.team + 1;
-        var list = GameMaster.GetInstance().GetFactory().GetAll(index);
+        var list = GameMaster.Instance.Factory.GetAll(index);
         float distance = float.MaxValue;
         int selected = -1;
 

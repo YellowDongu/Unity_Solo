@@ -9,15 +9,15 @@ public abstract class AircraftPilot : Pilot
 
     public override void Attach(Vehicle target)
     {
-        gameObject.transform.SetParent(target.FirstView().transform); // default attach
+        gameObject.transform.SetParent(target.FirstView.transform); // default attach
         target.SetVehicleInfo(ref infomation);
 
         aircraft = target as Aircraft;
-        control = aircraft.Control();
-        movement = aircraft.Movement();
-        animator = aircraft.Animator();
-        rader = aircraft.Rader();
-        fcs = aircraft.FCS();
+        control = aircraft.Control;
+        movement = aircraft.Movement;
+        animator = aircraft.Animator;
+        rader = aircraft.Rader;
+        fcs = aircraft.FCS;
         fcs.SetTeam(infomation.team);
         rader.SetTeam(infomation.team);
 

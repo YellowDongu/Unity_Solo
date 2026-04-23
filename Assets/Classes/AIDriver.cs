@@ -24,7 +24,7 @@ public class AIDriver : Pilot
         rader = null;
         fcs = null;
 
-        GameMaster.GetInstance().GetFactory().ReleaseGroundAI(this);
+        GameMaster.Instance.Factory.ReleaseGroundAI(this);
     }
 
     //===========================================
@@ -48,15 +48,15 @@ public class AIDriver : Pilot
     //===========================================
     public override void Attach(Vehicle target)
     {
-        gameObject.transform.SetParent(target.FirstView().transform); // default attach
+        gameObject.transform.SetParent(target.FirstView.transform); // default attach
         target.SetVehicleInfo(ref infomation);
 
         vehicle = target as Tank;
-        control = vehicle.Control();
-        movement = vehicle.Movement();
-        animator = vehicle.Animator();
-        rader = vehicle.Rader();
-        fcs = vehicle.FCS();
+        control = vehicle.Control;
+        movement = vehicle.Movement;
+        animator = vehicle.Animator;
+        rader = vehicle.Rader;
+        fcs = vehicle.FCS;
         fcs.TargetChanged += TargetChanged;
         fcs.SetTeam(infomation.team);
         rader.SetTeam(infomation.team);

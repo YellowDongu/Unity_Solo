@@ -42,7 +42,7 @@ public struct ActiveCondition
                 time -= Time.deltaTime;
                 return time <= 0.0f;
             case Condition.TGT:
-                return GameMaster.GetInstance().IsTGTEmpty();
+                return GameMaster.Instance.IsTGTEmpty();
             case Condition.Disabled:
                 return false;
             default:
@@ -92,7 +92,7 @@ public class SpawnPoint : MonoBehaviour
             {
                 if (endFlag)
                 {
-                    GameMaster.GetInstance().EndMission(true);
+                    GameMaster.Instance.EndMission(true);
                 }
                 else
                 {
@@ -110,9 +110,9 @@ public class SpawnPoint : MonoBehaviour
     public void Spawn()
     {
         if (airforce)
-            GameMaster.GetInstance().GetFactory().Spawn(this, spawnTargetList);
+            GameMaster.Instance.Factory.Spawn(this, spawnTargetList);
         else
-            GameMaster.GetInstance().GetFactory().Spawn(this, spawnGroundList);
+            GameMaster.Instance.Factory.Spawn(this, spawnGroundList);
     }
 
     //===========================================

@@ -47,10 +47,10 @@ public class TankAnimator : MonoBehaviour
     //===========================================
     // Variable & GetSet Methods
     //===========================================
-    public Vector3 forward { get { return turretPitchBone.transform.forward; } private set { } }
-    public Quaternion rotation { get { return turretPitchBone.transform.rotation; } private set { } }
-    public Vector3 yawForward { get { return turretYawBone.transform.forward; } private set { } }
-    public Quaternion yawRotation { get { return turretYawBone.transform.rotation; } private set { } }
+    public Vector3 forward  => turretPitchBone.transform.forward;
+    public Quaternion rotation  => turretPitchBone.transform.rotation;
+    public Vector3 yawForward  => turretYawBone.transform.forward;
+    public Quaternion yawRotation  => turretYawBone.transform.rotation;
 
     public void ChangeTarget(Vehicle next) { target = next; }
 

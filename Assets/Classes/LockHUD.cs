@@ -100,7 +100,7 @@ public class LockHUD : MonoBehaviour
         standardLock.transform = newInstance.GetComponent<RectTransform>();
         newInstance.SetActive(false);
 
-        standardLocksound = GameMaster.GetInstance().Sound().GetSound("StandardLock");
+        standardLocksound = GameMaster.Instance.Sound.GetSound("StandardLock");
         //specialLocksound = GameMaster.GetInstance().Sound().GetSound("");
         source.clip = standardLocksound;
         specialLockPool = new ObjectPool<Image>(createFunc: () => Instantiate(specialLockPrefab, baseCanvas.transform).GetComponent<Image>(), actionOnGet: obj => obj.gameObject.SetActive(true), actionOnRelease: obj => obj.gameObject.SetActive(false), actionOnDestroy: obj => Destroy(obj.gameObject), collectionCheck: false, defaultCapacity: 10, maxSize: 100);
@@ -139,7 +139,7 @@ public class LockHUD : MonoBehaviour
     //===========================================
     public void BoundPlayer(FireControlSystem fcs)
     {
-        fcsState = fcs.GetSelectState();
+        fcsState = fcs.SelectState;
         targets = fcs.Targets;
         lockStatus = fcs.LockStatus;
         fcs.ChangeState += ChangeState;

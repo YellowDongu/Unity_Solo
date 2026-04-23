@@ -1,9 +1,44 @@
 fileFormatVersion: 2
-guid: 8cfb9157c43dadf45b09cf91a4f0c891
+guid: ef58d7111f231144c9208c7c7060d629
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SOU_TER_A02Sea_Inst
+    second: {fileID: 2100000, guid: 6ab7d9455be707c41a1a992e9cf744ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SOU_TER_A04Sea_Inst
+    second: {fileID: 2100000, guid: 91ec0d90fea8ca545ba5ef6337cc0061, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SOU_TER_B01Sea_Inst
+    second: {fileID: 2100000, guid: 09e6b420836ac564eab4188bcc76bec1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SOU_TER_B02Sea_Inst
+    second: {fileID: 2100000, guid: 10128f42c8ba19b45a42f34e3002a17d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SOU_TER_B03Sea_Inst
+    second: {fileID: 2100000, guid: 6c89d6ebe96dcd74bb0b25f9b6807da5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SOU_TER_B04Sea_Inst
+    second: {fileID: 2100000, guid: 9256476bf202c534c95a5c585324d505, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SOU_TER_D02Sea_Inst
+    second: {fileID: 2100000, guid: 0db1a27aca11a8745b3da699bbd17034, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

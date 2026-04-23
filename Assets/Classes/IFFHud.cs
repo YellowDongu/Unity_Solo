@@ -34,7 +34,7 @@ public class IFFHud : MonoBehaviour
 
         nameText.gameObject.SetActive(_target.Team == _player.Team);
         distanceText.gameObject.SetActive(false);
-        GetLayer = playerAircraft.FCS().GetMissileAimLayer;
+        GetLayer = playerAircraft.FCS.GetMissileAimLayer;
         screenTransform = uiTransform.parent as RectTransform;
         ImageInitialize(_target);
         ChangeColor(_target.Team == 0 ? HUDController.unknown : (_target.Team == _player.Team ? HUDController.ally : HUDController.normal));
@@ -107,7 +107,7 @@ public class IFFHud : MonoBehaviour
 
     public void ImageInitialize(Vehicle target)
     {
-        isAir = !target.isLand;
+        isAir = !target.IsLand;
         preset = target.VehicleLayer;
         isTGT = target.IsTGT;
         nameText.text = target.VehicleName;

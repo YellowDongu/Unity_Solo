@@ -58,12 +58,12 @@ public class IFFUIController : MonoBehaviour
         hud.release += targetPool.Release;
         return hud;
     }
+    private void ReleaseMethod(IFFHud target) { /*changeColor -= target.ChangeColor;*/ targets.Remove(target.Target); }
 
     //===========================================
     // Variable & GetSet Methods
     //===========================================
     //private void ColorChange(Color _color) { color = _color; }
-    private void ReleaseMethod(IFFHud target) { /*changeColor -= target.ChangeColor;*/ targets.Remove(target.Target); }
     public void SetMaxDistance(float value) { maxDistance = value; }
     public IFFHud GetIFF(Vehicle target) { if(targets.TryGetValue(target, out IFFHud result)) return result; return null; }
 

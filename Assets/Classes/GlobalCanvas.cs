@@ -5,10 +5,18 @@ using UnityEngine.UI;
 
 public class GlobalCanvas : MonoBehaviour
 {
+    //===========================================
+    // Initializer/Destructor
+    //===========================================
+
     private void Awake()
     {
         SetMissionText(0);
     }
+
+    //===========================================
+    // Methods
+    //===========================================
 
     public void FadeOut(bool active, float speed = 1.0f)
     {
@@ -82,8 +90,12 @@ public class GlobalCanvas : MonoBehaviour
         missionPanel.SetActive(active);
     }
 
-    public float FadeOutStatus() { return fadeOutImage.color.a; }
-    public bool Fading() { return fading; }
+    //===========================================
+    // Variable & GetSet Methods
+    //===========================================
+
+    public float FadeOutStatus => fadeOutImage.color.a;
+    public bool IsFading => fading;
 
     private bool fadeOut = false, fading = false;
     private bool isLoadingActive = false, isMissionActive = false;

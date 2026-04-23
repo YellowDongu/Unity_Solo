@@ -152,7 +152,7 @@ public class Factory : MonoBehaviour
 
         player = Instantiate(playerPrefab).GetComponent<Player>();
 
-        PlayerSpawnData reserved = GameMaster.GetInstance().PlayerSpawnData();
+        PlayerSpawnData reserved = GameMaster.Instance.PlayerSpawnData();
         if (reserved.selected == VehicleID.END)
             vehicle = null;
         else

@@ -76,7 +76,7 @@ public class StandardMissile : Missile
         SendDistance(vector.sqrMagnitude);
         if (vector.sqrMagnitude < 25.0f)
         {
-            GameMaster.GetInstance().GetFactory().Explosion(gameObject.transform.position, 2.5f);
+            GameMaster.Instance.Factory.Explosion(gameObject.transform.position, 2.5f);
             if (targetRader != null)
                 targetRader.TraceEnd(this);
             target.TakeDamage(damage);

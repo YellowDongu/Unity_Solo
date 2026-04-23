@@ -39,12 +39,12 @@ public class GameMaster : MonoBehaviour
     //===========================================
     // Variable & GetSet Methods
     //===========================================
-    public float GameTime() { return missionManager.missionTime(); }
+    public float GameTime() { return missionManager.missionTime; }
     public bool IsTGTEmpty() { return factory.IsTGTEmpty(); }
-    public Factory GetFactory() { return factory; }
-    public SceneChanger GetSceneChanger() { return sceneChanger; }
-    public GlobalCanvas GetGlobalCanvas() { return globalCanvas; }
-    public SoundManager Sound() { return soundManager; }
+    public Factory Factory => factory;
+    public SceneChanger SceneChanger => sceneChanger;
+    public GlobalCanvas GlobalCanvas => globalCanvas;
+    public SoundManager Sound => soundManager; 
     public void EnlistBaseCanvas(HUDController canvas) { baseCanvas = canvas; }
     public void LinkBaseCanvas(Player player) { player.AttachHUD(baseCanvas); }
     public PlayerSpawnData PlayerSpawnData() { return missionManager.PlayerSpawnData(); }
@@ -60,7 +60,7 @@ public class GameMaster : MonoBehaviour
     //===========================================
     // Global Variable & Methods
     //===========================================
-    public static GameMaster GetInstance() { return instance; }
+    public static GameMaster Instance => instance;
     public static float ConvertWorldScale(float value) { return value / gameDistanceScale; }
     public static float ConvertInGameScale(float value) { return value * gameDistanceScale; }
 

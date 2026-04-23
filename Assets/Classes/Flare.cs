@@ -17,7 +17,7 @@ public class Flare : MonoBehaviour
         }
 
         timer -= Time.deltaTime;
-        body.transform.forward = rigidBody.linearVelocity.normalized;
+        //body.transform.forward = rigidBody.linearVelocity.normalized;
         if (timer < 0.0f)
         {
             body.SetActive(false);
@@ -29,15 +29,20 @@ public class Flare : MonoBehaviour
     //===========================================
     public void Shoot(Vector3 position, Quaternion rotation, float velocity)
     {
+        trail.emitting = false;
         gameObject.transform.position = position;
         gameObject.transform.rotation = rotation;
         rigidBody.AddForce(gameObject.transform.forward * velocity, ForceMode.VelocityChange);
         timer = lifeTime;
         particleTimer = trail.time;
+        trail.Clear();
+        trail.emitting = true;
     }
 
     public void Release()
     {
+        rigidBody.linearVelocity = Vector3.zero;
+        rigidBody.angularVelocity = Vector3.zero;
         if (!gameObject.activeInHierarchy)
             return;
         onRelease?.Invoke(this);

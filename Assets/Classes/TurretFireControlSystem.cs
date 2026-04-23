@@ -22,13 +22,13 @@ public class TurretFireControlSystem : FireControlSystem
 
         if (standard != null && standard.Length != 0)
         {
-            standardCos = Mathf.Cos(standard[0].LockAngle() * Mathf.Deg2Rad);
+            standardCos = Mathf.Cos(standard[0].LockAngle * Mathf.Deg2Rad);
 
-            raderDistance = rader.RaderDistance();
+            raderDistance = rader.RaderDistance;
             raderDistance *= raderDistance;
             raderDistance *= 1.25f;
 
-            distance = standard[0].MaxRange();
+            distance = standard[0].MaxRange;
             distance *= distance;
         }
         else
@@ -41,7 +41,6 @@ public class TurretFireControlSystem : FireControlSystem
     protected void Update()
     {
         bulletTime = Mathf.Clamp(bulletTime - Time.deltaTime, 0.0f, gunRPM);
-
     }
 
     protected new void FixedUpdate()
@@ -72,9 +71,9 @@ public class TurretFireControlSystem : FireControlSystem
 
         //if (targetAngleDot >= standardCos && magnitude <= distance)
         if (magnitude <= distance)
-            lockStatus[0] -= standard[0].LockSpeed() * Time.deltaTime;
+            lockStatus[0] -= standard[0].LockSpeed * Time.deltaTime;
         else
-            lockStatus[0] += standard[0].LockSpeed() * Time.deltaTime;
+            lockStatus[0] += standard[0].LockSpeed * Time.deltaTime;
 
         lockStatus[0] = Mathf.Clamp01(lockStatus[0]);
     }
@@ -97,12 +96,11 @@ public class TurretFireControlSystem : FireControlSystem
 
     public new void Gun(Vehicle vehicle)
     {
-        gunDebug = bulletTime;
         if (bulletTime >= 0.0f)
             return;
 
         bulletTime = gunRPM;
-        GameMaster.GetInstance().GetFactory().ShootNonGravity(gameObject.transform.position + gunBarrel.transform.forward * 5.0f, gunBarrel.transform.rotation, 450.0f, vehicle);
+        GameMaster.Instance.Factory.ShootNonGravity(gameObject.transform.position + gunBarrel.transform.forward * 5.0f, gunBarrel.transform.rotation, 450.0f, vehicle);
     }
 
     public new bool Missile()
@@ -201,17 +199,15 @@ public class TurretFireControlSystem : FireControlSystem
     //===========================================
     // Variable & GetSet Methods
     //===========================================
-    public override int GetMissileAimLayer() { return noMissile ? 3 : standard[0].AimLayer(); }
-
+    public override int GetMissileAimLayer() { return noMissile ? 3 : standard[0].AimLayer; }
     public float TargetAngle { get { return targetAngleDot; } private set { targetAngleDot = value; } }
+
 
     private bool noMissile;
 
-    private float gunCos;
     private float distance;
     private float raderDistance;
     private float targetAngleDot;
 
-    [SerializeField] float gunDebug;
-    [SerializeField] GameObject gunBarrel;
+    [SerializeField] private GameObject gunBarrel;
 }

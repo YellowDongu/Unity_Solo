@@ -59,7 +59,6 @@ public class GaugeUI : MonoBehaviour
     // Variable & GetSet Methods
     //===========================================
     public ReadOnlyCollection<Gauge> GaugeList => gaugeList.AsReadOnly();
-    public GaugeUIType GetUIType() { return type; }
 
     [SerializeField] private GaugeUIType type;
     [SerializeField] private List<Gauge> gaugeList;

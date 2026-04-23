@@ -27,10 +27,9 @@ public class Aircraft : Vehicle
 
     public void SystemIntegration()
     {
-        hp = maxHp;
         if (integrated)
         {
-            engineChannel.clip = GameMaster.GetInstance().Sound().GetSound("Engine_Outside");
+            engineChannel.clip = GameMaster.Instance.Sound.GetSound("Engine_Outside");
             engineChannel.Play();
             engineChannel.loop = true;
             return;
@@ -39,9 +38,9 @@ public class Aircraft : Vehicle
         integrated = true;
         movement.control = control;
         animator.control = control;
-        SetIntValue += rader.GetHP;
-        rader.GetHP(hp);
-        engineChannel.clip = GameMaster.GetInstance().Sound().GetSound("Engine_Outside");
+        SetIntValue += rader.SetHP;
+        rader.SetHP(hp);
+        engineChannel.clip = GameMaster.Instance.Sound.GetSound("Engine_Outside");
         engineChannel.Play();
         engineChannel.loop = true;
     }
@@ -71,18 +70,17 @@ public class Aircraft : Vehicle
         if (engineChannel != null)
             engineChannel.Play();
     }
+    public void SetSpecial(int value) { fcs.SetSpecial(value); }
 
     //===========================================
     // Variable & GetSet Methods
     //===========================================
-    public void SetSpecial(int value) { fcs.SetSpecial(value); }
-    public AircraftMovement Movement() { return movement; }
-    public AircraftAnimator Animator() { return animator; }
-    public FireControlSystem FCS() { return fcs; }
-    public Rader Rader() { return rader; }
-    public Control Control() { return control; }
-    public AudioSource LinkSFXChannel() { return sfxChannel; }
-    public void LinkSoundChannel(out AudioSource sfx, out AudioSource engine) { sfx = sfxChannel; engine = engineChannel; }
+    public AircraftMovement Movement => movement;
+    public AircraftAnimator Animator => animator;
+    public FireControlSystem FCS => fcs;
+    public Rader Rader => rader;
+    public Control Control => control;
+    public AudioSource LinkSFXChannel => sfxChannel;
 
     private bool integrated = false;
     private Control control = new Control();

@@ -58,16 +58,19 @@ public abstract class Missile : MonoBehaviour
     // Variable & GetSet Methods
     //===========================================
     public void ChangeTarget(Vehicle vehicle)  { target = vehicle; }
-    public float LockAngle()  { return lockAngle; }
-    public float MaxRange()  { return maxRange; }
-    public int TargetCount() { return targetCount; }
-    public int MultiShoot() { return multiShoot; }
-    public int Damage() { return damage; }
-    public int AimLayer() { return aimLayer; }
-    public float LockSpeed() { return lockSpeed; }
-    public float CoolTime() { return time; }
-    public float MaxCoolTime() { return coolTime; }
-    public GaugeUI.GaugeUIType NeededUIType() { return neededUI; }
+    public float GetCoolTime() { return time; }
+
+    public float LockAngle => lockAngle;
+    public float MaxRange => maxRange;
+    public int TargetCount => targetCount;
+    public int MultiShoot => multiShoot;
+    public int Damage => damage;
+    public int AimLayer => aimLayer;
+    public float LockSpeed => lockSpeed;
+    public float CoolTime => time;
+    public float MaxCoolTime => coolTime;
+    public GaugeUI.GaugeUIType NeededUIType => neededUI;
+
 
 
     protected bool isCoolTime = false;

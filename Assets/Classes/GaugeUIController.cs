@@ -58,16 +58,16 @@ public class GaugeUIController : MonoBehaviour
         hp.GaugeList[0].LinkCoolTime(vehicle.HPPresentage);
         hp.GaugeList[0].GetMaxCoolTime(1);
 
-        FireControlSystem fcs = vehicle.FCS();
+        FireControlSystem fcs = vehicle.FCS;
         standardGauge = Instantiate(uiPrefabs[fcs.NeededUIStandard()], gameObject.transform).GetComponent<GaugeUI>();
         fcs.LinkStandard(standardGauge.GaugeList);
-        standardGauge.gameObject.SetActive(!fcs.GetSelectState());
+        standardGauge.gameObject.SetActive(!fcs.SelectState);
 
         if (fcs.NeededUISpecial() != GaugeUI.GaugeUIType.END)
         {
             specialGauge = Instantiate(uiPrefabs[fcs.NeededUISpecial()], gameObject.transform).GetComponent<GaugeUI>();
             fcs.LinkSpecial(specialGauge.GaugeList);
-            specialGauge.gameObject.SetActive(fcs.GetSelectState());
+            specialGauge.gameObject.SetActive(fcs.SelectState);
         }
 
         fcs.ChangeState += ChangeState;
